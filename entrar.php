@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seminario CSS</title>
+    <title>MiRinconFavorito</title>
     <!--CSS BOOTSTRAP-->
     <link rel="styleheet" href="css/bootstrap.css">
     <link href='css/bootstrap.min.css' rel='stylesheet'>
-
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
 <body>
