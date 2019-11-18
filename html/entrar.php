@@ -17,18 +17,19 @@
     <div class="container">
         <h3 class="text-center">Iniciar sesión</h3>
         <br>
-        <form>
-            <div class="form-group">
+        <!-- <form> -->
+            <!-- <div class="form-group"> -->
                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value="email@email.com">
-            </div>
-            <div class="form-group">
+            <!-- </div> -->
+            <!-- <div class="form-group"> -->
                 <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" value="password">
-            </div>
-            <div class="form-check">
-                <a class="btn btn-info" name="entrar" style="float: right;" onClick='entrar()'>Iniciar sesión</a>
-            </div>
+            <!-- </div> -->
+            <!-- <div class="form-check"> -->
+                <button onclick="entrar()" name="entrar" style="float: right;">Entrar</button>
+                <!-- <a class="btn btn-info" name="entrar" style="float: right;" onClick='entrar()'>Iniciar sesión</a> -->
+            <!-- </div> -->
 
-        </form>
+        <!-- </form> -->
 
     </div> <br><br>
 

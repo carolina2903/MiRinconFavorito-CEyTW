@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carrito&nbsp;
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carrito&nbsp;
                         <span class="badge badge-light">0</span>
                     </a>
 
@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Usuario&nbsp;</a>
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Usuario&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Registrarse</a>
                         <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Iniciar sesión</a>

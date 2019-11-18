@@ -56,7 +56,7 @@
             <tbody>
                    <!-- {{#each user.userOrders}}
                     {{> order-partial this details_onclick='Controller.controllers.profile.details_clicked'}}
-                    {{!-- FALTA BOTON DETAILS --}}
+                    
                 {{/each}} -->
             </tbody>
         </table>

@@ -9,38 +9,57 @@
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <link rel="styleheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
 <body>
-    
-<div class="container">
-            <h3 class="text-center">Cojín dibujo simple</h3>
-            <br>
-            <form>
 
-                <form action="funkoshop/views/templates/php/tipofamilia_action.php" method="post" target="_blank">
-                    <p>
-                        Número de miembors a incluir en el cojín: 
-                        <input type="number" name="miembrosañadir" min="1" max="10" step="1">
-                        <input type="submit" name="introducir" value="Introducir">
-                    </p>
-                </form>
-
-                <div class="form-check">
-                    <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/cart"
-                        onclick="Controller.controllers.tipodibujosimple.carrito_clicked(event);">Añadir al carrito</a>
-                </div><br><br>
-                <div class="form-check">
-                    <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/purchase"
-                        onclick="Controller.controllers.tipodibujosimple.comprar_clicked(event);">Comprar ahora</a>
-                </div>
+    <div class="container">
+        <h3 class="text-center">Cojín dibujo simple</h3>
+        <br>
+        <form>
 
 
-            </form>
+            <p>
+                Número de miembors a incluir en el cojín:
+                <input type="number" name="miembrosañadir" min="1" max="10" step="1">
 
-        </div> <br><br><br><br><br><br><br>
-    
+                <button onlick="introducir()" name="introducir" style="float: right;">Entrar</button>
+                <!-- <input type="submit" onclick="introducir()" name="introducir" value="Introducir"> -->
+            </p>
+
+            <p id="html_miembros"></p>
+
+
+
+
+            <br><br><br>
+            <div class="form-check">
+                <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/cart" onclick="Controller.controllers.tipodibujosimple.carrito_clicked(event);">Añadir al carrito</a>
+            </div><br><br>
+            <div class="form-check">
+                <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/purchase" onclick="Controller.controllers.tipodibujosimple.comprar_clicked(event);">Comprar ahora</a>
+            </div>
+
+
+        </form>
+
+    </div> <br><br><br><br><br><br><br>
+
+
+    <script>
+        function introducir() {
+            var num = document.getElementById("miembrosañadir").value;
+            // var cont = 0;
+            // while (num < cont) {
+            //     document.getElementById("html_miembros").innerHTML = +'<input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">';
+            //     cont++;
+            // }
+            var container = document.getElementById('html_miembros');
+            container.innerHTML = '<input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">';
+
+        }
+    </script>
 
 </body>
+
 </html>

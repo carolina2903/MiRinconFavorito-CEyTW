@@ -33,6 +33,8 @@
                         name="datetipocorazondoblenormal" required="required" value="12/12/2001" />
                 </div><br>
 
+
+                <br><br><br>
                 <div class="form-check">
                     <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/cart"
                         onclick="Controller.controllers.tipodibujosimple.carrito_clicked(event);">Añadir al carrito</a>

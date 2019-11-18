@@ -26,6 +26,8 @@
                 </select>
             </div><br>
 
+
+            <br><br><br>
             <div class="form-check">
                 <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/cart" onclick="Controller.controllers.tipoamistad.carrito_clicked(event);">Añadir al carrito</a>
             </div><br><br>

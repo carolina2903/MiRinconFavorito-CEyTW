@@ -8,24 +8,24 @@
     <!--CSS BOOTSTRAP-->
     <link rel="styleheet" href="css/bootstrap.css">
     <link href='css/bootstrap.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
 
 </head>
 
 <body>
 
     
-    <?php include 'html/estaticos/nav.php' ;?>
+    <?php require 'html/estaticos/nav.php' ;?>
 
     <br><br><br>
     
-    <?php include 'html/estaticos/jumbotron.php' ;?>
+    <?php require 'html/estaticos/jumbotron.php' ;?>
 
-    <?php include 'html/carrito.php' ;?>
+    <?php require 'html/carrito.php' ;?>
 
     <br><br><br>
     
-    <?php include 'html/estaticos/footer.php' ;?>
+    <?php require 'html/estaticos/footer.php' ;?>
 
     
 </body>

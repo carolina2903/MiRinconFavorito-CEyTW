@@ -57,9 +57,17 @@
         </div>
         <hr>
         
-        <a id="cart-purchase" href="/funkoshop/views/purchase" class="btn btn-info {{#unless cart.shoppingCartItems.length}}disabled{{/unless}}" role="button"
-             style="float: right;">Comprar</a>
+        <a id="cart-purchase" onClick="comprar()" class="btn btn-info" role="button" style="float: right;">Comprar</a>
         <br><br><br><br>
+
+
+        <script>
+            
+            function comprar() {
+                window.location.assign("comprar.php");
+            }
+
+        </script>
 
 </body>
 </html>

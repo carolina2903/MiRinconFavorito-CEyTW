@@ -106,7 +106,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                   <!--  {{#each cart.shoppingCartItems}}
+                    <!--  {{#each cart.shoppingCartItems}}
                         {{> purchase-item-partial this }}
                     {{/each}} -->
                 </tbody>
@@ -128,12 +128,18 @@
             </div>
             <hr>
             <div class="form-check">
-                <a href="/funkoshop/views/profile" class="btn btn-info" style="float: right;" role="button">Finalizar compra</a>
+                <a onClick="validar()" class="btn btn-info" style="float: right;" role="button">Finalizar compra</a>
             </div>
 
         </form>
 
     </div> <br><br><br><br>
+
+    <script>
+        function validar() {
+            window.location.assign("profile.php");
+        }
+    </script>
 
 </body>
 

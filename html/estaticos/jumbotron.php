@@ -17,7 +17,7 @@
     <!--Jumbotron-->
     <div class="container">
         <div class="jumbotron text-center">
-            <h1>Mi rincón favorito</h1>
+            <h1 style="font-size:8ch">Mi rincón favorito</h1>
             <p>Compra nuestros productos personalizados y hechos a mano.</p>
         </div>
     </div>
