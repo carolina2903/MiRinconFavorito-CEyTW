@@ -100,7 +100,7 @@
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
-                    <img class="card-img-top" src="imagenes/cojinamistad.JPG" alt="Imagen cojín amistad.">
+                    <img class="card-img-top" src="imagenes/cojinamistad3.JPG" alt="Imagen cojín amistad.">
                     <div class="card-body">
                         <h4 class="card-title">Cojín amistad</h4>
                         <div class="card-price" font-size="1">
@@ -116,7 +116,7 @@
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
-                    <img class="card-img-top" src="imagenes/cojinbebe.JPG" alt="Imagen cojín para bebés.">
+                    <img class="card-img-top" src="imagenes/cojinbebe2.JPG" alt="Imagen cojín para bebés.">
                     <div class="card-body">
                         <h4 class="card-title">Cojín para bebés</h4>
                         <div class="card-price" font-size="1">
