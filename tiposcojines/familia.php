@@ -13,6 +13,28 @@
 
 <body>
 
+<?php require '../html/estaticos/nav.php'; ?>
+<br><br><br>
+<?php require '../html/estaticos/jumbotron.php'; ?>
+
+<script>
+        function a() {
+            alert('ajjaj');
+            // var num = document.getElementById("miembrosañadir").value;
+            
+            // // var cont = 0;
+            // // while (num < cont) {
+            // //     document.getElementById("html_miembros").innerHTML = +'<input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">';
+            // //     cont++;
+            // // }
+            // var container = document.getElementById('html_miembros');
+            // container.innerHTML = '<input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">';
+
+        }
+    </script>
+
+
+
     <div class="container">
         <h3 class="text-center">Cojín dibujo simple</h3>
         <br>
@@ -23,7 +45,7 @@
                 Número de miembors a incluir en el cojín:
                 <input type="number" name="miembrosañadir" min="1" max="10" step="1">
 
-                <button onlick="introducir()" name="introducir" style="float: right;">Entrar</button>
+                <button onClick="a()" name="introducir" style="float: right;">Entrar</button>
                 <!-- <input type="submit" onclick="introducir()" name="introducir" value="Introducir"> -->
             </p>
 
@@ -45,20 +67,10 @@
 
     </div> <br><br><br><br><br><br><br>
 
-
-    <script>
-        function introducir() {
-            var num = document.getElementById("miembrosañadir").value;
-            // var cont = 0;
-            // while (num < cont) {
-            //     document.getElementById("html_miembros").innerHTML = +'<input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">';
-            //     cont++;
-            // }
-            var container = document.getElementById('html_miembros');
-            container.innerHTML = '<input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">';
-
-        }
-    </script>
+    <br><br><br>
+    
+    <?php require 'html/estaticos/footer.php' ;?>
+    
 
 </body>
 

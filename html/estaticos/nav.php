@@ -13,6 +13,13 @@
 </head>
 
 <body>
+
+    <script>
+        function index() {
+            window.location.assign("tiposcojines/familia.php");
+        }
+    </script>
+
     <!--Navegación-->
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -67,11 +74,7 @@
     </nav>
 
 
-    <script>
-        function entrar() {
-            window.location.assign("tiposcojines/familia.php");
-        }
-    </script>
+
 
 </body>
 

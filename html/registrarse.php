@@ -13,7 +13,16 @@
 </head>
 
 <body>
-    
+
+<script>
+            
+            function registrarse() {
+                window.location.assign("entrar.php");
+            }
+
+        </script>
+
+
 <div class="container">
         <h3 class="text-center">Registrarse</h3>
         <br>
@@ -50,13 +59,7 @@
 
     </div> <br><br>
 
-    <script>
-            
-            function registrarse() {
-                window.location.assign("entrar.php");
-            }
-
-        </script>
+   
 
 </body>
 </html>

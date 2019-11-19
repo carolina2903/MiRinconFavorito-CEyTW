@@ -16,5 +16,9 @@
     
 
 
+<br><br><br>
+    
+    <?php require 'html/estaticos/footer.php' ;?>
+    
 </body>
 </html>
