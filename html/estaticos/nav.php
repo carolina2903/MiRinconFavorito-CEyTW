@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MiRinconFavorito</title>
     <!--CSS BOOTSTRAP-->
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+
     <link rel="styleheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <!-- con estas tres librerias/scripts conseguimos que funcione el dropdown-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/estilos.css">
+
+
+
 </head>
 
 <body>
@@ -32,8 +40,10 @@
                         <span class="badge badge-light">0</span>
                     </a>
 
+
+                    <!-- esto no funciona, navegador dropdown-->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="mirinconfavorito/carrito.php" onClick="index()">Ver carrito</a>
+                        <a class="dropdown-item" href="MiRinconFavorito-CEyTW/carrito.php" onClick="index()">Ver carrito</a>
                         <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Comprar</a>
                     </div>
                 </li>
@@ -55,6 +65,7 @@
             <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Show cart</a>
             <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Purchase</a>
         </div>
+
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Sign Up</a>
             <a class="dropdown-item" href="mirinconfavorito/comprar.php" onClick="index()">Sign In</a>
@@ -64,6 +75,12 @@
 
 
 
+
+
+
+
+</div> 
+</div> 
     </nav>
 
 
