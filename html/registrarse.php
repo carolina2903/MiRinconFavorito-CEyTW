@@ -60,3 +60,5 @@
 
 </body>
 </html>
+
+<?php require 'conexionPDO.php'; ?>

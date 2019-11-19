@@ -13,7 +13,6 @@
 
 <body>
 
-    
     <?php require 'html/estaticos/nav.php' ;?>
 
     <br><br><br>
