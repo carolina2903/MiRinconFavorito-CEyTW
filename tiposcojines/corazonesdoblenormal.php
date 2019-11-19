@@ -14,6 +14,10 @@
 
 <body>
     
+<?php require '../html/estaticos/nav.php'; ?>
+<br><br><br>
+<?php require '../html/estaticos/jumbotron.php'; ?>
+
 <div class="container">
             <h3 class="text-center">Cojín corazón doble normal</h3>
             <br>
@@ -49,6 +53,9 @@
 
         </div> <br><br><br><br><br><br><br>
     
+        <br><br><br>
+    
+    <?php require 'html/estaticos/footer.php' ;?>
 
 </body>
 </html>

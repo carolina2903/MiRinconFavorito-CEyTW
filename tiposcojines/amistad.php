@@ -13,6 +13,11 @@
 </head>
 
 <body>
+    <?php require '../html/estaticos/nav.php'; ?>
+
+    <br><br><br>
+
+    <?php require '../html/estaticos/jumbotron.php'; ?>
 
     <div class="container">
         <h3 class="text-center">Cojín amistad</h3>
@@ -39,6 +44,9 @@
 
     </div> <br><br>
 
+    <br><br><br>
+    
+    <?php require 'html/estaticos/footer.php' ;?>
 </body>
 
 </html>

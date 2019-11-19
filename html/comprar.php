@@ -24,6 +24,12 @@
         //document.getElementById('fechacompra').innerHTML = fecha_texto;
     </script>
 
+    <script>
+        function validar() {
+            window.location.assign("profile.php");
+        }
+    </script>
+
 
     <div class="container">
         <h3 class="text-left"><b>Datos de compra</b></h3>
@@ -135,11 +141,7 @@
 
     </div> <br><br><br><br>
 
-    <script>
-        function validar() {
-            window.location.assign("profile.php");
-        }
-    </script>
+
 
 </body>
 

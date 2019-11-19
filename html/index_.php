@@ -14,6 +14,47 @@
 
 <body>
 
+    <!-- JAVASCRIPT -->
+
+    <script>
+        function tipoamistad() {
+            window.location.assign("tiposcojines/amistad.php");
+        }
+
+
+        function tipocorazonesdoblenormal() {
+            window.location.assign("tiposcojines/corazonesdoblenormal.php");
+        }
+
+        function tipocorazonesdobleseñorseñora() {
+            window.location.assign("tiposcojines/corazonesdobleseñorseñora.php");
+        }
+
+        function tipodibujosimple() {
+            window.location.assign("tiposcojines/dibujosimple.php");
+        }
+
+        function tipofamilia() {
+            window.location.assign("tiposcojines/familia.php");
+        }
+
+        function tiponatalicio() {
+            window.location.assign("tiposcojines/natalicio.php");
+        }
+
+        function tipopersonalizado() {
+            window.location.assign("tiposcojines/personalizado.php");
+        }
+
+        function tipoprofesionesdoble() {
+            window.location.assign("tiposcojines/profesionesdoble.php");
+        }
+
+        function tipoprofesionsimple() {
+            window.location.assign("tiposcojines/profesionsimple.php");
+        }
+    </script>
+
     <div class="container">
         <div class="row">
 
@@ -145,8 +186,8 @@
                     </div>
                 </div>
             </div>
-            
-                                    
+
+
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
                     <!-- <img class="card-img-top" src="imagenes/cojinamistad.JPG" alt="Imagen cojín amistad."> -->
@@ -167,48 +208,6 @@
     </div>
 
 
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-        function tipoamistad() {
-            window.location.assign("tiposcojines/amistad.php");
-        }
-
-        
-        function tipocorazonesdoblenormal() {
-            window.location.assign("tiposcojines/corazonesdoblenormal.php");
-        }
-
-        function tipocorazonesdobleseñorseñora() {
-            window.location.assign("tiposcojines/corazonesdobleseñorseñora.php");
-        }
-
-        function tipodibujosimple() {
-            window.location.assign("tiposcojines/dibujosimple.php");
-        }
-
-        function tipofamilia() {
-            window.location.assign("tiposcojines/familia.php");
-        }
-
-        function tiponatalicio() {
-            window.location.assign("tiposcojines/natalicio.php");
-        }
-
-        function tipopersonalizado() {
-            window.location.assign("tiposcojines/personalizado.php");
-        }
-
-        function tipoprofesionesdoble() {
-            window.location.assign("tiposcojines/profesionesdoble.php");
-        }
-
-        function tipoprofesionsimple() {
-            window.location.assign("tiposcojines/profesionsimple.php");
-        }
-    </script>
 
 
 
