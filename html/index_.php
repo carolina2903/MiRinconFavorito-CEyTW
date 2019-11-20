@@ -18,40 +18,40 @@
 
     <script>
         function tipoamistad() {
-            window.location.assign("tiposcojines/amistad.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/amistad.php");
         }
 
 
         function tipocorazonesdoblenormal() {
-            window.location.assign("tiposcojines/corazonesdoblenormal.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/corazonesdoblenormal.php");
         }
 
         function tipocorazonesdobleseñorseñora() {
-            window.location.assign("tiposcojines/corazonesdobleseñorseñora.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/corazonesdobleseñorseñora.php");
         }
 
         function tipodibujosimple() {
-            window.location.assign("tiposcojines/dibujosimple.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/dibujosimple.php");
         }
 
         function tipofamilia() {
-            window.location.assign("tiposcojines/familia.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/familia.php");
         }
 
         function tiponatalicio() {
-            window.location.assign("tiposcojines/natalicio.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/natalicio.php");
         }
 
         function tipopersonalizado() {
-            window.location.assign("tiposcojines/personalizado.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/personalizado.php");
         }
 
         function tipoprofesionesdoble() {
-            window.location.assign("tiposcojines/profesionesdoble.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/profesionesdoble.php");
         }
 
         function tipoprofesionsimple() {
-            window.location.assign("tiposcojines/profesionsimple.php");
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/profesionsimple.php");
         }
     </script>
 
@@ -63,7 +63,7 @@
                 <div class="card text-black bg-light mb-3">
                     <img class="card-img-top" src="imagenes/cojinescorazonsrsra.JPG" alt="Imagen cojínes de corazón sr/sra.">
                     <div class="card-body">
-                        <h4 class="card-title">Cojín corazón Sr y Sra</h4>
+                        <h4 class="card-title">Cojines corazón Sr y Sra</h4>
                         <div class="card-price" font-size="1">
                             <div class="row justify-content-end">
                                 <h5>24€&nbsp;</h5>
@@ -79,7 +79,7 @@
                 <div class="card text-black bg-light mb-3">
                     <img class="card-img-top" src="imagenes/cojinescorazon.JPG" alt="Imagen cojínes corazón.">
                     <div class="card-body">
-                        <h4 class="card-title">Cojínes corazón</h4>
+                        <h4 class="card-title">Cojines corazón</h4>
                         <div class="card-price" font-size="1">
                             <div class="row justify-content-end">
                                 <h5>24€&nbsp;</h5>
@@ -111,7 +111,7 @@
                 <div class="card text-black bg-light mb-3">
                     <img class="card-img-top" src="imagenes/cojinesprofesiones.JPG" alt="Imagen cojínes profesiones.">
                     <div class="card-body">
-                        <h4 class="card-title">Cojínes profesiones</h4>
+                        <h4 class="card-title">Cojines profesiones</h4>
                         <div class="card-price" font-size="1">
                             <div class="row justify-content-end">
                                 <h5>24€&nbsp;</h5>
