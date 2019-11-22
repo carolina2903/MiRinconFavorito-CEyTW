@@ -15,17 +15,68 @@
 <body>
 
     
-    <?php require 'html/estaticos/nav.php' ;?>
+    <?php require 'estaticos/nav.php' ;?>
 
     <br><br><br>
     
-    <?php require 'html/estaticos/jumbotron.php' ;?>
+    <?php require 'estaticos/jumbotron.php' ;?>
 
-    <?php require 'html/carrito.php' ;?>
+    <script>
+        function comprar() {
+            window.location.assign("comprar.php");
+        }
+    </script>
+
+    <h3 class="text-left"><b>Carrito de la compra</b> </h3>
+    <hr>
+    <br>
+    <div class="row justify-content-end">
+        <b>Total: </b>&nbsp;
+        <!-- <p>{{formatPrice cart.total}}</p> -->
+    </div>
+    <br>
+    <div class="container">
+        <h3 class="text-left"> <b>Lista de productos</b> </h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Nombre de producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- {{#each cart.shoppingCartItems}}
+                    {{> cart-item-partial this removeOneCartItem_onclick='Controller.controllers.cart.removeOneCartItem_clicked' 
+                        removeAllCartItem_onclick='Controller.controllers.cart.removeAllCartItem_clicked'}}
+                    {{/each}} -->
+            </tbody>
+        </table>
+        <hr>
+        <div class="row justify-content-start">
+            <b>Subtotal: </b>&nbsp;
+            <!-- <p>{{formatPrice cart.subtotal}}</p> -->
+        </div>
+        <div class="row justify-content-start">
+            <b>Impuestos: </b>&nbsp;
+            <!-- <p>{{formatTax cart.tax}}</p> -->
+        </div>
+        <div class="row justify-content-start">
+            <b>Total: </b>&nbsp;
+            <!-- <p>{{formatPrice cart.total}}</p> -->
+        </div>
+    </div>
+    <hr>
+
+    <a id="cart-purchase" onClick="comprar()" class="btn btn-info" role="button" style="float: right;">Comprar</a>
+    <br><br><br><br>
+
 
     <br><br><br>
     
-    <?php require 'html/estaticos/footer.php' ;?>
+    <?php require 'estaticos/footer.php' ;?>
 
     
 </body>
