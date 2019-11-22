@@ -14,17 +14,17 @@
 <body>
 
     
-    <?php require 'html/estaticos/nav.php' ;?>
+    <?php require 'estaticos/nav.php' ;?>
 
     <br><br><br>
     
-    <?php require 'html/estaticos/jumbotron.php' ;?>
+    <?php require 'estaticos/jumbotron.php' ;?>
 
-    <?php require 'html/index_.php' ;?>
+    <?php require 'index_.php' ;?>
 
     <br><br>
     
-    <?php require 'html/estaticos/footer.php' ;?>
+    <?php require 'estaticos/footer.php' ;?>
     
 </body>
 

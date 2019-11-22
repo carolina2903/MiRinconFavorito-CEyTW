@@ -70,11 +70,6 @@
 
 
 </body>
-<<<<<<< HEAD
-
-</html>
-=======
 </html>
 
 <?php require 'conexionPDO.php'; ?>
->>>>>>> 6998b5ebcf6095f1031cae41a259ace0a253358f
