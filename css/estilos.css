@@ -57,3 +57,48 @@ input[type=submit] {
     margin-bottom: 2%;
     margin-right: 2%;
 }
+
+
+#searchbar2{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    #search_input2{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    #searchbar2:hover > .search_input2{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    #searchbar2:hover > .search_icon2{
+    background: white;
+    color: #e74c3c;
+    }
+
+    #search_icon2{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
