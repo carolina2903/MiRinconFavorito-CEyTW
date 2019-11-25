@@ -14,11 +14,11 @@
 <body>
 
     
-    <?php require 'estaticos/nav.php' ;?>
+<?php require 'estaticos/nav.php' ;?>
 
-    <br><br><br>
-    
-    <?php require 'estaticos/jumbotron.php' ;?>
+<br><br><br>
+
+<?php require 'estaticos/jumbotron.php' ;?>
 
 
     <!-- JAVASCRIPT -->

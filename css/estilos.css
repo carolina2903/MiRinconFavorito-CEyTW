@@ -23,6 +23,15 @@ button {
     font-size: large;
 }
 
+input[type=submit] {
+    height: 50px;
+    width: 100px;
+    background-color: #44989b;
+    color: black;
+    margin-top: 20px;
+    font-size: large;
+  }
+
 .navbar-brand {
     font-family: Quicksand;
 }

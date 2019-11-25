@@ -13,15 +13,16 @@
 </head>
 
 <body>
-<?php require '../html/estaticos/nav.php'; ?>
-<br><br><br>
-<?php require '../html/estaticos/jumbotron.php'; ?>
+    <?php require '../html/estaticos/nav.php'; ?>
+    <br><br><br>
+    <?php require '../html/estaticos/jumbotron.php'; ?>
 
 
 
-<br><br><br>
-    
-    <?php require 'html/estaticos/footer.php' ;?>
+    <br><br><br>
+
+    <?php require 'html/estaticos/footer.php'; ?>
 
 </body>
+
 </html>

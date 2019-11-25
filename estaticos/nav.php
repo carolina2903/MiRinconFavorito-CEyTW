@@ -73,14 +73,15 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
         
 
-            <form action="">
-                <div>
-                    <input class ="buscar" type="search" placeholder="Buscar...">
-                    <i class="fas fa-search"></i>
-                </div>    
             
-            </form>
 
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+        
+        <div id="searchbar2">
+          <input id="search_input2" type="text" name="" placeholder="Buscar...">
+          <a href="#" id="search_icon2"><i class="fas fa-search"></i></a>
+        </div>
+      
             <ul class="navbar-nav">
                 
                 <li class="nav-item dropdown">
