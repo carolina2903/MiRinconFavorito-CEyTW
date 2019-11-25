@@ -73,7 +73,7 @@ function anadir_carro() {
         <tr>
         <td colspan="2">
         <form action="amistad.php" method="post">
-                <select name="genero_seleccionado" required="required" target="_blank">
+                <select name="genero_seleccionado" required="required" value="">
                     <option value="mujer">Mujer</option>
                     <option value="hombre">Hombre</option>
                 </select>
@@ -108,52 +108,62 @@ function anadir_carro() {
 //accedemos a la base de datos
 require '../conexionPDO.php';
 
-//vemos cuantos productos de este tipo hay para crear el id
-$sql = "SELECT count(*) FROM cojin_amistad";
-//$numeroproductos = $conexionPDO->query($sql);
-//$numeroproductos=$numeroproducto->fetchColumn();
-
-$numeroproductos = 0;
-
-if ($res = $conexionPDO->query($sql)) {
-
-    /* Check the number of rows that match the SELECT statement */
-    if ($res->fetchColumn() > 0) {
-
-        /* Issue the real SELECT statement and work with the results */
-        $sql = "SELECT * FROM cojin_amistad";
-
-        foreach ($conexionPDO->query($sql) as $row) {
-            $numeroproductos++;
-        }
-    }
-    /* No rows matched -- do something else */ 
-}
-
-
-//creamos el id_producto
-$numero_id=(string)($numeroproductos+1);
-$id_producto_creado = "pr".$numero_id;
-
-//recogemos la opcion seleccionada
+//si se ha seleccionado la opcion genero
 if (isset($_POST['genero_seleccionado'])){
+
+    //vemos cuantos productos de este tipo hay para crear el id
+    $sql = "SELECT count(*) FROM cojin_amistad";
+    //$numeroproductos = $conexionPDO->query($sql);
+    //$numeroproductos=$numeroproducto->fetchColumn();
+
+    $numeroproductos = 0;
+
+    if ($res = $conexionPDO->query($sql)) {
+
+        /* Check the number of rows that match the SELECT statement */
+        if ($res->fetchColumn() > 0) {
+
+            /* Issue the real SELECT statement and work with the results */
+            $sql = "SELECT * FROM cojin_amistad";
+
+            foreach ($conexionPDO->query($sql) as $row) {
+                $numeroproductos++;
+            }
+        }
+        /* No rows matched -- do something else */ 
+    }
+
+
+    //creamos el id_producto
+    $numero_id=(string)($numeroproductos+1);
+    $id_producto_creado = "pr".$numero_id;
+
+    //recogemos la opcion seleccionada
     $genero = $_POST['genero_seleccionado'];
+
+   // echo "id".$id_producto_creado;
+   // echo "genero".$genero;
+
+    //$cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', 'pr1', 'Cojín Amistad', 'hombre')";
+    //$conexionPDO->query($cojin_temporal);
+
+    //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
+    /*
+    $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
+    $sentencia = $conexionPDO->prepare($cojin_temporal);
+    $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
+
+    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
+    $sentencia = $conexionPDO->prepare($cojin_temporal);
+    $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
+    */
+
+    $_SESSION["id_producto"]=$id_producto_creado;
+    $_SESSION["id_tipo_producto"]=2;
+    $_SESSION["genero"]=$genero;
+
+    echo "¡Su producto se ha añadido al carrito!"
 }
-echo "id".$id_producto_creado;
-echo "genero".$genero;
-
-//$cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', 'pr1', 'Cojín Amistad', 'hombre')";
-//$conexionPDO->query($cojin_temporal);
-
-//añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
-$cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
-$sentencia = $conexionPDO->prepare($cojin_temporal);
-$sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
-
-$cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
-$sentencia = $conexionPDO->prepare($cojin_temporal);
-$sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
-
 
 
 ?>
