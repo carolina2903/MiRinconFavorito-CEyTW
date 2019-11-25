@@ -14,48 +14,194 @@
 
 <body>
     
-<?php require '../html/estaticos/nav.php'; ?>
+<?php require '../estaticos/nav.php'; ?>
+
 <br><br><br>
-<?php require '../html/estaticos/jumbotron.php'; ?>
+
+
+<!--script-->
+<script>
+function anadir_carro() {
+        window.location.assign("corazonesdoblenormal.php");
+        window.onAlert('¡Se ha añadido al carrito');
+    }
+</script>
 
 <div class="container">
-            <h3 class="text-center">Cojín corazón doble normal</h3>
-            <br>
-            <form>
-
-                <div class="form-group">
-                    <p>Nombre para el cojín izquierdo</p>
-                    <input type="text" class="form-control" id="nombreizdo" required="required" placeholder="María">
-                </div>
-                <div class="form-group">
-                    <p>Nombre para el cojín derecho</p>
-                    <input type="text" class="form-control" id="nombredcho" required="required" placeholder="Pepe">
-                </div>
-                <div class="form-group">
-                    <p>Fecha para ambos cojines (opcional)</p>
-                    <input type="date" id="datetipocorazondoblenormal" class="form-control "
-                        name="datetipocorazondoblenormal" value="" />
-                </div><br>
-
-
-                <br><br><br>
-                <div class="form-check">
-                    <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/cart"
-                        onclick="Controller.controllers.tipocorazondoblenormal.carrito_clicked(event);">Añadir al carrito</a>
-                </div><br><br>
-                <div class="form-check">
-                    <a class="btn btn-info" style="float: right; width:200px;" href="/funkoshop/views/purchase"
-                        onclick="Controller.controllers.tipocorazondoblenormal.comprar_clicked(event);">Comprar ahora</a>
-                </div>
-
-
-            </form>
-
-        </div> <br><br><br><br><br><br><br>
     
-        <br><br><br>
-    
-    <?php require 'html/estaticos/footer.php' ;?>
+    <br>
 
+    <table>
+    <form action="amistad.php" method="post">
+
+<!--1 fila-->
+    <tr>
+    <th rowspan="8">
+    <img src="../imagenes/cojinescorazon.JPG" width=200 height=200/>
+    </th>
+    <th>
+    <h3 class="text-center">Cojines Corazón Doble</h3>
+    <br>
+    <br>
+    <h5 class="text-center">24,00 €</h5>
+    </th>
+
+    </tr>
+<!--2 fila-->
+    <tr>
+    <td colspan="2" class="text-center">
+    Pareja de cojines personalizados formada por dos cojines individuales unidos por un corazón rojo, cada uno de ellos con uno de los nombres o apellidos de cada integrante de la pareja.
+    <br>
+    El precio de la opción «Solo fundas» incluye únicamente las dos fundas de cojín y la opción «Cojines completos» incluye las dos fundas de cojín y el relleno de ambas. Selecciona la opción que desees.
+    <br>
+    Selecciona si quieres que el cojín diga “amigas” o “amigos”.
+    </td>
+    <td>
+    
+    </td>
+    </tr>
+
+<!--3 fila-->
+    <tr>
+    <td colspan="2">
+    Nombre o apellido cojín izquierda
+    </td>
+    <td>
+    
+    </td>
+    </tr>
+
+<!--4 fila-->
+    <tr>
+    <td colspan="2">
+    <input type="text" name="nombre_izquierdo" >
+        <br>
+        <br><br>
+    </td>
+
+
+<!--3 fila-->
+<tr>
+    <td colspan="2">
+    Nombre o apellido cojín derecho
+    </td>
+    <td>
+    
+    </td>
+    </tr>
+
+<!--4 fila-->
+    <tr>
+    <td colspan="2">
+    <input type="text" name="nombre_derecho" >
+
+            <br><br>
+    
+        <br><br>
+    </form>
+    </td>
+
+
+<!--3 fila-->
+<tr>
+    <td colspan="2">
+    Fecha (opcional)
+    </td>
+    <td>
+    
+    </td>
+    </tr>
+
+<!--4 fila-->
+    <tr>
+    <td colspan="2">
+    <input type="date" name="fecha">
+    <br><br>
+
+    <button type="submit"  value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+
+    <br><br>
+    </form>
+    </td>
+
+
+    </tr>
+    </table>
+
+    
+       
+        
+
+
+</div> <br><br>
+
+<br><br><br>
+
+<?php require '../estaticos/footer.php' ;?>
 </body>
+
 </html>
+
+<?php
+//accedemos a la base de datos
+require '../conexionPDO.php';
+
+//si se ha seleccionado la opcion genero
+if (isset($_POST['genero_seleccionado'])){
+
+    //vemos cuantos productos de este tipo hay para crear el id
+    $sql = "SELECT count(*) FROM cojin_amistad";
+    //$numeroproductos = $conexionPDO->query($sql);
+    //$numeroproductos=$numeroproducto->fetchColumn();
+
+    $numeroproductos = 0;
+
+    if ($res = $conexionPDO->query($sql)) {
+
+        /* Check the number of rows that match the SELECT statement */
+        if ($res->fetchColumn() > 0) {
+
+            /* Issue the real SELECT statement and work with the results */
+            $sql = "SELECT * FROM cojin_amistad";
+
+            foreach ($conexionPDO->query($sql) as $row) {
+                $numeroproductos++;
+            }
+        }
+        /* No rows matched -- do something else */ 
+    }
+
+
+    //creamos el id_producto
+    $numero_id=(string)($numeroproductos+1);
+    $id_producto_creado = "pr".$numero_id;
+
+    //recogemos la opcion seleccionada
+    $genero = $_POST['genero_seleccionado'];
+
+   // echo "id".$id_producto_creado;
+   // echo "genero".$genero;
+
+    //$cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', 'pr1', 'Cojín Amistad', 'hombre')";
+    //$conexionPDO->query($cojin_temporal);
+
+    //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
+    /*
+    $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
+    $sentencia = $conexionPDO->prepare($cojin_temporal);
+    $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
+
+    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
+    $sentencia = $conexionPDO->prepare($cojin_temporal);
+    $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
+    */
+
+    $_SESSION["id_producto"]=$id_producto_creado;
+    $_SESSION["id_tipo_producto"]=2;
+    $_SESSION["genero"]=$genero;
+
+    echo "¡Su producto se ha añadido al carrito!";
+}
+
+
+?>

@@ -17,7 +17,7 @@
 <body>
 
     <?php require '../estaticos/nav.php'; ?>
-
+    session_start();
     <br><br><br>
 
 
@@ -25,7 +25,7 @@
 <script>
 function anadir_carro() {
             window.location.assign("cojin_amistad.php");
-            window.onAlert('¡Se ha añadido al carrito');
+            window.onAlert("¡Se ha añadido al carrito");
         }
 </script>
 
@@ -107,7 +107,6 @@ function anadir_carro() {
 <?php
 //accedemos a la base de datos
 require '../conexionPDO.php';
-
 //si se ha seleccionado la opcion genero
 if (isset($_POST['genero_seleccionado'])){
 
@@ -158,10 +157,14 @@ if (isset($_POST['genero_seleccionado'])){
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
 
-    $_SESSION["id_producto"]=$id_producto_creado;
-    $_SESSION["id_tipo_producto"]=2;
-    $_SESSION["genero"]=$genero;
+    if (!isset($_SESSION["carrito"])) {
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero);
 
+    }else 
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero);
+
+    
+    //print_r ($_SESSION["carrito"]);
     echo "¡Su producto se ha añadido al carrito!";
 }
 
