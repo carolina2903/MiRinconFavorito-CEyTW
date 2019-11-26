@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,10 +16,9 @@
 </head>
 
 <body>
-
+    
     
     <?php require 'estaticos/nav.php' ;
-    session_start();
     ?>
     
 
@@ -44,7 +46,6 @@
     require 'conexionPDO.php';
     
     //if(isset($_SESSION["carrito"])){ 
-    if(isset($_SESSION["carrito"])){ 
     echo "<h3 class='text-left'><b>Carrito de la compra</b> </h3>";
     echo "<hr>";
     echo "<br>";
@@ -66,7 +67,7 @@
                     $precio=intval ( $_SESSION["carrito"][$i]["precio_unidad"]);
                     $precio_total = $precio* $_SESSION["carrito"][$i]["cantidad"];
                     echo "<tr>";
-                        echo "<th name='colcantidad' id='colcantidad' scope='col'>".$_SESSION["carrito"][$i]["id_producto"]."</th>";
+                        echo "<th name='colcantidad' id='colcantidad' scope='col'>".$_SESSION["carrito"][$i]["cantidad"]."</th>";
                         echo "<th name='colnombre' id='colnombre' scope='col'>".$_SESSION["carrito"][$i]["nombre"]."</th>";
                         echo "<th name='colprecio' id='colprecio' scope='col'>" .$precio."</th>";
                         echo "<th name='coltotal' id='coltotal' scope='col'>".$precio_total."</th>";
@@ -103,7 +104,7 @@
     echo "<br><br><br>";
     
     echo "}";
-            }
+            
     //}
     //else{
     //    echo "El carrito está vacío.";

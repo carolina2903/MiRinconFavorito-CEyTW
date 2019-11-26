@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 
@@ -17,7 +20,6 @@
 <body>
 
     <?php require '../estaticos/nav.php'; ?>
-    session_start();
     <br><br><br>
 
 
@@ -158,9 +160,9 @@ if (isset($_POST['genero_seleccionado'])){
     */
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad");
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad", 'cantidad'=>1);
     }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad");
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad", 'cantidad'=>1);
 
     
     //print_r ($_SESSION["carrito"]);
