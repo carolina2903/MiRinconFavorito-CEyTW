@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 
 
 
@@ -48,6 +48,14 @@
         }
     </script>
 
+    <style>
+        .buscar{
+            border-radius: 35px 35px 35px 35px;
+            border: 0px solid #000000;
+        }
+        
+    </style>
+
     <!--Navegación-->
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -60,6 +68,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+        
+
+            
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
         
