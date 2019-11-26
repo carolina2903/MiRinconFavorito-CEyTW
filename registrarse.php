@@ -33,10 +33,8 @@ require 'conexionPDO.php';
 
 
     <div class="container">
-        <h3 class="text-center">Registrarse</h3>                
+        <h3 class="text-center">Registrarse</h3>
         <br>
-        <form action="registrarse.php" method="POST">
-
         <!-- <form> -->
         <!-- <div class="form-group"> -->
         <input type="text" name="nombre" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre" value="test">
@@ -62,16 +60,16 @@ require 'conexionPDO.php';
         <!-- </div> -->
         <br>
         <!-- <div class="form-check"> -->
-        <!-- <button class="btn btn-info" name="registrarse" style="float: right">Registrarse</button> -->
-        <input type="submit" name="registrarse" value="Registrarse" />
-        <input type="reset" name="reset" value="Borrar" />
+        <button class="btn btn-info" name="registrarse" style="float: right">Registrarse</button>
         <!-- </div> -->
         <br><br><br>
         <!-- </form> -->
 
     </div> <br><br>
 
-    
+
+    <br><br><br>
+
     <?php require 'estaticos/footer.php'; ?>
 
 
@@ -108,7 +106,6 @@ $provincia= ""; */
 
 // REGISTER USER
 if (isset($_POST['registrarse'])) {
-
     // receive all input values from the form
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
@@ -121,33 +118,33 @@ if (isset($_POST['registrarse'])) {
     // by adding (array_push()) corresponding error unto $errors array
     if (empty($nombre)) {
         array_push($errors, "El campo nombre no puede estar vacío");
-        echo "<div align='center' style='color:red'>El campo nombre no puede estar vacío</div>";
+        echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
     }
     if (empty($apellidos)) {
         array_push($errors, "El campo apellidos no puede estar vacío");
-        echo "<div align='center' style='color:red'>El campo apellidos no puede estar vacío</div>";
+        echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
     }
     if (empty($telefono)) {
         array_push($errors, "El campo telefono no puede estar vacío");
-        echo "<div align='center' style='color:red'>El campo telefono no puede estar vacío</div>";
+        echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
     }
     if (empty($email)) {
         array_push($errors, "El campo email no puede estar vacío");
-        echo "<div align='center' style='color:red'>El campo email no puede estar vacío</div>";
+        echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
     }
-    if (empty($password1) || empty($password2)) {
+    if (empty($password_1)) {
         array_push($errors, "El campo password no puede estar vacío");
-        echo "<div align='center' style='color:red'>El campo password no puede estar vacío</div>";
+        echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
     }
-    if ($password1 != $password2) {
+    if ($password_1 != $password_2) {
         array_push($errors, "Las contraseñas no coinciden");
-        echo "<div align='center' style='color:red'>Las contraseñas no coinciden</div>";
+        echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
     }
 
     // first check the database to make sure 
     // a user does not already exist with the same email
-    $sql_select = "SELECT * FROM cliente WHERE email='$email' LIMIT 1";
-    $resultado_select = $conexionPDO->query($sql_select);
+    $user_check_query = "SELECT * FROM cliente WHERE email='$email' LIMIT 1";
+    $result = $conexionPDO->query($sql_select);
     $user = $resultado_select->fetch(PDO::FETCH_ASSOC);
 
     if ($user) { // if user exists
@@ -159,8 +156,7 @@ if (isset($_POST['registrarse'])) {
 
     // Finally, register user if there are no errors in the form
     if (count($errors) == 0) {
-        echo ' No hay errores. Procesando registro';
-        $password = $password1; //encrypt the password before saving in the database
+        $password = md5($password_1); //encrypt the password before saving in the database
 
         $sql = "INSERT INTO cliente (nombre, apellidos, telefono, email, passwd) 
                   VALUES('$nombre', '$apellidos', '$telefono', '$email', '$password')";
@@ -174,8 +170,6 @@ if (isset($_POST['registrarse'])) {
         $_SESSION['success'] = "You are now logged in";
         echo "<script language='javascript'> registrarse(); </script>";
     }
-} else {
-    echo 'que me coma los mocos';
 }
 
 ?>

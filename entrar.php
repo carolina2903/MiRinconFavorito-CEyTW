@@ -1,5 +1,5 @@
-<php? session_start(); ?>
-    <?php require 'conexionPDO.php'; ?>
+<?php session_start(); ?>
+<?php require 'conexionPDO.php'; ?>
 
     <!DOCTYPE html>
     <html lang="es">
@@ -82,7 +82,8 @@
 
             if ($_POST['password'] == $usuario_select['passwd']) { /* Si se ha encontrado usuario y su contraseña coincide con la introducida */
 
-                $_SESSION["email"] = $_POST["email"]; /* Guardamos la sesion del usuario */
+                $_SESSION['email'] = $_POST["email"]; /* Guardamos la sesion del usuario */
+
 
                 /* Para establecer las cookies si se ha señalado checkbox recordar */
                 // if (isset($_POST['recordar']) && $_POST['recordar'] == '1') {
