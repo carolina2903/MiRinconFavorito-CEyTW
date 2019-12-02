@@ -19,7 +19,7 @@ session_start();
 
 <body>
 
-    <?php require '../estaticos/nav.php'; ?>
+    <?php require '../estaticos/navtiposcojines.php'; ?>
     <br><br><br>
 
 
@@ -34,62 +34,40 @@ function anadir_carro() {
     <div class="container">
         
         <br>
+        <div class="row">
 
-        <table>
-<!--1 fila-->
-        <tr>
-        <th rowspan="4">
-        <img src="../imagenes/cojinamistad2.JPG" width=200 height=200/>
-        </th>
-        <th>
-        <h3 class="text-center">Cojín amistad</h3>
-        <br>
-        <br>
-        <h5 class="text-center">13,00 €</h5>
-        </th>
 
-        </tr>
-<!--2 fila-->
-        <tr>
-        <td colspan="2" class="text-center">
-        Cojín personalizado para ese amigo o amiga que tanto se lo merece.
-    <br>
-        Selecciona si quieres que el cojín diga “amigas” o “amigos”.
-        </td>
-        <td>
-        
-        </td>
-        </tr>
+<div class="col-sm-4">
+            <div class="card-price" font-size="1">
+                
+        <img class="card-img-top" src="../imagenes/cojinamistad2.JPG" alt="Imagen cojínes de corazón sr/sra.">
+        <div class="card-body">
+            
+            </div>
+        </div>
+</div>
 
-<!--3 fila-->
-        <tr>
-        <td colspan="2">
-        Femenino (mujer) / Masculino (hombre)
-        </td>
-        <td>
-        
-        </td>
-        </tr>
+<div class="col-sm-8">
+    <div class="mb-3">
+    <h3 class="card-title">Cojín nacimiento bebés</h3>
+    <h5>13€</h5>
+    <h6>Cojín personalizado para ese amigo o amiga que tanto se lo merece.</h6>
+    <h7>Selecciona si quieres que el cojín diga “amigas” o “amigos”: </h7>
+    </div>
+    <form action="amistad.php" method="post">
+    <p>Mujer (amigas) / Hombre (amigos)</p>
 
-<!--4 fila-->
-        <tr>
-        <td colspan="2">
-        <form action="amistad.php" method="post">
-                <select name="genero_seleccionado" required="required" value="">
+    
+                <select class="btn bg-white dropdown-toggle" name="genero_seleccionado" required="required" value="" style="border:1px solid #7d7d7d;">
+
                     <option value="mujer">Mujer</option>
                     <option value="hombre">Hombre</option>
                 </select>
 
                 <br><br>
-                <button type="submit"  value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+                <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
         <br><br>
         </form>
-        </td>
-        <td>
-        
-        </td>
-        </tr>
-        </table>
 
         
             
