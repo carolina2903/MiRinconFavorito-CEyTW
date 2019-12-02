@@ -92,7 +92,6 @@ function anadir_carro() {
         </table>
 
         
-           
             
 
 
@@ -162,9 +161,10 @@ if (isset($_POST['genero_seleccionado'])){
     if (!isset($_SESSION["carrito"])) {
         $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40");
     }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40";
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40");
 
     
+        
     //print_r ($_SESSION["carrito"]);
     echo "¡Su producto se ha añadido al carrito!";
 }
