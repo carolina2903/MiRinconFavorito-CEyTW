@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,7 +35,7 @@ function anadir_carro() {
     <br>
 
     <table>
-    <form action="amistad.php" method="post">
+    <form action="corazonesdoblenormal.php" method="post">
 
 <!--1 fila-->
     <tr>
@@ -98,7 +101,6 @@ function anadir_carro() {
             <br><br>
     
         <br><br>
-    </form>
     </td>
 
 
@@ -121,11 +123,12 @@ function anadir_carro() {
     <button type="submit"  value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
 
     <br><br>
-    </form>
     </td>
 
 
     </tr>
+    </form>
+
     </table>
 
     
@@ -146,8 +149,11 @@ function anadir_carro() {
 //accedemos a la base de datos
 require '../conexionPDO.php';
 
+echo "hola1";
+
 //si se ha seleccionado la opcion genero
 if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
+    echo "hola2";
 
     //vemos cuantos productos de este tipo hay para crear el id
     $sql = "SELECT * FROM producto";
@@ -162,7 +168,7 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
         if ($res->fetchColumn() > 0) {
 
             /* Issue the real SELECT statement and work with the results */
-            $sql = "SELECT * FROM producto";
+            $sql = "SELECT count(*) FROM producto";
 
             foreach ($conexionPDO->query($sql) as $row) {
                 $numeroproductos++;
@@ -185,7 +191,9 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
     else
         $fecha=NULL;
     
-   
+        echo "hola".$nombredrcho;
+        echo $nombreizqdo;
+        echo $fecha;
     //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
     /*
     $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
@@ -197,10 +205,12 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
 
+    
+
     if (!isset($_SESSION["carrito"])) {
         $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
     }else 
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
 
     
 
