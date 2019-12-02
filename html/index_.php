@@ -6,20 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MiRinconFavorito</title>
     <!--CSS BOOTSTRAP-->
-    <link rel="styleheet" href="css/bootstrap.css">
-    <link href='css/bootstrap.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/estilos.css">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <link rel="styleheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
 <body>
-
-    
-<?php require 'estaticos/nav.php' ;?>
-
-<br><br><br>
-
-<?php require 'estaticos/jumbotron.php' ;?>
-
 
     <!-- JAVASCRIPT -->
 
@@ -214,12 +207,6 @@
         </div>
     </div>
 
-
-
-    <br><br>
-    
-    <?php require 'estaticos/footer.php' ;?>
-    
 </body>
 
 </html>

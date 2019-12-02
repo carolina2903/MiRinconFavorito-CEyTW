@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 
@@ -16,10 +19,7 @@
 
 <body>
 
-    <?php require '../estaticos/nav.php'; 
-    session_start();
-    ?>
-
+    <?php require '../estaticos/nav.php'; ?>
     <br><br><br>
 
 
@@ -112,7 +112,7 @@ require '../conexionPDO.php';
 if (isset($_POST['genero_seleccionado'])){
 
     //vemos cuantos productos de este tipo hay para crear el id
-    $sql = "SELECT count(*) FROM cojin_amistad";
+    $sql = "SELECT count(*) FROM producto";
     //$numeroproductos = $conexionPDO->query($sql);
     //$numeroproductos=$numeroproducto->fetchColumn();
 
@@ -124,7 +124,7 @@ if (isset($_POST['genero_seleccionado'])){
         if ($res->fetchColumn() > 0) {
 
             /* Issue the real SELECT statement and work with the results */
-            $sql = "SELECT * FROM cojin_amistad";
+            $sql = "SELECT * FROM producto";
 
             foreach ($conexionPDO->query($sql) as $row) {
                 $numeroproductos++;
@@ -159,9 +159,9 @@ if (isset($_POST['genero_seleccionado'])){
     */
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40");
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad", 'cantidad'=>1);
     }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40");
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad", 'cantidad'=>1);
 
     
         

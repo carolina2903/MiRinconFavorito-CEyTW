@@ -37,7 +37,7 @@ function anadir_carro() {
 <!--1 fila-->
     <tr>
     <th rowspan="8">
-    <img src="../imagenes/cojinescorazon.JPG" width=200 height=200/>
+    <img src="../imagenes/cojinescorazon.JPG" width=500 height=300/>
     </th>
     <th>
     <h3 class="text-center">Cojines Corazón Doble</h3>
@@ -74,7 +74,7 @@ function anadir_carro() {
 <!--4 fila-->
     <tr>
     <td colspan="2">
-    <input type="text" name="nombre_izquierdo" >
+    <input type="text" name="nombre_izquierda" >
         <br>
         <br><br>
     </td>
@@ -93,7 +93,7 @@ function anadir_carro() {
 <!--4 fila-->
     <tr>
     <td colspan="2">
-    <input type="text" name="nombre_derecho" >
+    <input type="text" name="nombre_derecha" >
 
             <br><br>
     
@@ -147,10 +147,10 @@ function anadir_carro() {
 require '../conexionPDO.php';
 
 //si se ha seleccionado la opcion genero
-if (isset($_POST['genero_seleccionado'])){
+if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
 
     //vemos cuantos productos de este tipo hay para crear el id
-    $sql = "SELECT count(*) FROM cojin_amistad";
+    $sql = "SELECT * FROM producto";
     //$numeroproductos = $conexionPDO->query($sql);
     //$numeroproductos=$numeroproducto->fetchColumn();
 
@@ -162,7 +162,7 @@ if (isset($_POST['genero_seleccionado'])){
         if ($res->fetchColumn() > 0) {
 
             /* Issue the real SELECT statement and work with the results */
-            $sql = "SELECT * FROM cojin_amistad";
+            $sql = "SELECT * FROM producto";
 
             foreach ($conexionPDO->query($sql) as $row) {
                 $numeroproductos++;
@@ -177,14 +177,15 @@ if (isset($_POST['genero_seleccionado'])){
     $id_producto_creado = "pr".$numero_id;
 
     //recogemos la opcion seleccionada
-    $genero = $_POST['genero_seleccionado'];
+    $nombreizqdo = $_POST['nombre_izquierda'];
+    $nombredrcho = $_POST['nombre_derecha'];
 
-   // echo "id".$id_producto_creado;
-   // echo "genero".$genero;
-
-    //$cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', 'pr1', 'Cojín Amistad', 'hombre')";
-    //$conexionPDO->query($cojin_temporal);
-
+    if (isset($_POST['nombre_izquierda']))
+        $fecha=$_POST['fecha'];
+    else
+        $fecha=NULL;
+    
+   
     //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
     /*
     $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
@@ -196,9 +197,12 @@ if (isset($_POST['genero_seleccionado'])){
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
 
-    $_SESSION["id_producto"]=$id_producto_creado;
-    $_SESSION["id_tipo_producto"]=2;
-    $_SESSION["genero"]=$genero;
+    if (!isset($_SESSION["carrito"])) {
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
+    }else 
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
+
+    
 
     echo "¡Su producto se ha añadido al carrito!";
 }
