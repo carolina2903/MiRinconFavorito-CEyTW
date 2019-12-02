@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MiRinconFavorito</title>
+    <title>Mi Rincón Favorito</title>
     <!--CSS BOOTSTRAP-->
     <link rel="styleheet" href="css/bootstrap.css">
     <link href='css/bootstrap.min.css' rel='stylesheet'>
@@ -28,9 +28,11 @@ session_start();
     <?php require 'estaticos/jumbotron.php' ;?>
 
     <script>
+        
         function comprar() {
             window.location.assign("comprar.php");
         }
+        
     </script>
 
     
@@ -99,7 +101,8 @@ session_start();
         echo "</div>";
     echo "</div>";
     echo "<hr>";
-
+    echo "<a id='cart-purchase' onClick='vaciarcarrito()' class='btn btn-danger' role='button' style='float: right;'>Vaciar Carrito</button>";
+    echo "&nbsp;";
     echo "<a id='cart-purchase' onClick='comprar()' class='btn btn-info' role='button' style='float: right;'>Comprar</a>";
     echo "<br><br><br><br>";
 

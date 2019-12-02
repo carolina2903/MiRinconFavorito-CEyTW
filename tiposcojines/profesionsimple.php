@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seminario CSS</title>
+    <title>Cojín Profesión Simple</title>
     <!--CSS BOOTSTRAP-->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <link rel="styleheet" href="../css/bootstrap.css">
@@ -25,12 +25,16 @@ session_start();
 <!--script-->
 <script>
 function anadir_carro() {
-        //window.location.assign("profesionsimple.php");
-        window.onAlert('¡Se ha añadido al carrito');
+    var nombre= NULL;
+    nombre = document.getElementById(nombre).val();
+    if(nombre!=NULL){
+        alert('¡Tu producto se ha añadido al carrito!');
+
+    }
+
     }
 </script>
 
-<br><br><br>
 
 
 
@@ -77,7 +81,7 @@ function anadir_carro() {
                 </div>
                 <div class="col-sm-12">
 
-                <input type="text" class="form-control" name="nombre" required="required" placeholder="Nombre...">
+                <input type="text" id ="nombre" class="form-control" name="nombre" required="required" placeholder="Nombre...">
                 </div>
             </div>
             </div>
@@ -185,6 +189,8 @@ if (isset($_POST['nombre'])&&(isset($_POST['profesion']))){
     
 
     echo "¡Su producto se ha añadido al carrito!";
+    echo "<br><br><br><br><br><br>";
+
 }
 
 

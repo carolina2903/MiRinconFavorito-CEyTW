@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seminario CSS</title>
+    <title>Cojines Corazones Sr Sra</title>
     <!--CSS BOOTSTRAP-->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <link rel="styleheet" href="../css/bootstrap.css">
@@ -20,7 +20,6 @@ session_start();
     
 <?php require '../estaticos/navtiposcojines.php'; ?>
 
-<br><br><br>
 
 
 <!--script-->
@@ -75,7 +74,7 @@ function anadir_carro() {
 
             <div class="col-sm-2">
             
-            <select class="btn bg-white dropdown-toggle" name="srsraderecha" required="required" value="" style="border:1px solid #ced4da">
+            <select class="btn bg-white dropdown-toggle" name="srsraizquierda" required="required" value="" style="border:1px solid #ced4da">
 
                     <option value="mujer">Sr</option>
                     <option value="hombre">Sra</option>
@@ -116,7 +115,7 @@ function anadir_carro() {
 
                 <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
 
-    </div><br><br><br><br><br><br><br><br>
+    </div><br><br>
             </div>
             
 
@@ -196,7 +195,9 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
 
     
 
-    echo "¡Su producto se ha añadido al carrito!";
+    echo "<script>alert('¡Su producto se ha añadido al carrito!');</script>";
+    echo "<br><br><br><br><br><br>";
+
 }
 
 

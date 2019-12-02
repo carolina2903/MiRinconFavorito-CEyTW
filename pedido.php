@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MiRinconFavorito</title>
+    <title>Mi Rincón Favorito</title>
     <!--CSS BOOTSTRAP-->
     <link rel="styleheet" href="css/bootstrap.css">
     <link href='css/bootstrap.min.css' rel='stylesheet'>

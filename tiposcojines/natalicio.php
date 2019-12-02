@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seminario CSS</title>
+    <title>Cojín Nacimiento Bebé</title>
     <!--CSS BOOTSTRAP-->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <link rel="styleheet" href="../css/bootstrap.css">
@@ -18,7 +18,6 @@ session_start();
 <body>
     <?php require '../estaticos/navtiposcojines.php'; ?>
     <br><br><br>
-    <?php require '../estaticos/jumbotron.php'; ?>
 
     <script>
 function anadir_carro() {
@@ -208,6 +207,8 @@ if (isset($_POST['nombrebebe'])&&(isset($_POST['fechanacimiento'])) &&(isset($_P
     
 
     echo "¡Su producto se ha añadido al carrito!";
+    echo "<br><br><br><br><br><br>";
+
 }
 
 

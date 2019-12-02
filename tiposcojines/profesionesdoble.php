@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seminario CSS</title>
+    <title>Cojín Profesiones Doble</title>
     <!--CSS BOOTSTRAP-->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <link rel="styleheet" href="../css/bootstrap.css">
@@ -30,7 +30,6 @@ function anadir_carro() {
     }
 </script>
 
-<br><br><br>
 
 
 
@@ -201,6 +200,8 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))&&(isset
     
 
     echo "¡Su producto se ha añadido al carrito!";
+    echo "<br><br><br><br><br><br>";
+
 }
 
 

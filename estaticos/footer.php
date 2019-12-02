@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col text-center text-dark pt-2">
-                    <p><small>Mi Rincón Favorito™ creado por Carmen María, Carolina y María Isabel</small></p>
+                    <p><small>MiRinconFavorito™ creado por Carmen María, Carolina y María Isabel</small></p>
                 </div>
             </div>
         </div>

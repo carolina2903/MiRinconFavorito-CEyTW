@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seminario CSS</title>
+    <title>Cojines Corazones</title>
     <!--CSS BOOTSTRAP-->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <link rel="styleheet" href="../css/bootstrap.css">
@@ -19,12 +19,14 @@ session_start();
     
 <?php require '../estaticos/navtiposcojines.php'; ?>
 
-<br><br><br>
+
 
 
 <!--script-->
 <script>
 function anadir_carro() {
+        <script type="text/javascript" src="../ejecucion.js"></script>
+
         //window.location.assign("corazonesdoblenormal.php");
         window.onAlert('¡Se ha añadido al carrito');
     }
@@ -104,11 +106,9 @@ function anadir_carro() {
 //accedemos a la base de datos
 require '../conexionPDO.php';
 
-echo "hola1";
 
 //si se ha seleccionado la opcion genero
 if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
-    echo "hola2";
 
     //vemos cuantos productos de este tipo hay para crear el id
     $sql = "SELECT * FROM producto";
@@ -141,14 +141,12 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
     $nombreizqdo = $_POST['nombre_izquierda'];
     $nombredrcho = $_POST['nombre_derecha'];
 
-    if (isset($_POST['nombre_izquierda']))
+    if (isset($_POST['fecha']))
         $fecha=$_POST['fecha'];
     else
         $fecha=NULL;
     
-        echo "hola".$nombredrcho;
-        echo $nombreizqdo;
-        echo $fecha;
+
     //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
     /*
     $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
@@ -170,6 +168,8 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
     
 
     echo "¡Su producto se ha añadido al carrito!";
+    echo "<br><br><br><br><br><br>";
+
 }
 
 

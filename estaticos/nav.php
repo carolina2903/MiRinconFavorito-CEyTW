@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,8 +24,14 @@
 </head>
 
 <body>
-
+    
     <script>
+        function cambiarcantidadcarrito() {
+            var contador='<?php  $contador=0; for($i = 0; $i < count($_SESSION["carrito"]); ++$i)  { $contador++;}  echo $contador;?>';
+            document.getElementById('cantidadcarritospan').innerHTML=contador;
+        
+        }
+
         function index() {
             window.location.assign("/MiRinconFavorito-CEyTW/index_.php");
         }
@@ -62,7 +71,7 @@
 
         <a class="navbar-brand" onClick="index()">
             <img src="imagenes/logo_recortado.png" width="67" height="67"></img>
-            <a class="h2" style="color:white;" onClick="index()">MI RINCÓN FAVORITO</a>
+            <a class="h2" style="color:white;" onClick="index()">MiRinconFavorito</a>
             </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -86,7 +95,8 @@
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link d-flex align-items-center" id="dropdown01" onClick="carrito()">Carrito&nbsp;
-                        <span class="badge badge-light">0</span>
+                        <div id="cantidadcarrito"></div>
+                        <span id="cantidadcarritospan" class="badge badge-light">0</span>
                     </a>
 
 
@@ -105,7 +115,6 @@
             </ul>
         </div>
 
-
        
 
 
@@ -119,7 +128,9 @@
     </nav>
 
 
-
+    <script language='JavaScript' type='text/javascript'>
+        cambiarcantidadcarrito();
+    </script>
 
 </body>
 
