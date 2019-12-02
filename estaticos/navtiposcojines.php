@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MiRinconFavorito</title>
+    <title>Mi Rincón Favorito</title>
     <!--CSS BOOTSTRAP-->
 
     <link rel="styleheet" href="../css/bootstrap.css">
@@ -71,7 +71,7 @@ session_start();
 
         <a class="navbar-brand" onClick="index()">
             <img src="../imagenes/logo_recortado.png" width="67" height="67"></img>
-            <a class="h2" style="color:white;" onClick="index()">MiRinconFavorito</a>
+            <a class="h2" style="color:white;" onClick="index()">Mi Rincón Favorito</a>
             </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

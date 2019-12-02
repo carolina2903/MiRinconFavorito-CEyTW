@@ -44,9 +44,8 @@
                 <!-- <button onclick="entrar()" name="entrar" style="float: right;">Entrar</button> -->
                 <!-- <a class="btn btn-info" name="entrar" style="float: right;" onClick='entrar()'>Iniciar sesión</a> -->
                 <!-- </div> -->
+                <input type="submit" class="btn btn-info" style="float: right; width:200px;" name="enviar" value="Entrar" />
 
-                <input type="submit" name="enviar" value="Enviar" />
-                <input type="reset" name="reset" value="Borrar" />
             </form>
         </div> <br><br>
 

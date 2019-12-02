@@ -9,7 +9,7 @@ require 'conexionPDO.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mi Rincón Favorito</title>
+    <title>MiRinconFavorito</title>
     <!--CSS BOOTSTRAP-->
     <link rel="styleheet" href="css/bootstrap.css">
     <link href='css/bootstrap.min.css' rel='stylesheet'>
@@ -63,10 +63,10 @@ require 'conexionPDO.php';
             <br>
             <!-- <div class="form-check"> -->
             <!-- <button class="btn btn-info" name="registrarse" style="float: right">Registrarse</button> -->
-            <input type="submit" name="registrarse" value="Registrarse" />
-            <input type="reset" name="reset" value="Borrar" />
+            <input type="submit" class="btn btn-info" style="float: right; width:200px;" name="registrarse" value="Registrarse" />
+
             <!-- </div> -->
-            <br><br><br>
+            <br><br><br><br><br>
             <!-- </form> -->
 
     </div> <br><br>
