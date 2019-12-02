@@ -63,17 +63,20 @@ session_start();
                     echo "<th scope='col'></th>";
                 echo "</tr>";
                 $precio_carrito=0;
-                for($i = 0; $i < count($_SESSION["carrito"]); ++$i)  {
-                    $precio=intval ( $_SESSION["carrito"][$i]["precio_unidad"]);
-                    $precio_total = $precio* $_SESSION["carrito"][$i]["cantidad"];
-                    echo "<tr>";
-                        echo "<th name='colcantidad' id='colcantidad' scope='col'>".$_SESSION["carrito"][$i]["cantidad"]."</th>";
-                        echo "<th name='colnombre' id='colnombre' scope='col'>".$_SESSION["carrito"][$i]["nombre"]."</th>";
-                        echo "<th name='colprecio' id='colprecio' scope='col'>" .$precio."</th>";
-                        echo "<th name='coltotal' id='coltotal' scope='col'>".$precio_total."</th>";
-                        echo "<th name='colid' id='colid' scope='col'></th>";
-                    echo "</tr>";
-                    $precio_carrito+=$precio_total;
+                if ($_SESSION["carrito"]!=NULL){
+
+                    for($i = 0; $i < count($_SESSION["carrito"]); ++$i)  {
+                        $precio=intval ( $_SESSION["carrito"][$i]["precio_unidad"]);
+                        $precio_total = $precio* $_SESSION["carrito"][$i]["cantidad"];
+                        echo "<tr>";
+                            echo "<th name='colcantidad' id='colcantidad' scope='col'>".$_SESSION["carrito"][$i]["cantidad"]."</th>";
+                            echo "<th name='colnombre' id='colnombre' scope='col'>".$_SESSION["carrito"][$i]["nombre"]."</th>";
+                            echo "<th name='colprecio' id='colprecio' scope='col'>" .$precio."</th>";
+                            echo "<th name='coltotal' id='coltotal' scope='col'>".$precio_total."</th>";
+                            echo "<th name='colid' id='colid' scope='col'></th>";
+                        echo "</tr>";
+                        $precio_carrito+=$precio_total;
+                    }
                 }
                 $subtotal= $precio_carrito*0.79;
                 $impuestos= $precio_carrito*0.21;
