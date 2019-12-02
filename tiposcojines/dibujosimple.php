@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<?php require '../html/estaticos/nav.php'; ?>
+<?php require '../html/estaticos/navtiposcojines.php'; ?>
 <br><br><br>
 <?php require '../html/estaticos/jumbotron.php'; ?>
 

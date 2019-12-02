@@ -17,7 +17,7 @@ session_start();
 
 <body>
     
-<?php require '../estaticos/nav.php'; ?>
+<?php require '../estaticos/navtiposcojines.php'; ?>
 
 <br><br><br>
 
