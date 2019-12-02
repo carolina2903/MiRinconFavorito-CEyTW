@@ -19,7 +19,7 @@ session_start();
 
 <body>
 
-    <?php require '../estaticos/nav.php'; ?>
+    <?php require '../estaticos/navtipocojines.php'; ?>
     <br><br><br>
 
 
