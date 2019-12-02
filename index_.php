@@ -28,6 +28,9 @@
             window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/amistad.php");
         }
 
+        function tipoprofesiondobleseñorseñora() {
+            window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/profesionesdoblesrsra.php");
+        }
 
         function tipocorazonesdoblenormal() {
             window.location.assign("/MiRinconFavorito-CEyTW/tiposcojines/corazonesdoblenormal.php");
@@ -84,14 +87,14 @@
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
-                    <img class="card-img-top" src="imagenes/cojinescorazon.JPG" alt="Imagen cojínes corazón.">
+                    <img class="card-img-top" src="imagenes/cojinesprofesionessrsra.JPG" alt="Imagen cojínes de corazón sr/sra.">
                     <div class="card-body">
-                        <h4 class="card-title">Cojines corazón</h4>
+                        <h4 class="card-title">Cojines profesión Sr y Sra</h4>
                         <div class="card-price" font-size="1">
                             <div class="row justify-content-end">
                                 <h5>24€&nbsp;</h5>
                                 <br>
-                                <a class="btn btn-info product-button" onClick='tipocorazonesdoblenormal()'>Personalizar</a>
+                                <a class="btn btn-info product-button" onClick='tipoprofesiondobleseñorseñora()'>Personalizar</a>
                             </div>
                         </div>
                     </div>
@@ -116,6 +119,24 @@
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
+                    <img class="card-img-top" src="imagenes/cojinescorazon.JPG" alt="Imagen cojínes corazón.">
+                    <div class="card-body">
+                        <h4 class="card-title">Cojines corazón</h4>
+                        <div class="card-price" font-size="1">
+                            <div class="row justify-content-end">
+                                <h5>24€&nbsp;</h5>
+                                <br>
+                                <a class="btn btn-info product-button" onClick='tipocorazonesdoblenormal()'>Personalizar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col-sm-4">
+                <div class="card text-black bg-light mb-3">
                     <img class="card-img-top" src="imagenes/cojinesprofesiones.JPG" alt="Imagen cojínes profesiones.">
                     <div class="card-body">
                         <h4 class="card-title">Cojines profesiones</h4>
@@ -124,6 +145,22 @@
                                 <h5>24€&nbsp;</h5>
                                 <br>
                                 <a class="btn btn-info product-button" onClick='tipoprofesionesdoble()'>Personalizar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card text-black bg-light mb-3">
+                    <img class="card-img-top" src="imagenes/cojinamistad3.JPG" alt="Imagen cojín amistad.">
+                    <div class="card-body">
+                        <h4 class="card-title">Cojín amistad</h4>
+                        <div class="card-price" font-size="1">
+                            <div class="row justify-content-end">
+                                <h5>13€&nbsp;</h5>
+                                <br>
+                                <a class="btn btn-info product-button" onClick='tipoamistad()'>Personalizar</a>
                             </div>
                         </div>
                     </div>
@@ -146,21 +183,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-4">
-                <div class="card text-black bg-light mb-3">
-                    <img class="card-img-top" src="imagenes/cojinamistad3.JPG" alt="Imagen cojín amistad.">
-                    <div class="card-body">
-                        <h4 class="card-title">Cojín amistad</h4>
-                        <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>13€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipoamistad()'>Personalizar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">

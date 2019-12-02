@@ -17,7 +17,7 @@ session_start();
 
 <body>
     
-<?php require '../estaticos/nav.php'; ?>
+<?php require '../estaticos/navtiposcojines.php'; ?>
 
 <br><br><br>
 
@@ -25,118 +25,73 @@ session_start();
 <!--script-->
 <script>
 function anadir_carro() {
-        window.location.assign("corazonesdoblenormal.php");
+        //window.location.assign("corazonesdoblenormal.php");
         window.onAlert('¡Se ha añadido al carrito');
     }
 </script>
 
-<div class="container">
-    
-    <br>
-
-    <table>
-    <form action="corazonesdoblenormal.php" method="post">
-
-<!--1 fila-->
-    <tr>
-    <th rowspan="8">
-    <img src="../imagenes/cojinescorazon.JPG" width=500 height=300/>
-    </th>
-    <th>
-    <h3 class="text-center">Cojines Corazón Doble</h3>
-    <br>
-    <br>
-    <h5 class="text-center">24,00 €</h5>
-    </th>
-
-    </tr>
-<!--2 fila-->
-    <tr>
-    <td colspan="2" class="text-center">
-    Pareja de cojines personalizados formada por dos cojines individuales unidos por un corazón rojo, cada uno de ellos con uno de los nombres o apellidos de cada integrante de la pareja.
-    <br>
-    El precio de la opción «Solo fundas» incluye únicamente las dos fundas de cojín y la opción «Cojines completos» incluye las dos fundas de cojín y el relleno de ambas. Selecciona la opción que desees.
-    <br>
-    Selecciona si quieres que el cojín diga “amigas” o “amigos”.
-    </td>
-    <td>
-    
-    </td>
-    </tr>
-
-<!--3 fila-->
-    <tr>
-    <td colspan="2">
-    Nombre o apellido cojín izquierda
-    </td>
-    <td>
-    
-    </td>
-    </tr>
-
-<!--4 fila-->
-    <tr>
-    <td colspan="2">
-    <input type="text" name="nombre_izquierda" >
-        <br>
-        <br><br>
-    </td>
+<br><br><br>
 
 
-<!--3 fila-->
-<tr>
-    <td colspan="2">
-    Nombre o apellido cojín derecho
-    </td>
-    <td>
-    
-    </td>
-    </tr>
-
-<!--4 fila-->
-    <tr>
-    <td colspan="2">
-    <input type="text" name="nombre_derecha" >
-
-            <br><br>
-    
-        <br><br>
-    </td>
 
 
-<!--3 fila-->
-<tr>
-    <td colspan="2">
-    Fecha (opcional)
-    </td>
-    <td>
-    
-    </td>
-    </tr>
-
-<!--4 fila-->
-    <tr>
-    <td colspan="2">
-    <input type="date" name="fecha">
-    <br><br>
-
-    <button type="submit"  value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
-
-    <br><br>
-    </td>
-
-
-    </tr>
-    </form>
-
-    </table>
-
-    
-       
+    <div class="container">
         
+        <br>
+        <div class="row">
 
 
-</div> <br><br>
+<div class="col-sm-4">
+            <div class="card-price" font-size="1">
+                
+        <img class="card-img-top" src="../imagenes/cojinescorazon.JPG" alt="Imagen cojínes de corazón sr/sra.">
+        <div class="card-body">
+            
+            </div>
+        </div>
+</div>
+
+<div class="col-sm-8">
+    <div class="mb-3">
+    <h3 class="card-title">Cojines corazón</h3>
+    <h5>24,00€</h5>
+    <h6>Pareja de cojines personalizados formada por dos cojines individuales unidos por un corazón rojo, cada uno de ellos con uno de los nombres o apellidos de cada integrante de la pareja.
+    
+    </h6>
+    <h7>Rellena los datos necesarios para la creación del cojín: </h7>
+    </div>
+    <form action="corazonesdoblenormal.php" method="post">
+    
+
+
+        <td colspan="10" >
+            <div class="form-group" >
+                <p>Nombre izquierda:</p>
+                <input type="text" class="form-control" name="nombre_izquierda" required="required">
+            </div>
+            <div class="form-group" >
+                <p>Nombre derecha:</p>
+                <input type="text" class="form-control" name="nombre_derecha" required="required">
+            </div>
+            
+            <div class="form-group">
+                <p>Fecha (opcional):</p>
+                <input type="date" id="fecha" class="form-control " name="fecha"  value="12/12/1998" />
+            </div>
+            
+                <div class="form-check">
+                <br>
+                <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+
+
+    </div><br><br>
+            </div>
+    </div>
+        </form>
+    </div> <br><br>
+
+    <br><br><br>
+
 
 <br><br><br>
 
@@ -208,9 +163,9 @@ if (isset($_POST['nombre_izquierda'])&&(isset($_POST['nombre_derecha']))){
     
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"30x50", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1, 'nombreizquierda'=>$nombreizqdo, 'nombrederecha'=>$nombredrcho);
     }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"50x30", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1);
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>24, 'tamaño'=>"30x50", 'nombre'=>"Cojines Corazón Doble", 'cantidad'=>1, 'nombreizquierda'=>$nombreizqdo, 'nombrederecha'=>$nombredrcho);
 
     
 

@@ -26,7 +26,7 @@ session_start();
 <!--script-->
 <script>
 function anadir_carro() {
-            window.location.assign("cojin_amistad.php");
+            //window.location.assign("cojin_amistad.php");
             window.onAlert("¡Se ha añadido al carrito");
         }
 </script>
@@ -50,7 +50,7 @@ function anadir_carro() {
 <div class="col-sm-8">
     <div class="mb-3">
     <h3 class="card-title">Cojín nacimiento bebés</h3>
-    <h5>13€</h5>
+    <h5>13,00€</h5>
     <h6>Cojín personalizado para ese amigo o amiga que tanto se lo merece.</h6>
     <h7>Selecciona si quieres que el cojín diga “amigas” o “amigos”: </h7>
     </div>
@@ -137,9 +137,9 @@ if (isset($_POST['genero_seleccionado'])){
     */
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad", 'cantidad'=>1);
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Amistad", 'cantidad'=>1);
     }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín amistad", 'cantidad'=>1);
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Amistad", 'cantidad'=>1);
 
     
         

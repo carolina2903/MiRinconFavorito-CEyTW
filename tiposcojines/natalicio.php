@@ -16,13 +16,13 @@ session_start();
 </head>
 
 <body>
-    <?php require '../estaticos/nav.php'; ?>
+    <?php require '../estaticos/navtiposcojines.php'; ?>
     <br><br><br>
     <?php require '../estaticos/jumbotron.php'; ?>
 
     <script>
 function anadir_carro() {
-            window.location.assign("natalicio.php");
+            //window.location.assign("natalicio.php");
             window.onAlert("¡Se ha añadido al carrito");
         }
 </script>
@@ -44,7 +44,7 @@ function anadir_carro() {
             <div class="col-sm-8">
                 <div class="mb-3">
                 <h3 class="card-title">Cojín nacimiento bebés</h3>
-                <h5>13€</h5>
+                <h5>13,00€</h5>
                 <h6>Cojín personalizado para celebrar y recordar el nacimiento de los más peques.</h6>
                 <h7>Rellena los datos necesarios para la creación del cojín: </h7>
                 </div>
@@ -184,8 +184,9 @@ if (isset($_POST['nombrebebe'])&&(isset($_POST['fechanacimiento'])) &&(isset($_P
     $horanacimiento = $_POST['horanacimiento'];
     $peso = $_POST['peso'];
     $altura = $_POST['altura'];
+    $colorprimario = $_POST['colorprimario'];
+    $colorsecundario = $_POST['colorsecundario'];
 
-   
     //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
     /*
     $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
@@ -200,9 +201,9 @@ if (isset($_POST['nombrebebe'])&&(isset($_POST['fechanacimiento'])) &&(isset($_P
     
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín bebé", 'cantidad'=>1);
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>6, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Nacimiento Bebé", 'cantidad'=>1, 'nombrebebe'=>$nombrebebe, 'fechanacimiento'=>$fechanacimiento, 'horanacimiento'=>$horanacimiento, 'peso'=>$peso, 'altura'=> $altura);
     }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>3, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín bebé", 'cantidad'=>1);
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>6, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Nacimiento Bebé", 'cantidad'=>1, 'nombrebebe'=>$nombrebebe, 'fechanacimiento'=>$fechanacimiento, 'horanacimiento'=>$horanacimiento, 'peso'=>$peso, 'altura'=> $altura);
 
     
 
