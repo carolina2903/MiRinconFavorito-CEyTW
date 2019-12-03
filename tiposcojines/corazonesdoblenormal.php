@@ -24,14 +24,11 @@ session_start();
 
 <!--script-->
 <script>
-function anadir_carro() {
-        <script type="text/javascript" src="../ejecucion.js"></script>
-
-        //window.location.assign("corazonesdoblenormal.php");
-        window.onAlert('¡Se ha añadido al carrito');
-    }
-</script>
-
+            function anadir_carro() {
+                    //window.location.assign("cojin_amistad.php");
+                    window.onAlert("¡Se ha añadido al carrito");
+                }
+        </script>
 <br><br><br>
 
 

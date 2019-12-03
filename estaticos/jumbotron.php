@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MiRinconFavorito</title>
+    <title>Mi Rincón Favorito</title>
     <!--CSS BOOTSTRAP-->
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <!--link rel="styleheet" href="../css/bootstrap.css">
@@ -17,7 +17,7 @@
     <!--Jumbotron-->
     <div class="container">
         <div class="jumbotron text-center">
-            <h1 style="font-size:8ch">MiRinconFavorito</h1>
+            <h1 style="font-size:8ch">Mi Rincón Favorito</h1>
             <p>Compra nuestros productos personalizados y hechos a mano.</p>
         </div>
     </div>

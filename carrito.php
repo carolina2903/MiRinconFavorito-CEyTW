@@ -46,7 +46,10 @@ session_start();
 <?php
 //session_start();
     require 'conexionPDO.php';
-    
+    if (isset($_POST['vaciarcarritobutton'])) {
+        $_SESSION["carrito"]=array();
+
+    }   
     //if(isset($_SESSION["carrito"])){ 
     echo "<h3 class='text-left'><b>Carrito de la compra</b> </h3>";
     echo "<hr>";
@@ -66,7 +69,7 @@ session_start();
                 echo "</tr>";
                 $precio_carrito=0;
                 if ($_SESSION["carrito"]!=NULL){
-
+                    
                     for($i = 0; $i < count($_SESSION["carrito"]); ++$i)  {
                         $precio=intval ( $_SESSION["carrito"][$i]["precio_unidad"]);
                         $precio_total = $precio* $_SESSION["carrito"][$i]["cantidad"];
@@ -82,7 +85,7 @@ session_start();
                 }
                 $subtotal= $precio_carrito*0.79;
                 $impuestos= $precio_carrito*0.21;
-
+                
 
             echo "</thead>";
             echo "<tbody>";
@@ -101,16 +104,20 @@ session_start();
         echo "</div>";
     echo "</div>";
     echo "<hr>";
-    echo "<a id='cart-purchase' onClick='vaciarcarrito()' class='btn btn-danger' role='button' style='float: right;'>Vaciar Carrito</button>";
+    echo "<form method='post'>";
+    
+    echo "<button type='submit' class='btn btn-danger' style='float: right; text:center;'  name='vaciarcarritobutton' value='Vaciar carrito' /> Vaciar carrito</button>";
+    echo "</form>";
+
     echo "&nbsp;";
-    echo "<a id='cart-purchase' onClick='comprar()' class='btn btn-info' role='button' style='float: right;'>Comprar</a>";
+    echo "<button id='cart-purchase' onClick='comprar()' class='btn btn-info' role='button' style='float: right;'>Comprar</button>";
     echo "<br><br><br><br>";
 
 
     echo "<br><br><br>";
     
     echo "}";
-            
+    
     //}
     //else{
     //    echo "El carrito está vacío.";
