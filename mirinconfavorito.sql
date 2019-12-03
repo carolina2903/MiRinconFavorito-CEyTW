@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2019 a las 08:42:25
+-- Tiempo de generación: 03-12-2019 a las 11:42:19
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `MiRinconFavorito`
+-- Base de datos: `mirinconfavorito`
 --
 
 -- --------------------------------------------------------
@@ -43,7 +43,11 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellidos`, `telefono`, `email`, `passwd`, `id_direccion`) VALUES
-('cl1', 'Carmen', 'Moreno', '646263662', 'carmen98mi@gmail.com', 'cacita', 'dir1');
+('cl1', 'Carmen', 'Moreno', '646263662', 'carmen98mi@gmail.com', 'cacita', 'dir1'),
+('cl2', 'Carmen María', 'Izquierdo', '693606438', 'carmen@gmail.com', 'carmen', ''),
+('cl3', 'test', 'test', '646545454', 'email1234@email.com', 'password', ''),
+('cl4', 'test', 'test', '666666666', 'email12345@email.com', 'password', ''),
+('cl5', 'Carmen María', 'Izquierdo', '693606438', 'carmen98i@gmail.com', 'password', '');
 
 -- --------------------------------------------------------
 
@@ -156,11 +160,29 @@ CREATE TABLE `cojin_personalizado` (
 CREATE TABLE `cojin_profesion_doble` (
   `id_tipo_producto` varchar(8) NOT NULL DEFAULT '8',
   `id_producto` varchar(8) NOT NULL,
-  `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojin Profesión Doble',
+  `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojines Profesión Dobles',
   `profesion_izquierda` varchar(20) NOT NULL,
   `profesion_derecha` varchar(20) NOT NULL,
   `nombre_izquierda` varchar(20) NOT NULL,
   `nombre_derecha` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cojin_profesion_doble_sr_sra`
+--
+
+CREATE TABLE `cojin_profesion_doble_sr_sra` (
+  `id_tipo_producto` varchar(8) NOT NULL DEFAULT '10',
+  `id_producto` varchar(8) DEFAULT NULL,
+  `nombre` varchar(40) NOT NULL DEFAULT 'Cojines Profesión Dobles Sr Sra',
+  `srsraizquierda` varchar(5) NOT NULL,
+  `profesionizquierda` varchar(20) NOT NULL,
+  `nombreizquierda` varchar(20) NOT NULL,
+  `srsraderecha` varchar(5) NOT NULL,
+  `profesionderecha` varchar(20) NOT NULL,
+  `nombrederecha` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
