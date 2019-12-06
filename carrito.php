@@ -1,6 +1,9 @@
-<?php 
+<?php
 session_start();
+require 'conexionPDO.php';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
