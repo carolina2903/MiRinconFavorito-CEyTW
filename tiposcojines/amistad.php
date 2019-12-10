@@ -42,7 +42,7 @@ function anadir_carro() {
 
             window.location.assign("cojin_amistad.php");
             window.onAlert("¡Se ha añadido al carrito");
-¡        }
+        }
 </script>
 
     <div class="container">

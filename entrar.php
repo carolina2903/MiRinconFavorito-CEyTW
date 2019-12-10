@@ -35,7 +35,8 @@
             <br>
             <form action="entrar.php" method="POST">
 
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value="carolina@email.com">
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                <br>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
 
                 <input type="submit" class="btn btn-info" style="float: right; width:200px;" name="enviar" value="Entrar" />
@@ -70,13 +71,14 @@
         if (!$usuario_select) { /* Si el usuario no existe */
             echo "<div align='center' style='color:red'>El usuario no existe en el sistema. <br>Por favor, vuelva a intentarlo.</div>";
         } else {
+            
+            $iguales = password_verify($_POST['password'], $usuario_select['passwd']);
 
-
-             if (password_verify( $_POST['password'], $usuario_select['passwd'])) { 
-          //if ($_POST['password'] == $usuario_select['passwd']) { /* Si se ha encontrado usuario y su contraseña coincide con la introducida */
+            if ($iguales) {
 
                 $_SESSION['email'] = $_POST["email"]; /* Guardamos la sesion del usuario */
 
+                echo 'dentro del if';
 
                 /* Para establecer las cookies si se ha señalado checkbox recordar */
                 // if (isset($_POST['recordar']) && $_POST['recordar'] == '1') {
@@ -86,8 +88,11 @@
                 // }
 
                 echo "<script language='javascript'> entrar(); </script>";
+                
             } else {
+                echo 'dentro del else';
                 echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
+                echo '<br><br><br><br><br>';
             }
         }
     }
