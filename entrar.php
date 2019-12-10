@@ -88,11 +88,10 @@
                 // }
 
                 echo "<script language='javascript'> entrar(); </script>";
-                
+
             } else {
-                echo 'dentro del else';
                 echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
-                echo '<br><br><br><br><br>';
+                echo '<br><br><br>';
             }
         }
     }
