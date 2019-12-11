@@ -1,5 +1,7 @@
 <?php
 session_start();
+echo "<br><br>";
+
 ?>
 
 <!DOCTYPE html>
@@ -21,91 +23,91 @@ session_start();
 
 
 <body>
-    
-        <?php require '../estaticos/navtiposcojines.php'; ?>
+
+    <?php require '../estaticos/navtiposcojines.php'; ?>
 
 
     <!--script-->
 
-        <script>
-            function anadir_carro() {
-                    //window.location.assign("dibujosimple.php");
-                    window.onAlert("¡Se ha añadido al carrito");
-                }
-        </script>
+    <script>
+        function anadir_carro() {
+            //window.location.assign("dibujosimple.php");
+            window.onAlert("¡Se ha añadido al carrito");
+        }
+    </script>
 
 
 
     <div class="container">
-        <br>
+        <br><br>
 
         <div class="row">
 
-        <div class="col-sm-4">
-            <div class="card-price" font-size="1">   
-            <img class="card-img-top" src="../imagenes/cojindibujo.JPG" alt="Imagen cojín de un dibujo">
-                <div class="card-body">
+            <div class="col-sm-4">
+                <div class="card-price" font-size="1">
+                    <img class="card-img-top" src="../imagenes/cojindibujo.JPG" alt="Imagen cojín de un dibujo">
+                    <div class="card-body">
+                    </div>
                 </div>
             </div>
-        </div>
 
 
 
-    <div class="col-sm-8">
+            <div class="col-sm-8">
 
-        <div class="mb-3">
-            <h3 class="card-title">Cojín dibujo individual</h3>
-            <h5>13€</h5>
-            <h6>Cojín personalizado individual con dibujo en color. Contiene el nombre de la persona, un dibujo a elegir y, opcionalmente, una fecha.
-            <br><br>
-            Rellena cada uno de los cuadros siguientes tal y como se indica con el nombre y su dibujo favorito, por ejemplo: bailarina, peppa pig, pikachu, doraemon, princesa, etc. Las fotos solo son ejemplos, puedes añadir cualquier dibujo. Puedes elegir también, si así lo deseas, el tipo de letra. Por defecto, esta será letra minúscula.
-            <br><br>
-            </h6>
-            <h7>Rellena los datos necesarios para tu cojín: </h7>
-        </div>
+                <div class="mb-3">
+                    <h3 class="card-title"><b>Cojín dibujo individual</b></h3>
+                    <h5>13€</h5>
+                    <h6>Cojín personalizado individual con dibujo en color. Contiene el nombre de la persona, un dibujo a elegir y, opcionalmente, una fecha.
+                        <br><br>
+                        Rellena cada uno de los cuadros siguientes tal y como se indica con el nombre y su dibujo favorito, por ejemplo: bailarina, peppa pig, pikachu, doraemon, princesa, etc. Las fotos solo son ejemplos, puedes añadir cualquier dibujo. Puedes elegir también, si así lo deseas, el tipo de letra. Por defecto, esta será letra minúscula.
+                        <br><br>
+                    </h6>
+                    <h7>Rellena los datos necesarios para tu cojín: </h7>
+                </div>
 
-        <form action="dibujosimple.php" method="post">
+                <form action="dibujosimple.php" method="post">
 
-            <p>Nombre o apellido</p>
+                    <h6><b>Nombre o apellido:</b></h6>
 
-            <input type="text" class="form-control" name="nombre_apellido" required="required">
+                    <input type="text" class="form-control" name="nombre_apellido" required="required">
 
-            <br><br>
+                    <br>
 
-            <p>Dibujo</p>
+                    <h6><b>Dibujo:</b></h6>
 
-            <input type="text" class="form-control" name="dibujo" required="required">
-            
-            <br><br>
+                    <input type="text" class="form-control" name="dibujo" required="required">
 
-            <div class="form-group">
-                <p>Fecha (opcional):</p>
-                <input type="date" id="fechanacimiento" class="form-control " name="fechanacimiento"  value="12/12/1998" />
-            </div>
-            <br><br>
+                    <br>
+
+                    <div class="form-group">
+                        <h6><b>Fecha (opcional):</b></h6>
+                        <input type="date" id="fechanacimiento" class="form-control " name="fechanacimiento" value="12/12/1998" />
+                    </div>
 
 
-            <p>Tipo de letra</p>
 
-            <select class="btn bg-white dropdown-toggle" name="tipo_letra" required="required" value="" style="border:1px solid #7d7d7d;">
-                <option value="minus">Minúscula</option>
-                <option value="mayus">Mayúscula</option>
-            </select>
-            <br><br>
+                    <h6><b>Tipo de letra</b></h6>
 
-            
-            <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+                    <select class="btn bg-white dropdown-toggle" name="tipo_letra" required="required" value="" style="border:1px solid #ced4da;">
+                        <option value="Minúscula">Minúscula</option>
+                        <option value="Mayúscula">Mayúscula</option>
+                    </select>
+                    <br>
 
-            <br><br><br><br><br><br><br><br><br><br><br>
-            
 
-            </form>
+                    <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
 
-        </div> <br><br>
+                    
 
-    <br><br><br>
 
-    <?php require '../estaticos/footer.php' ;?>
+                </form>
+
+             <br><br>
+
+            <br><br><br><br>
+
+            <?php require '../estaticos/footer.php'; ?>
 
 </body>
 
@@ -124,7 +126,7 @@ session_start();
 require '../conexionPDO.php';
 
 //si se ha seleccionado la opcion genero
-if (isset($_POST['nombre_apellido'])&&isset($_POST['dibujo'])){
+if (isset($_POST['nombre_apellido']) && isset($_POST['dibujo'])) {
 
     //vemos cuantos productos de este tipo hay para crear el id
     $sql = "SELECT count(*) FROM producto";
@@ -146,23 +148,24 @@ if (isset($_POST['nombre_apellido'])&&isset($_POST['dibujo'])){
                 $numeroproductos++;
             }
         }
-        /* No rows matched -- do something else */ 
+        /* No rows matched -- do something else */
     }
 
 
 
     //creamos el id_producto
-    $numero_id=(string)($numeroproductos+1);
-    $id_producto_creado = "pr".$numero_id;
+    $numero_id = (string) ($numeroproductos + 1);
+    $id_producto_creado = "pr" . $numero_id;
 
     //recogemos la opcion seleccionada
     $nombre_apellido = $_POST['nombre_apellido'];
     $dibujo = $_POST['dibujo'];
-    if (isset($_POST['fecha']))
-        $fecha=$_POST['fecha'];
-    else
-        $fecha=NULL;
     $tipo_letra = $_POST['tipo_letra'];
+
+    if (isset($_POST['fecha']))
+        $fecha = $_POST['fecha'];
+    else
+        $fecha = NULL;
 
 
     //$cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', 'pr1', 'Cojín Amistad', 'hombre')";
@@ -185,18 +188,15 @@ if (isset($_POST['nombre_apellido'])&&isset($_POST['dibujo'])){
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>4, 'nombrecojin'=>$nombre_apellido, 'dibujo'=>$dibujo, 'fecha'=>$fecha, 'precio_unidad'=>13, 'tamaño'=>"30x50", 'nombre'=>"Cojín Dibujo Individual", 'cantidad'=>1);
-
-    }else 
-    $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>4, 'nombrecojin'=>$nombre_apellido, 'dibujo'=>$dibujo, 'fecha'=>$fecha, 'precio_unidad'=>13, 'tamaño'=>"30x50", 'nombre'=>"Cojín Dibujo Individual", 'cantidad'=>1);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 4, 'nombrecojin' => $nombre_apellido, 'dibujo' => $dibujo, 'fechacojin' => $fecha, 'precio_unidad' => 14, 'tamaño' => "30x50", 'nombre' => "Cojín Dibujo Individual", 'tipo_letra' => $tipo_letra);
+    } else
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 4, 'nombrecojin' => $nombre_apellido, 'dibujo' => $dibujo, 'fechacojin' => $fecha, 'precio_unidad' => 14, 'tamaño' => "30x50", 'nombre' => "Cojín Dibujo Individual", 'tipo_letra' => $tipo_letra);
 
 
     //print_r ($_SESSION["carrito"]);
 
-    echo "¡Su producto se ha añadido al carrito!";
+    echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
-
-
 }
 
 

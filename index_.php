@@ -13,12 +13,12 @@
 
 <body>
 
-    
-<?php require 'estaticos/nav.php' ;?>
 
-<br><br><br>
+    <?php require 'estaticos/nav.php'; ?>
 
-<?php require 'estaticos/jumbotron.php' ;?>
+    <br><br><br>
+
+    <?php require 'estaticos/jumbotron.php'; ?>
 
 
     <!-- JAVASCRIPT -->
@@ -75,11 +75,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojines corazón Sr y Sra</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>24€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipocorazonesdobleseñorseñora()'>Personalizar</a>
-                            </div>
+                            <h5>24,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipocorazonesdobleseñorseñora()" />
                         </div>
                     </div>
                 </div>
@@ -91,12 +88,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojines profesión Sr y Sra</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>24€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipoprofesiondobleseñorseñora()'>Personalizar</a>
-                            </div>
+                            <h5>24,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipoprofesiondobleseñorseñora()" />
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -107,12 +102,11 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojín familia</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>13€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipofamilia()'>Personalizar</a>
-                            </div>
+                            <h5>14,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipofamilia()" />
                         </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -123,17 +117,15 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojines corazón</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>24€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipocorazonesdoblenormal()'>Personalizar</a>
-                            </div>
+                            <h5>24,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipocorazonesdoblenormal()" />
                         </div>
+                        
                     </div>
                 </div>
             </div>
 
-            
+
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
@@ -141,11 +133,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojines profesiones</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>24€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipoprofesionesdoble()'>Personalizar</a>
-                            </div>
+                            <h5>24,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipoprofesionesdoble()" />
                         </div>
                     </div>
                 </div>
@@ -157,11 +146,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojín amistad</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>13€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipoamistad()'>Personalizar</a>
-                            </div>
+                            <h5>14,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipoamistad()" />
                         </div>
                     </div>
                 </div>
@@ -173,17 +159,14 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojín profesión simple</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>13€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipoprofesionsimple()'>Personalizar</a>
-                            </div>
+                            <h5>14,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipoprofesionsimple()" />
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+
 
             <div class="col-sm-4">
                 <div class="card text-black bg-light mb-3">
@@ -191,11 +174,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojín para bebés</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>13€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tiponatalicio()'>Personalizar</a>
-                            </div>
+                            <h5>14,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tiponatalicio()" />
                         </div>
                     </div>
                 </div>
@@ -207,42 +187,24 @@
                     <div class="card-body">
                         <h4 class="card-title">Cojín con dibujo</h4>
                         <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>15€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipodibujosimple()'>Personalizar</a>
-                            </div>
+                            <h5>16,00€</h5>
+                            <input type="submit" class="btn btn-info product-button" style="float: right; width:auto;" value="Personalizar" onclick="tipodibujosimple()" />
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-sm-4">
-                <div class="card text-black bg-light mb-3">
-                    <!-- <img class="card-img-top" src="imagenes/cojinamistad.JPG" alt="Imagen cojín amistad."> -->
-                    <div class="card-body">
-                        <h4 class="card-title">Cojín personalizado</h4>
-                        <div class="card-price" font-size="1">
-                            <div class="row justify-content-end">
-                                <h5>10€&nbsp;</h5>
-                                <br>
-                                <a class="btn btn-info product-button" onClick='tipopersonalizado()'>Personalizar</a>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
         </div>
     </div>
 
 
 
     <br><br>
-    
-    <?php require 'estaticos/footer.php' ;?>
-    
+
+    <?php require 'estaticos/footer.php'; ?>
+
 </body>
 
 </html>

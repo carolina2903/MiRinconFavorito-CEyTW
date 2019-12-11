@@ -85,7 +85,7 @@ session_start();
             
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-        <input type="search"  placeholder="Buscar...">
+        
         
       
             <ul class="navbar-nav">

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -57,13 +54,7 @@ session_start();
         }
     </script>
 
-    <style>
-        .buscar{
-            border-radius: 35px 35px 35px 35px;
-            border: 0px solid #000000;
-        }
-        
-    </style>
+    
 
     <!--Navegación-->
 
@@ -86,10 +77,7 @@ session_start();
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
         
-        <div id="searchbar2">
-          <input id="search_input2" type="text" name="" placeholder="Buscar...">
-          <a href="#" id="search_icon2"><i class="fas fa-search"></i></a>
-        </div>
+        
       
             <ul class="navbar-nav">
                 
