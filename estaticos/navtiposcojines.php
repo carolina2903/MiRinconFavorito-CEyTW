@@ -30,27 +30,34 @@
         }
 
         function index() {
-            window.location.assign("/MiRinconFavorito-CEyTW/index_.php");
+            document.getElementById("logo").href = "../index_.php";
+            window.location.assign("../index_.php");
         }
 
         function carrito() {
-            window.location.assign("/MiRinconFavorito-CEyTW/carrito.php");
+            document.getElementById("botoncarrito").href = "../carrito.php";
+            window.location.assign("../carrito.php");
         }
 
         function registrarse() {
-            window.location.assign("/MiRinconFavorito-CEyTW/registrarse.php");
+            document.getElementById("botonregistrarse").href = "../registrarse.php";
+            window.location.assign("../registrarse.php");
         }
 
         function iniciar_sesion() {
-            window.location.assign("/MiRinconFavorito-CEyTW/entrar.php");
+            document.getElementById("botonentrar").href = "../entrar.php";
+            window.location.assign("../entrar.php");
         }
 
         function mi_perfil() {
-            window.location.assign("/MiRinconFavorito-CEyTW/perfil.php");
+            document.getElementById("botonperfil").href = "../perfil.php";
+            window.location.assign("../perfil.php");
         }
 
         function cerrar_sesion() {
-            window.location.assign("/MiRinconFavorito-CEyTW/index_.php");
+            /* AQUI HAY QUE BORRAR SESIONES, COOKIES Y TODO TODITO TODO */
+            document.getElementById("botoncerrar").href = "../index_.php";
+            window.location.assign("../index_.php");
         }
     </script>
 
@@ -60,9 +67,9 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
-        <a class="navbar-brand" onClick="index()">
+        <a class="navbar-brand" id="logo" href="../index_.php" onClick="index()">
             <img src="../imagenes/logo_recortado.png" width="67" height="67"></img>
-            <a class="h2" style="color:white;" onClick="index()">Mi Rincón Favorito</a>
+            <a class="h2" id="logo" href="../index_.php" style="color:white;" onClick="index()">Mi Rincón Favorito</a>
             </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -75,14 +82,13 @@
 
             
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
         
         
       
             <ul class="navbar-nav">
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link d-flex align-items-center" id="dropdown01" onClick="carrito()">Carrito&nbsp;
+                    <a class="nav-link d-flex align-items-center" id="botoncarrito" href="../carrito.php" onClick="carrito()">Carrito&nbsp;
                         <div id="cantidadcarrito"></div>
                         <span id="cantidadcarritospan" class="badge badge-light">0</span>
                     </a>
@@ -94,10 +100,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Usuario&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" onClick="registrarse()">Registrarse</a>
-                        <a class="dropdown-item" onClick="iniciar_sesion()">Iniciar sesión</a>
-                        <a class="dropdown-item" onClick="mi_perfil()">Mi perfil</a>
-                        <a class="dropdown-item" onClick="cerrar_sesion()">Cerrar sesión</a>
+                        <a class="dropdown-item" id="botonregistrarse" href="registrarse.php" onClick="registrarse()">Registrarse</a>
+                        <a class="dropdown-item" id="botonentrar" href="entrar.php" onClick="iniciar_sesion()">Iniciar sesión</a>
+                        <a class="dropdown-item" id="botonperfil" href="perfil.php" onClick="mi_perfil()">Mi perfil</a>
+                        <a class="dropdown-item" id="botoncerrar" href="index_.php" onClick="cerrar_sesion()">Cerrar sesión</a>
                     </div>
                 </li>
             </ul>

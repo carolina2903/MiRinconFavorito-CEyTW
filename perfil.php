@@ -25,11 +25,27 @@ require 'conexionPDO.php';
 
     <?php require 'estaticos/jumbotron.php'; ?>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-        function detailspedido() {
-            window.location.assign("pedido.php");
-        }
+        $(document).ready(function() {
+            $(".boton").click(function() {
+                var idpedido = "";
+                // Obtenemos el id del pedido <td> de la fila
+                // seleccionada
+                $(this).parents("tr").find(".id").each(function() {
+                    idpedido = $(this).html();
+
+                });
+                console.log(idpedido);
+
+                /* Lo metemos en el enlace */
+                document.getElementById("botondetalles").href = "pedido.php?idpedido=" + idpedido;
+                // window.sessionStorage.setItem("idpedido", idpedido);
+                window.location.assign("pedido.php?idpedido=" + idpedido);
+
+            })
+        });
     </script>
 
     <br><br>
@@ -76,8 +92,8 @@ require 'conexionPDO.php';
     ?>
 
     <?php
-    while ($pedido = $resultado2->fetch(PDO::FETCH_ASSOC)) {
-        echo '<table class="table">
+
+    echo '<table class="table">
         <thead>
             <tr>
                 <th scope="col">ID PEDIDO</th>
@@ -87,20 +103,24 @@ require 'conexionPDO.php';
                 <th scope="col">ESTADO</th>
                 <th scope="col"></th>
             </tr>
-        </thead>
-        <tbody>';
-        echo '<td>' . $pedido['id_pedido'] . '</td>';
+        </thead>';
+    while ($pedido = $resultado2->fetch(PDO::FETCH_ASSOC)) {
+        echo '<tr><tbody>';
+        echo '<td class="id">' . $pedido['id_pedido'] . '</td>';
         echo '<td>' . $pedido['tipo_envio'] . '</td>';
         echo '<td>' . $pedido['precio_total'] . '</td>';
         echo '<td>' . $pedido['fecha_compra'] . '</td>';
         echo '<td>' . $pedido['estado'] . '</td>';
-        echo '<td><button onClick="detailspedido()" style="float:left;height:25px;width:60px;margin-top:0px;background-color:#44989b;color:black;font-size:small;">Details</button></td>';
-        echo '</tbody></table>';
+        echo '<td><button class="boton" id="botondetalles" href="pedido.php?idpedido=0" target="_self" style="float:left;height:25px;width:60px;margin-top:0px;background-color:#44989b;color:black;font-size:small;">Detalles</button></td>';
+        echo '</tr></tbody>';
     }
+    echo  "</table>";
+
+
     ?>
 
 
-    <br><br><br><br><br>
+    <br><br><br><br>
 
     <?php require 'estaticos/footer.php'; ?>
 

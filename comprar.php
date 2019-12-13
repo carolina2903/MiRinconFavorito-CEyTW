@@ -430,6 +430,12 @@ if ($_SESSION["carrito"] != NULL) {
                                                 }
 
                                                 echo "</tr>";
+                                                echo "<div class='form-check'>";
+                                                echo "<input class='form-check-input' type='checkbox' value='' id='defaultCheck1'>";
+                                                echo "<label class='form-check-label' for='defaultCheck1'>Default checkbox";
+                                                
+                                                echo "</label>";
+                                                echo "</div>";
                                                 $precio_carrito += $precio;
                                             }
                                         }

@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+<?php
+session_start();
+require 'conexionPDO.php';
+?>
+
+
+>>>>>>> 480daaf4fe1eee39035aa5e0efde5c3a31194a32
 <!DOCTYPE html>
 <html lang="es">
 
