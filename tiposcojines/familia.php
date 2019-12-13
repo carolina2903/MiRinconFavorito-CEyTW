@@ -144,7 +144,6 @@ echo "<br><br>";
 
 
 
-        <?php require '../estaticos/footer.php'; ?>
 
 </body>
 
@@ -243,5 +242,5 @@ if (isset($_POST['nombrefamiliar_1'])) {
     echo "<br><br><br><br><br><br>";
 }
 
-
+require '../estaticos/footer.php';
 ?>

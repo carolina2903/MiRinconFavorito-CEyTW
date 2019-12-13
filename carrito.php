@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-=======
 <?php
 session_start();
-require 'conexionPDO.php';
 ?>
-
-
->>>>>>> 480daaf4fe1eee39035aa5e0efde5c3a31194a32
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,11 +31,11 @@ require 'conexionPDO.php';
     <script>
         function comprar() {
             window.location.assign("comprar.php");
+            
         }
     </script>
 
 
-    <?php require 'estaticos/footer.php'; ?>
 
 
 </body>
@@ -54,6 +48,20 @@ require 'conexionPDO.php';
 if (isset($_POST['vaciarcarritobutton'])) {
     $_SESSION["carrito"] = array();
     $_SESSION["familiares"] = array();
+
+}
+
+
+if (isset($_POST['comprarbutton'])) {
+    
+    if(count($_SESSION["carrito"])>0){
+        echo "<script>window.location.assign('comprar.php');</script>";
+
+    }
+    else{
+        echo "<div class='alert alert-info' style='width:15%;'>El carrito está vacío</div>";
+
+    }
 
 }
 //if(isset($_SESSION["carrito"])){ 
@@ -314,18 +322,24 @@ if ($_SESSION["carrito"] != NULL) {
                                         echo "<form method='post'>";
 
                                         echo "<button type='submit' class='btn btn-danger' style='float: right; text:center;'  name='vaciarcarritobutton' value='Vaciar carrito' /> Vaciar carrito</button>";
+                                        echo "<button type='submit' class='btn btn-info' style='float: right; text:center;'  name='comprarbutton' value='Comprar' />Comprar</button>";
+
                                         echo "</form>";
 
                                         echo "&nbsp;";
-                                        echo "<button id='cart-purchase' onClick='comprar()' class='btn btn-info' role='button' style='float: right;'>Comprar</button>";
+/*                                         echo "<button id='cart-purchase' class='btn btn-info' role='button' onClick='comprar()' style='float: right;'>Comprar</button>";
+ */                                        
+                                        
                                         echo "<br><br><br><br>";
 
 
                                         echo "<br><br><br>";
 
-                                        echo "}";
+                                  
 
 
 
 
                                         ?>
+
+<?php require 'estaticos/footer.php'; ?>

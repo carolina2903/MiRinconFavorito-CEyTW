@@ -137,7 +137,6 @@ echo "<br><br>";
 
 
 
-            <?php require '../estaticos/footer.php'; ?>
 </body>
 
 </html>
@@ -216,5 +215,5 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha'])) && (i
     echo "<br><br><br><br><br><br>";
 }
 
-
+require '../estaticos/footer.php';
 ?>

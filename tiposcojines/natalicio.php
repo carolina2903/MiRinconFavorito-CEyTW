@@ -142,7 +142,6 @@ echo "<br>";
 
                 <br><br><br>
 
-                <?php require '../estaticos/footer.php'; ?>
 </body>
 
 </html>
@@ -215,5 +214,5 @@ if (isset($_POST['nombrebebe']) && (isset($_POST['fechanacimiento'])) && (isset(
     echo "<br><br><br><br><br><br>";
 }
 
-
+require '../estaticos/footer.php';
 ?>

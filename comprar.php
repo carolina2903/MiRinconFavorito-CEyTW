@@ -1,9 +1,11 @@
 <?php
-require 'conexionPDO.php';
+session_start();
 
+require 'conexionPDO.php';
 require 'ClaseCarrito.php';
-$carrito = new carrito();
-$carrito->__construct();
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -185,7 +187,7 @@ $carrito->__construct();
 
 
             <br>
-            
+
 
             </table>
 
@@ -196,7 +198,6 @@ $carrito->__construct();
     </div>
 
 
-    <?php require 'estaticos/footer.php'; ?>
 
 
 </body>
@@ -204,10 +205,11 @@ $carrito->__construct();
 </html>
 <?php
 //session_start();
-if (isset($_POST['vaciarcarritobutton'])) {
-    $_SESSION["carrito"] = array();
-}
 
+if(isset($_POST['terminosycondiciones'])){
+    $carrito = new carrito();
+    $carrito->__construct();
+}
 echo "<hr>";
 
 echo "<div class='container'>";
@@ -430,12 +432,7 @@ if ($_SESSION["carrito"] != NULL) {
                                                 }
 
                                                 echo "</tr>";
-                                                echo "<div class='form-check'>";
-                                                echo "<input class='form-check-input' type='checkbox' value='' id='defaultCheck1'>";
-                                                echo "<label class='form-check-label' for='defaultCheck1'>Default checkbox";
-                                                
-                                                echo "</label>";
-                                                echo "</div>";
+
                                                 $precio_carrito += $precio;
                                             }
                                         }
@@ -460,12 +457,17 @@ if ($_SESSION["carrito"] != NULL) {
                                         echo "</div>";
                                         echo "</div>";
                                         echo "<hr>";
+                                        echo "<form method='post'>";
 
+                                        echo "<div class='form-check'>";
+                                        echo "<input class='form-check-input' type='checkbox' value='' name='terminosycondiciones' id='terminosycondiciones'>";
+                                        echo "<label class='form-check-label' for='defaultCheck1'>He leído y acepto los <a href='estaticos/terminos-y-condiciones.php'>Términos y Condiciones</a>";
 
-                                        /* echo "&nbsp;";
-                                echo "<div class='form-check'>";
-                                echo "<a onClick='validar()' class='btn btn-info' style='float: right;' role='button'>Finalizar compra</a>";
-                                echo "</div>"; */
+                                        echo "</label>";
+                                        echo "</div>";
+                                        echo "</form>";
+                                        echo "<br><br><br>";
+
 
 
                                         for ($i = 0; $i < count($_SESSION["carrito"]); ++$i) {
@@ -482,3 +484,4 @@ if ($_SESSION["carrito"] != NULL) {
                                         //    echo "El carrito está vacío.";
                                         //}
                                         ?>
+                                            <?php require 'estaticos/footer.php'; ?>

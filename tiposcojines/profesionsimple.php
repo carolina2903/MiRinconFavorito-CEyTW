@@ -107,7 +107,6 @@ echo "<br><br>";
 
             <br><br><br><br>
 
-            <?php require '../estaticos/footer.php'; ?>
 
 </body>
 
@@ -176,5 +175,5 @@ if (isset($_POST['nombre_apellido']) && isset($_POST['profesion'])) {
     echo "<br><br><br><br><br><br>";
 }
 
-
+require '../estaticos/footer.php';
 ?>

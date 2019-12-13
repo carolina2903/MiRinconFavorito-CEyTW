@@ -88,11 +88,9 @@ echo "<br><br>";
 
                 </form>
 
-            
 
 
 
-        <?php require '../estaticos/footer.php'; ?>
 
 </body>
 
@@ -178,6 +176,6 @@ if (isset($_POST['genero_seleccionado'])) {
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
 }
-
+require '../estaticos/footer.php';
 
 ?>

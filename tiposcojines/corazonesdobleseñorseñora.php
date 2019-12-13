@@ -135,7 +135,7 @@ echo "<br><br>";
             </div>
         </div>
     </div>
-    
+
 
     </form>
 
@@ -143,7 +143,6 @@ echo "<br><br>";
 
     <br><br><br>
 
-    <?php require '../estaticos/footer.php'; ?>
 </body>
 
 </html>
@@ -196,18 +195,6 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
         $fecha = NULL;
 
 
-    //añadimos (temporalmente, si el pedido no se realiza, se eliminará de la cookie y base de datos)
-    /*
-    $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
-    $sentencia = $conexionPDO->prepare($cojin_temporal);
-    $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
-
-    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
-    $sentencia = $conexionPDO->prepare($cojin_temporal);
-    $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
-    */
-
-
 
     if (!isset($_SESSION["carrito"])) {
         $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 1, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Corazón Dobles Sr Sra", 'cantidad' => 1, 'srsraizquierda' => $srsraizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
@@ -216,10 +203,9 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
 
 
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
-    //echo "<script>alert('¡Su producto se ha añadido al carrito!');</script>";
     echo "<br><br><br><br><br><br>";
 }
 
 
-
+require '../estaticos/footer.php';
 ?>
