@@ -18,56 +18,96 @@ require 'conexionPDO.php';
 
 <body>
 
-    
-    <?php require 'estaticos/nav.php' ;?>
+
+    <?php require 'estaticos/nav.php'; ?>
 
     <br><br><br>
-    
-    <?php require 'estaticos/jumbotron.php' ;?>
 
-    <h3 class="text-left"><b>
-            <!-- {{order.number}} --></b> </h3>
+    <?php require 'estaticos/jumbotron.php'; ?>
+
+
+
+
+
+    <?php
+
+    $idpedido = $_GET['idpedido']; /* Coger el idpedido por get del link */
+
+    $sql_select = "SELECT * FROM pedido WHERE id_pedido='" . $idpedido . "'";
+    $resultado_select = $conexionPDO->query($sql_select);
+    $pedido = $resultado_select->fetch(PDO::FETCH_ASSOC);
+
+    ?>
+
+
+    <h3 class="text-left">
+        <b>Pedido número:</b>&nbsp;
+        <?php echo $pedido['id_pedido']; ?>
+    </h3>
+
     <hr />
     <div class="container">
         <div class="row">
-            <b>Fecha:</b>&nbsp;
-            <!-- <p>{{formatDate order.date}}</p> -->
+            <b>Tipo envío:</b>&nbsp;
+            <?php echo $pedido['tipo_envio']; ?>
         </div>
         <div class="row">
-            <b>Address:</b>&nbsp;
-            <!-- <p>{{order.address}}</p> -->
+            <b>Cupón:</b>&nbsp;
+            <?php echo $pedido['cupon']; ?>
         </div>
         <div class="row">
-            <b>Número de tarjeta:</b>&nbsp;
-            <!-- <p>{{order.cardNumber}}</p> -->
+            <b>Precio total:</b>&nbsp;
+            <?php echo $pedido['precio_total']; ?>
         </div>
         <div class="row">
-            <b>Nombre del propietario de tarjeta:</b>&nbsp;
-            <!-- <p>{{order.cardHolder}}</p> -->
+            <b>Fecha compra:</b>&nbsp;
+            <?php echo $pedido['fecha_compra']; ?>
+        </div>
+        <div class="row">
+            <b>Anotaciones:</b>&nbsp;
+            <?php echo $pedido['anotaciones']; ?>
+        </div>
+        <div class="row">
+            <b>Estado:</b>&nbsp;
+            <?php echo $pedido['estado']; ?>
         </div>
     </div>
 
+
+    <!-- PARA LOS PRODUCTOS DEL PEDIDO SELECCIONADO -->
     <hr />
     <br>
     <h3 class="text-left"> <b>Productos</b> </h3>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--  {{#each order.orderItems}}
-                {{> purchase-item-partial this }}
-                {{/each}} -->
+    <?php
+    $sql = "SELECT * FROM producto WHERE id_producto= (SELECT id_producto FROM linea_producto WHERE id_pedido = '" . $idpedido . "')";
+    $resultado2 = $conexionPDO->query($sql);
+    ?>
 
-        </tbody>
-    </table>
-    <br>
+    <?php
+    echo '<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID PRODUCTO</th>
+            <th scope="col">ID TIPO PRODUCTO</th>
+            <th scope="col">PRECIO UNIDAD</th>
+            <th scope="col">TAMAÑO</th>
+        </tr>
+    </thead>';
+    while ($productospedido = $resultado2->fetch(PDO::FETCH_ASSOC)) {
 
+        echo '<tr><tbody>';
+        echo '<td>' . $productospedido['id_producto'] . '</td>';
+        echo '<td>' . $productospedido['id_tipo_producto'] . '</td>';
+        echo '<td>' . $productospedido['precio_unidad'] . '</td>';
+        echo '<td>' . $productospedido['tamaño'] . '</td>';
+        echo '</tr></tbody>';
+    }
+    echo '</table>';
+    ?>
+
+
+    <br><br><br>
     <div class="container">
         <div class="row">
             <b>Subtotal:</b>&nbsp;
@@ -83,13 +123,11 @@ require 'conexionPDO.php';
         </div>
     </div>
 
-    <br><br>
+    <br><br><br><br><br>
 
-    <br><br><br>
-    
-    <?php include 'estaticos/footer.php' ;?>
+    <?php include 'estaticos/footer.php'; ?>
 
-    
+
 </body>
 
 </html>

@@ -38,6 +38,29 @@ require 'conexionPDO.php';
             document.getElementById('cambiarestado').style.display = 'block';
         }
         
+    <?php require 'estaticos/jumbotron.php'; ?>
+
+    <!-- JAVASCRIPT JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".boton").click(function() {
+                var idpedido = "";
+                // Obtenemos el id del pedido <td> de la fila
+                // seleccionada
+                $(this).parents("tr").find(".id").each(function() {
+                    idpedido = $(this).html();
+
+                });
+                console.log(idpedido);
+
+                /* Lo metemos en el enlace */
+                document.getElementById("botondetalles").href = "pedido.php?idpedido=" + idpedido;
+                // window.sessionStorage.setItem("idpedido", idpedido);
+                window.location.assign("pedido.php?idpedido=" + idpedido);
+
+            })
+        });
     </script>
 
     <br><br>
@@ -283,13 +306,12 @@ require 'conexionPDO.php';
             
 
         }//if ADMIN 
+    }
     ?>
-    <?php
-        
-    }//if Final
-    ?>
+   
 
-    <br><br><br><br><br>
+    
+    <br><br><br><br>
 
     <?php require 'estaticos/footer.php';
         $sql==NULL;
