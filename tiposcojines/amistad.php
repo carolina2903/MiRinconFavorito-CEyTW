@@ -1,5 +1,7 @@
 <?php
 session_start();
+echo "<br><br>";
+
 ?>
 
 <!DOCTYPE html>
@@ -61,13 +63,14 @@ session_start();
             <div class="col-sm-8">
 
                 <div class="mb-3">
-                    <h3 class="card-title">Cojín Amistad</h3>
-                    <h5>13€</h5>
+                    <h3 class="card-title"><b>Cojín Amistad</b></h3>
+                    <h5>14,00€</h5>
                     <h6>Cojín personalizado para ese amigo o amiga que tanto se lo merece.</h6>
                     <h7>Selecciona si quieres que el cojín diga “amigas” o “amigos”: </h7>
                 </div>
 
                 <form action="amistad.php" method="post">
+                    <h6><b>Género:</b></h6>
 
                     <p>Mujer (amigas) / Hombre (amigos)</p>
 
@@ -81,16 +84,13 @@ session_start();
 
                     <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
 
-                    <br><br>
+                    <br><br><br><br><br>
 
                 </form>
 
-            </div>
-        </div>
 
 
 
-        <?php require '../estaticos/footer.php'; ?>
 
 </body>
 
@@ -165,17 +165,17 @@ if (isset($_POST['genero_seleccionado'])) {
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero, 'precio_unidad' => 13, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero, 'precio_unidad' => 14.00, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
     } else {
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero,  'precio_unidad' => 13, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero,  'precio_unidad' => 14.00, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
     }
 
 
     //print_r ($_SESSION["carrito"]);
 
-    echo "¡Su producto se ha añadido al carrito!";
+    echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
 }
-
+require '../estaticos/footer.php';
 
 ?>

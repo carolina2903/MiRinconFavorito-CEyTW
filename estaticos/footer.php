@@ -14,7 +14,7 @@
 
 <body>
 
-    <footer class="bg-light border-0">
+    <footer class="bg-light border-0" style="left:0px;bottom:0px;">
         <div class="container-fluid">
             <div class="row">
             <table>

@@ -1,5 +1,7 @@
 <?php
 session_start();
+echo "<br>";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,124 +22,126 @@ session_start();
     <br><br><br>
 
     <script>
-function anadir_carro() {
+        function anadir_carro() {
             //window.location.assign("natalicio.php");
             window.onAlert("¡Se ha añadido al carrito");
         }
-</script>
+    </script>
 
     <div class="container">
         <div class="row">
 
 
             <div class="col-sm-4">
-                        <div class="card-price" font-size="1">
-                            
+                <div class="card-price" font-size="1">
+
                     <img class="card-img-top" src="../imagenes/cojinbebe2.JPG" alt="Imagen cojínes de corazón sr/sra.">
                     <div class="card-body">
-                        
-                        </div>
+
                     </div>
+                </div>
             </div>
 
             <div class="col-sm-8">
                 <div class="mb-3">
-                <h3 class="card-title">Cojín nacimiento bebés</h3>
-                <h5>13,00€</h5>
-                <h6>Cojín personalizado para celebrar y recordar el nacimiento de los más peques.</h6>
-                <h7>Rellena los datos necesarios para la creación del cojín: </h7>
+                    <h3 class="card-title"><b>Cojín nacimiento bebés</b></h3>
+                    <h5>13,00€</h5>
+                    <h6>Cojín personalizado para celebrar y recordar el nacimiento de los más peques.</h6>
+                    <h7>Rellena los datos necesarios para la creación del cojín: </h7>
                 </div>
 
-    <form action="natalicio.php" method="post">
+                <form action="natalicio.php" method="post">
 
 
-        <td colspan="10" >
-            <div class="form-group" >
-                <p>Nombre:</p>
-                <input type="text" class="form-control" name="nombrebebe" required="required">
-            </div>
-            <div class="form-group">
-                <p>Hora de nacimiento:</p>
-                <input type="text" class="form-control" name="horanacimiento" required="required" placeholder="20:30">
-            </div>
-            <div class="form-group">
-                <p>Fecha</p>
-                <input type="date" id="fechanacimiento" class="form-control " name="fechanacimiento" required="required" value="12/12/1998" />
-            </div>
-            <div class="form-group">
-                <p>Peso:</p>
-                <input type="text" class="form-control" name="peso" required="required" placeholder="3.5kg">
-            </div>
-            <div class="form-group">
-                <p>Altura:</p>
-                <input type="text" class="form-control" name="altura" required="required" placeholder="51cm">
-            </div><br>
+                    <td colspan="10">
+                        <div class="form-group">
+                            <h6><b>Nombre:</b></h6>
+                            <input type="text" class="form-control" name="nombrebebe" required="required">
+                        </div>
+                        <div class="form-group">
+                            <h6><b>Hora de nacimiento:</b></h6>
+                            <input type="text" class="form-control" name="horanacimiento" required="required" placeholder="20:30">
+                        </div>
+                        <div class="form-group">
+                            <h6><b>Fecha</b></h6>
+                            <input type="date" id="fechanacimiento" class="form-control " name="fechanacimiento" required="required" value="12/12/1998" />
+                        </div>
+                        <div class="form-group">
+                            <h6><b>Peso:</b></h6>
+                            <input type="text" class="form-control" name="peso" required="required" placeholder="3.5kg">
+                        </div>
+                        <div class="form-group">
+                            <h6><b>Altura:</b></h6>
+                            <input type="text" class="form-control" name="altura" required="required" placeholder="51cm">
+                        </div>
 
-            <div class="wcpa_form_item wcpa_type_select  form-control_parent">
-                <label for="colorprimario">Color primario</label>
-                <select name="colorprimario" class="form-control " required="required">
-                    <option value="Azul claro">Azul claro</option>
-                    <option value="Azul cielo">Azul cielo</option>
-                    <option value="Azul turquesa">Azul turquesa</option>
-                    <option value="Lila">Lila</option>
-                    <option value="Violeta">Violeta</option>
-                    <option value="Rosa">Rosa</option>
-                    <option value="Rosa claro">Rosa claro</option>
-                    <option value="Coral">Coral</option>
-                    <option value="Rojo">Rojo</option>
-                    <option value="Rojo vino">Rojo vino</option>
-                    <option value="Naranja">Naranja</option>
-                    <option value="Amarillo">Amarillo</option>
-                    <option value="Verde">Verde</option>
-                    <option value="Verde esmeralda">Verde esmeralda</option>
-                    <option value="Gris">Gris</option>
-                </select>
-                <div class="select_arrow"></div>
-            </div>
-            <br>
-            <div class="wcpa_form_item wcpa_type_select  form-control_parent">
-                <label for="colorsecundario">Color secundario</label>
-                <div class="select">
-                <select name="colorsecundario" class="form-control " required="required">
-                        <option value="Azul claro">Azul claro</option>
-                        <option value="Azul cielo" selected="selected">Azul cielo</option>
-                        <option value="Azul turquesa">Azul turquesa</option>
-                        <option value="Lila">Lila</option>
-                        <option value="Violeta">Violeta</option>
-                        <option value="Rosa">Rosa</option>
-                        <option value="Rosa claro">Rosa claro</option>
-                        <option value="Coral">Coral</option>
-                        <option value="Rojo">Rojo</option>
-                        <option value="Rojo vino">Rojo vino</option>
-                        <option value="Naranja">Naranja</option>
-                        <option value="Amarillo">Amarillo</option>
-                        <option value="Verde">Verde</option>
-                        <option value="Verde esmeralda">Verde esmeralda</option>
-                        <option value="Gris">Gris</option>
-                    </select>
-                    <div class="select_arrow"></div>
-                </div>
-                <div class="form-check">
-                <br>
-                <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+                        <div class="wcpa_form_item wcpa_type_select  form-control_parent">
+                            <label for="colorprimario">
+                                <h6><b>Color primario</b></h6>
+                            </label>
+                            <select name="colorprimario" class="form-control " required="required">
+                                <option value="Azul claro">Azul claro</option>
+                                <option value="Azul cielo">Azul cielo</option>
+                                <option value="Azul turquesa">Azul turquesa</option>
+                                <option value="Lila">Lila</option>
+                                <option value="Violeta">Violeta</option>
+                                <option value="Rosa">Rosa</option>
+                                <option value="Rosa claro">Rosa claro</option>
+                                <option value="Coral">Coral</option>
+                                <option value="Rojo">Rojo</option>
+                                <option value="Rojo vino">Rojo vino</option>
+                                <option value="Naranja">Naranja</option>
+                                <option value="Amarillo">Amarillo</option>
+                                <option value="Verde">Verde</option>
+                                <option value="Verde esmeralda">Verde esmeralda</option>
+                                <option value="Gris">Gris</option>
+                            </select>
+                            <div class="select_arrow"></div>
+                        </div>
+                        <br>
+                        <div class="wcpa_form_item wcpa_type_select  form-control_parent">
+                            <label for="colorsecundario">
+                                <h6><b>Color secundario</b></h6>
+                            </label>
+                            <div class="select">
+                                <select name="colorsecundario" class="form-control " required="required">
+                                    <option value="Azul claro">Azul claro</option>
+                                    <option value="Azul cielo" selected="selected">Azul cielo</option>
+                                    <option value="Azul turquesa">Azul turquesa</option>
+                                    <option value="Lila">Lila</option>
+                                    <option value="Violeta">Violeta</option>
+                                    <option value="Rosa">Rosa</option>
+                                    <option value="Rosa claro">Rosa claro</option>
+                                    <option value="Coral">Coral</option>
+                                    <option value="Rojo">Rojo</option>
+                                    <option value="Rojo vino">Rojo vino</option>
+                                    <option value="Naranja">Naranja</option>
+                                    <option value="Amarillo">Amarillo</option>
+                                    <option value="Verde">Verde</option>
+                                    <option value="Verde esmeralda">Verde esmeralda</option>
+                                    <option value="Gris">Gris</option>
+                                </select>
+                                <div class="select_arrow"></div>
+                            </div>
+                            <div class="form-check">
+                                <br>
+                                <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
 
 
-    </div><br><br>
-            </div>
-    </div>
+                            </div><br><br>
+                        </div>
 
-    <br><br><br>
-    
+                        <br><br><br>
 
-</td>
-</table>
-    </form>
 
-    </div> <br><br><br><br><br><br><br>
+                    </td>
+                    </table>
+                </form>
 
-    <br><br><br>
 
-    <?php require '../estaticos/footer.php'; ?>
+
+                <br><br><br>
+
 </body>
 
 </html>
@@ -148,7 +152,7 @@ require '../conexionPDO.php';
 
 
 //si se ha seleccionado la opcion genero
-if (isset($_POST['nombrebebe'])&&(isset($_POST['fechanacimiento'])) &&(isset($_POST['horanacimiento'])) &&(isset($_POST['peso']))&&(isset($_POST['altura']))){
+if (isset($_POST['nombrebebe']) && (isset($_POST['fechanacimiento'])) && (isset($_POST['horanacimiento'])) && (isset($_POST['peso'])) && (isset($_POST['altura']))) {
 
     //vemos cuantos productos de este tipo hay para crear el id
     $sql = "SELECT * FROM producto";
@@ -169,13 +173,13 @@ if (isset($_POST['nombrebebe'])&&(isset($_POST['fechanacimiento'])) &&(isset($_P
                 $numeroproductos++;
             }
         }
-        /* No rows matched -- do something else */ 
+        /* No rows matched -- do something else */
     }
 
 
     //creamos el id_producto
-    $numero_id=(string)($numeroproductos+1);
-    $id_producto_creado = "pr".$numero_id;
+    $numero_id = (string) ($numeroproductos + 1);
+    $id_producto_creado = "pr" . $numero_id;
 
     //recogemos la opcion seleccionada
     $nombrebebe = $_POST['nombrebebe'];
@@ -197,19 +201,18 @@ if (isset($_POST['nombrebebe'])&&(isset($_POST['fechanacimiento'])) &&(isset($_P
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
 
-    
+
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>6, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Nacimiento Bebé", 'cantidad'=>1, 'nombrebebe'=>$nombrebebe, 'fechanacimiento'=>$fechanacimiento, 'horanacimiento'=>$horanacimiento, 'peso'=>$peso, 'altura'=> $altura);
-    }else 
-        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>6, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Nacimiento Bebé", 'cantidad'=>1, 'nombrebebe'=>$nombrebebe, 'fechanacimiento'=>$fechanacimiento, 'horanacimiento'=>$horanacimiento, 'peso'=>$peso, 'altura'=> $altura);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 6, 'precio_unidad' => 14, 'tamaño' => "40x40", 'nombre' => "Cojín Nacimiento Bebé", 'cantidad' => 1, 'nombrebebe' => $nombrebebe, 'fechanacimiento' => $fechanacimiento, 'horanacimiento' => $horanacimiento, 'peso' => $peso, 'altura' => $altura, 'colorprimario' => $colorprimario, 'colorsecundario' => $colorsecundario);
+    } else
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 6, 'precio_unidad' => 14, 'tamaño' => "40x40", 'nombre' => "Cojín Nacimiento Bebé", 'cantidad' => 1, 'nombrebebe' => $nombrebebe, 'fechanacimiento' => $fechanacimiento, 'horanacimiento' => $horanacimiento, 'peso' => $peso, 'altura' => $altura, 'colorprimario' => $colorprimario, 'colorsecundario' => $colorsecundario);
 
-    
 
-    echo "¡Su producto se ha añadido al carrito!";
+
+    echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
-
 }
 
-
+require '../estaticos/footer.php';
 ?>
