@@ -31,27 +31,27 @@
         }
 
         function index() {
-            window.location.assign("/MiRinconFavorito-CEyTW/index_.php");
+            window.location.assign("../index_.php");
         }
 
         function carrito() {
-            window.location.assign("/MiRinconFavorito-CEyTW/carrito.php");
+            window.location.assign("../carrito.php");
         }
 
         function registrarse() {
-            window.location.assign("/MiRinconFavorito-CEyTW/registrarse.php");
+            window.location.assign("registrarse.php");
         }
 
         function iniciar_sesion() {
-            window.location.assign("/MiRinconFavorito-CEyTW/entrar.php");
+            window.location.assign("entrar.php");
         }
 
         function mi_perfil() {
-            window.location.assign("/MiRinconFavorito-CEyTW/perfil.php");
+            window.location.assign("../perfil.php");
         }
 
         function cerrar_sesion() {
-            window.location.assign("/MiRinconFavorito-CEyTW/index_.php");
+            window.location.assign("../index_.php");
         }
     </script>
 

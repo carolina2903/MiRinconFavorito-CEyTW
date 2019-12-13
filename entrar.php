@@ -72,8 +72,8 @@
         } else {
 
 
-             if (password_verify( $_POST['password'], $usuario_select['passwd'])) { 
-          //if ($_POST['password'] == $usuario_select['passwd']) { /* Si se ha encontrado usuario y su contraseña coincide con la introducida */
+            // if (password_verify( $_POST['password'], $usuario_select['passwd'])) { 
+          if ($_POST['password'] == $usuario_select['passwd']) { /* Si se ha encontrado usuario y su contraseña coincide con la introducida */
 
                 $_SESSION['email'] = $_POST["email"]; /* Guardamos la sesion del usuario */
 
