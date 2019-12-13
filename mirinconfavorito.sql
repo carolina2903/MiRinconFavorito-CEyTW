@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2019 a las 11:42:19
+-- Tiempo de generación: 13-12-2019 a las 16:55:05
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -34,7 +34,7 @@ CREATE TABLE `cliente` (
   `apellidos` varchar(40) NOT NULL,
   `telefono` varchar(12) NOT NULL,
   `email` varchar(35) NOT NULL,
-  `passwd` varchar(32) NOT NULL,
+  `passwd` varchar(255) NOT NULL,
   `id_direccion` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,11 +43,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellidos`, `telefono`, `email`, `passwd`, `id_direccion`) VALUES
-('cl1', 'Carmen', 'Moreno', '646263662', 'carmen98mi@gmail.com', 'cacita', 'dir1'),
-('cl2', 'Carmen María', 'Izquierdo', '693606438', 'carmen@gmail.com', 'carmen', ''),
-('cl3', 'test', 'test', '646545454', 'email1234@email.com', 'password', ''),
-('cl4', 'test', 'test', '666666666', 'email12345@email.com', 'password', ''),
-('cl5', 'Carmen María', 'Izquierdo', '693606438', 'carmen98i@gmail.com', 'password', '');
+('cl1', '', '', '646362558', 'mirinconfavoritotienda@gmail.com', '$2y$10$dtRsfJ4f3FAc14GDiXBRuOQQ5cc5qOInXsE2jJS/JGBJ308myHUG.', ''),
+('cl2', 'Cliente', 'Comercio Electrónico y Tecnologías Web', '666012345', 'cliente@email.com', '$2y$10$Jo.zeeP7RqSS00/lEl2LFO0P9g69wcqEu0OBpNbqe2mNwF/7f5uYe', ''),
+('cl3', 'Carolina', 'Ordoño López', '123123123', 'carolina@email.com', '$2y$10$N15uFwR8tBgerlRj/JV8uO89Z4ywomZOjMywnbrTlFTnnw0VimTV.', '');
 
 -- --------------------------------------------------------
 
@@ -289,6 +287,13 @@ CREATE TABLE `linea_producto` (
   `id_pedido` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `linea_producto`
+--
+
+INSERT INTO `linea_producto` (`id_producto`, `id_pedido`) VALUES
+('pr1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -324,7 +329,8 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id_pedido`, `id_cliente`, `tipo_envio`, `cupon`, `precio_total`, `fecha_compra`, `anotaciones`, `estado`) VALUES
-(1, 'cl1', '1', NULL, 22, '2019-11-14', '', 'Tramitado');
+(1, 'cl2', '1', NULL, 22, '2019-11-14', '', 'Tramitado'),
+(2, 'cl2', '1', NULL, 23, '2019-12-18', 'Ninguna', 'Enviado');
 
 -- --------------------------------------------------------
 
@@ -412,7 +418,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pedido` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
