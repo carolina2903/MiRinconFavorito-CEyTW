@@ -101,7 +101,7 @@ require 'conexionPDO.php';
 
     <?php
     if (isset($_SESSION['email'])) {
-        if ($_SESSION['email'] != "carmen98mi@gmail.com") {
+        if ($_SESSION['email'] != "mirinconfavoritotienda@gmail.com") {
             ?>
             <!-- PARA LOS PEDIDOS DEL CLIENTE LOGGEADO - !ADMIN-->
 
