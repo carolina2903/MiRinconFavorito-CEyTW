@@ -107,7 +107,8 @@ require 'conexionPDO.php';
             <h3 class="text-left"><b>Pedidos</b> </h3><br>
 
             <?php
-            $sql3 = "SELECT * FROM pedido WHERE id_cliente='" . $usuario['id_cliente'] . "'"; //sacar ID cliente para pedidos
+
+            $sql3 = "SELECT * FROM pedido  INNER JOIN envio ON pedido.tipo_envio = envio.id_envio WHERE id_cliente='" . $usuario['id_cliente'] . "'"; //sacar ID cliente para pedidos
             $resultado2 = $conexionPDO->query($sql3);
             
 
@@ -233,8 +234,8 @@ require 'conexionPDO.php';
                     $stmt= $conexionPDO->prepare($sql2[$i])->execute([$nuevoestado[$i], $ids[$i]]);
                     $sql==NULL;
                 }//for UPDATE
-            }else
-                echo "no ha cogido la sentencia";
+            }//else
+               // echo "no ha cogido la sentencia";
             //<?php
             //||isset($_POST['cambiarestadofinal'])
             if (!isset($_POST['cambiarestado'])){
@@ -243,8 +244,8 @@ require 'conexionPDO.php';
                 <button id="cambiarestado" style="float: right; width:200px;" class="btn btn-info" name="cambiarestado" type="submit">Cambiar estado</button>
                 </form>
                 <?php
-                $sql==NULL;
-                if (isset($_POST['filtro'])||$sql==NULL){
+                //$sql==NULL;
+                if (isset($_POST['filtro'])){
                     if ($_POST['filtro']=="fecha"){
                         //echo "filtrando por fecha...";
                         $sql = "SELECT * FROM pedido INNER JOIN envio ON pedido.tipo_envio = envio.id_envio ORDER BY pedido.fecha_compra"; //sacar ID cliente para pedidos
@@ -258,15 +259,11 @@ require 'conexionPDO.php';
                         $sql = "SELECT * FROM pedido INNER JOIN envio ON pedido.tipo_envio = envio.id_envio ORDER BY pedido.estado"; //sacar ID cliente para pedidos
                     }
                 }else {
-                    if($sql==NULL){
-                        //echo "hoy no se filtra.......es bromi, por fecha :3";
-                        $sql = "SELECT * FROM pedido INNER JOIN envio ON pedido.tipo_envio = envio.id_envio ORDER BY pedido.fecha_compra"; //sacar ID cliente para pedidos
-                    }else 
-                        $sql = "SELECT * FROM pedido INNER JOIN envio ON pedido.tipo_envio = envio.id_envio ORDER BY pedido.fecha_compra"; //sacar ID cliente para pedidos
+                    $sql = "SELECT * FROM pedido INNER JOIN envio ON pedido.tipo_envio = envio.id_envio ORDER BY pedido.fecha_compra"; //sacar ID cliente para pedidos
 
                 }//if FILTROS
                 
-                echo $sql;
+                //echo $sql;
                 $resultado = $conexionPDO->query($sql);
 
                 //cargamos tabla
