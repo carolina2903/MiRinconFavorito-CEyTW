@@ -50,58 +50,62 @@ require 'conexionPDO.php';
         <div class="row">
             <b>Tipo envío:</b>&nbsp;
             <?php echo $pedido['tipo_envio']; ?>
-        </div>
+        </div><br>
         <div class="row">
             <b>Cupón:</b>&nbsp;
             <?php echo $pedido['cupon']; ?>
-        </div>
+        </div><br>
         <div class="row">
             <b>Precio total:</b>&nbsp;
             <?php echo $pedido['precio_total']; ?>
-        </div>
+        </div><br>
         <div class="row">
             <b>Fecha compra:</b>&nbsp;
             <?php echo $pedido['fecha_compra']; ?>
-        </div>
+        </div><br>
         <div class="row">
             <b>Anotaciones:</b>&nbsp;
             <?php echo $pedido['anotaciones']; ?>
-        </div>
+        </div><br>
         <div class="row">
             <b>Estado:</b>&nbsp;
             <?php echo $pedido['estado']; ?>
-        </div>
+        </div><br>
     </div>
-
+    
+    <br><br>
 
     <!-- PARA LOS PRODUCTOS DEL PEDIDO SELECCIONADO -->
     <hr />
-    <br><br><br>
-    <h3 class="text-left"> <b>Productos</b> </h3>
+    <br><br>
+    <h3 class="text-left"> <b>Productos</b> </h3><br>
 
     <?php
     $sql = "SELECT * FROM producto WHERE id_producto IN (SELECT id_producto FROM linea_producto WHERE id_pedido = '" . $idpedido . "')";
     $resultado = $conexionPDO->query($sql);
     ?>
 
+
+    <div class="container-fluid">
+    <table class="table table-hover table-responsive">
+        <thead class="thead-light">
+            <tr class="text-center">
+                <th style="width: 200px;" scope="col">PRECIO UNIDAD</th>
+                <th style="width: 200px;" scope="col">TAMAÑO</th>
+                <th style="width: 300px;" scope="col" class="text-left">NOMBRE</th>
+                <th style="width: 200px;" scope="col"></th>  
+            </tr>
+        </thead>
+
     <?php
-    echo '<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">PRECIO UNIDAD</th>
-            <th scope="col">TAMAÑO</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>';
-    
+
     echo '<tbody>';
     
     while ($productospedido = $resultado->fetch(PDO::FETCH_ASSOC)) {
 
         echo '<tr>';
-        echo '<td>' . $productospedido['precio_unidad'] . '</td>';
-        echo '<td>' . $productospedido['tamaño'] . '</td>';
+        echo '<td class="text-center">' . $productospedido['precio_unidad'] . '</td>';
+        echo '<td class="text-center">' . $productospedido['tamaño'] . '</td>';
         
         switch ($productospedido['id_tipo_producto']) {
 
@@ -111,17 +115,15 @@ require 'conexionPDO.php';
                 $resultado1 = $conexionPDO->query($sql1);
                 $cojintipo1 = $resultado1->fetch(PDO::FETCH_ASSOC);
                 echo "<td>".$cojintipo1['nombre_tipo']."</td>";
-                echo "<td>";
+                echo "<td class='text-center'>";
                 ?>
-                    <!-- <div class='dropdown'> -->
-                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
-                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item"><b>Cojín Señor: </b><?php echo $cojintipo1["nombre_senor"];?></a>
-                            <a class="dropdown-item"><b>Cojín Señora:</b> <?php echo $cojintipo1["nombre_senora"];?></a>
-                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo1["fecha"]; ?></a>
-                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo1["tipo_letra"]; ?></a>
-                        </div>
-                    <!-- </div> -->
+                    <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                    <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item"><b>Cojín Señor: </b><?php echo $cojintipo1["nombre_senor"];?></a>
+                        <a class="dropdown-item"><b>Cojín Señora:</b> <?php echo $cojintipo1["nombre_senora"];?></a>
+                        <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo1["fecha"]; ?></a>
+                        <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo1["tipo_letra"]; ?></a>
+                    </div>
                 <?php
                 echo "</td></tr>";
             break;
@@ -329,6 +331,7 @@ require 'conexionPDO.php';
     } /* fin while */
     echo '</tbody>';
     echo '</table>';
+    echo '</div>';
     ?>
 
     <br><br><br>

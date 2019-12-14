@@ -111,7 +111,7 @@ require 'conexionPDO.php';
             ?>
 
             <?php
-            echo '<table class="table">
+            echo '<table class="table table-hover text-center" style="width=50%">
                 <thead>
                     <tr>
                         <th scope="col">ID PEDIDO</th>
@@ -173,7 +173,7 @@ require 'conexionPDO.php';
                         $resultado = $conexionPDO->query($sql4);
                         ?>
 
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">ID PEDIDO</th>
