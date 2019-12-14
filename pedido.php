@@ -76,55 +76,287 @@ require 'conexionPDO.php';
 
     <!-- PARA LOS PRODUCTOS DEL PEDIDO SELECCIONADO -->
     <hr />
-    <br>
+    <br><br><br>
     <h3 class="text-left"> <b>Productos</b> </h3>
 
     <?php
-    $sql = "SELECT * FROM producto WHERE id_producto= (SELECT id_producto FROM linea_producto WHERE id_pedido = '" . $idpedido . "')";
-    $resultado2 = $conexionPDO->query($sql);
+    $sql = "SELECT * FROM producto WHERE id_producto IN (SELECT id_producto FROM linea_producto WHERE id_pedido = '" . $idpedido . "')";
+    $resultado = $conexionPDO->query($sql);
     ?>
 
     <?php
     echo '<table class="table">
     <thead>
         <tr>
-            <th scope="col">ID PRODUCTO</th>
-            <th scope="col">ID TIPO PRODUCTO</th>
             <th scope="col">PRECIO UNIDAD</th>
             <th scope="col">TAMAÑO</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col"></th>
         </tr>
     </thead>';
-    while ($productospedido = $resultado2->fetch(PDO::FETCH_ASSOC)) {
+    
+    echo '<tbody>';
+    
+    while ($productospedido = $resultado->fetch(PDO::FETCH_ASSOC)) {
 
-        echo '<tr><tbody>';
-        echo '<td>' . $productospedido['id_producto'] . '</td>';
-        echo '<td>' . $productospedido['id_tipo_producto'] . '</td>';
+        echo '<tr>';
         echo '<td>' . $productospedido['precio_unidad'] . '</td>';
         echo '<td>' . $productospedido['tamaño'] . '</td>';
-        echo '</tr></tbody>';
-    }
+        
+        switch ($productospedido['id_tipo_producto']) {
+
+            /* CORAZON DOBLE SR/SRA */
+            case 1:    
+                $sql1 = "SELECT * FROM cojines_corazon_dobles_senor_senora WHERE id_producto='" . $productospedido['id_producto'] . "'";
+                $resultado1 = $conexionPDO->query($sql1);
+                $cojintipo1 = $resultado1->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo1['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <!-- <div class='dropdown'> -->
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Cojín Señor: </b><?php echo $cojintipo1["nombre_senor"];?></a>
+                            <a class="dropdown-item"><b>Cojín Señora:</b> <?php echo $cojintipo1["nombre_senora"];?></a>
+                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo1["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo1["tipo_letra"]; ?></a>
+                        </div>
+                    <!-- </div> -->
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* AMISTAD */
+            case 2:
+                $sql2 = "SELECT * FROM cojin_amistad WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado2 = $conexionPDO->query($sql2);
+                $cojintipo2 = $resultado2->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo2['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Género: </b><?php echo $cojintipo2["genero"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* CORAZONES DOBLE NORMAL */
+            case 3:
+                $sql3 = "SELECT * FROM cojin_corazones_dobles WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado3 = $conexionPDO->query($sql3);
+                $cojintipo3 = $resultado3->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo3['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Cojín izquierda:</b> <?php echo $cojintipo3["nombre_izquierda"]; ?></a>
+                            <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $cojintipo3["nombre_derecha"]; ?></a>
+                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo3["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo3["tipo_letra"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* DIBUJO INDIVIDUAL */
+            case 4:
+                $sql4 = "SELECT * FROM cojin_dibujo_individual WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado4 = $conexionPDO->query($sql4);
+                $cojintipo4 = $resultado4->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo4['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Dibujo: </b><?php echo $cojintipo4["dibujo"]; ?></a>
+                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo4["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo4["tipo_letra"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* FAMILIAR */
+            case 5:
+                $sql5 = "SELECT * FROM cojin_familia WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado5 = $conexionPDO->query($sql5);
+                $cojintipo5 = $resultado5->fetch(PDO::FETCH_ASSOC);
+
+                echo "<td>".$cojintipo5['nombre_tipo']."</td>";
+                echo "<td>";
+                $idinternocojin = $cojintipo5['idinterno'];
+
+                $sql5M = "SELECT * FROM miembro WHERE id_miembro IN (SELECT id_miembro FROM linea_miembro WHERE idinterno_cojin ='" . $idinternocojin . "')";
+                $resultado5M = $conexionPDO->query($sql5M);
+
+                $sql_numerofamiliares = "SELECT count(*) FROM miembro WHERE id_miembro IN (SELECT id_miembro FROM linea_miembro WHERE idinterno_cojin ='" . $idinternocojin . "')";
+                $resultado_numerofamiliares = $conexionPDO->query($sql_numerofamiliares);
+                $numerofamiliares=0;
+                while($numfamrow=$resultado_numerofamiliares->fetch(PDO::FETCH_ASSOC)){
+                    $numerofamiliares++;
+                }
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item"><b>Número de familiares: </b><?php echo $numerofamiliares; ?></a>
+                        <a class="dropdown-item"><b>FAMILIARES:</b></a>
+                            <?php
+                            while($cojintipo5M=$resultado5M->fetch(PDO::FETCH_ASSOC)){
+                            ?>
+                                <a class="dropdown-item">&nbsp &nbsp<?php echo $cojintipo5M['tipo_familiar'];?> --> <?php echo $cojintipo5M["nombre"]; ?> </a>
+                            <?php } ?>
+                            <a class="dropdown-item"><b>Información adicional: </b><?php echo $cojintipo5["informacion_adicional"]; ?></a>
+                        </div>
+                    </div>         
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* NATALICIO */
+            case 6:
+                $sql6 = "SELECT * FROM cojin_natalicio WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado6 = $conexionPDO->query($sql6);
+                $cojintipo6 = $resultado6->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo6['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Nombre bebé: </b><?php echo $cojintipo6["nombre"]; ?></a>
+                            <a class="dropdown-item"><b>Fecha nacimiento: </b><?php echo $cojintipo6["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Hora nacimiento: </b><?php echo $cojintipo6["hora"]; ?></a>
+                            <a class="dropdown-item"><b>Altura: </b><?php echo $cojintipo6["medida"]; ?></a>
+                            <a class="dropdown-item"><b>Peso: </b><?php echo $cojintipo6["peso"]; ?></a>
+                            <a class="dropdown-item"><b>Color primario: </b><?php echo $cojintipo6["color_primario"]; ?></a>
+                            <a class="dropdown-item"><b>Color secundario: </b><?php echo $cojintipo6["color_secundario"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* PROFESION DOBLE sr/sra */
+            case 7:
+                $sql7 = "SELECT * FROM cojin_profesion_doble_sr_sra WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado7 = $conexionPDO->query($sql7);
+                $cojintipo7 = $resultado7->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo7['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $cojintipo7["srsraizquierda"];
+                                echo "&nbsp";
+                                echo $cojintipo7["nombreizquierda"];
+                                echo " - " . $cojintipo7["profesionizquierda"]; ?></a>
+                            <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $cojintipo7["srsraderecha"];
+                                echo "&nbsp";
+                                echo $cojintipo7["nombrederecha"];
+                                echo " - " . $cojintipo7["profesionderecha"]; ?></a>
+                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo7["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo7["tipo_letra"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* PROFESIONES DOBLE */
+            case 8:
+                $sql8 = "SELECT * FROM cojin_profesion_doble WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado8 = $conexionPDO->query($sql8);
+                $cojintipo8 = $resultado8->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo8['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $cojintipo8["nombre_izquierda"];
+                                echo " - " . $cojintipo8["profesion_izquierda"]; ?></a>
+                            <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $cojintipo8["nombre_derecha"];
+                                echo " - " . $cojintipo8["profesion_derecha"];  ?></a>
+                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo8["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo8["tipo_letra"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+
+
+            /* PROFESION INDIVIDUAL */
+            case 9:
+                $sql9 = "SELECT * FROM cojin_profesion_individual WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $resultado9 = $conexionPDO->query($sql9);
+                $cojintipo9 = $resultado9->fetch(PDO::FETCH_ASSOC);
+                echo "<td>".$cojintipo9['nombre_tipo']."</td>";
+                echo "<td>";
+                ?>
+                    <div class='dropdown'>
+                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item"><b>Nombre: </b><?php echo $cojintipo9["nombre"]; ?></a>
+                            <a class="dropdown-item"><b>Profesión o hobby: </b><?php echo $cojintipo9["profesion"]; ?></a>
+                            <a class="dropdown-item"><b>Fecha: </b><?php echo $cojintipo9["fecha"]; ?></a>
+                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $cojintipo9["tipo_letra"]; ?></a>
+                        </div>
+                    </div>
+                <?php
+                echo "</td></tr>";
+            break;
+        } /* fin switch */
+       
+    } /* fin while */
+    echo '</tbody>';
     echo '</table>';
     ?>
 
-
     <br><br><br>
+
+
+    <!-- PRECIOS -->
+    <?php
+        $precio_total = $pedido['precio_total'];
+        $subtotal = $precio_total * 0.79;
+        $impuestos = $precio_total * 0.21;
+    ?>
     <div class="container">
         <div class="row">
             <b>Subtotal:</b>&nbsp;
-            <!-- <p>{{formatPrice order.subtotal}}</p> -->
+            <?php echo $subtotal; ?>
         </div>
         <div class="row">
             <b>Tax:</b>&nbsp;
-            <!-- <p>{{formatTax order.tax}}</p> -->
+            <?php echo $impuestos; ?>
         </div>
         <div class="row">
             <b>Total:</b>&nbsp;
-            <!-- <p>{{formatPrice order.total}}</p> -->
+            <?php echo $precio_total; ?>
         </div>
     </div>
 
-    <br><br><br><br><br>
 
+    <br><br><br><br><br>
     <?php include 'estaticos/footer.php'; ?>
 
 
