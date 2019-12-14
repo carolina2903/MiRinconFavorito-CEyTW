@@ -53,10 +53,7 @@ require 'conexionPDO.php';
             <br>
         </form>
         
-    </div> <br><br><br><br><br><br><br><br><br>
-
-
-    <?php require 'estaticos/footer.php'; ?>
+    </div> 
 
 
 </body>
@@ -90,32 +87,32 @@ if (isset($_POST['registrarse'])) {
     if (empty($nombre)) {
         array_push($errors, "El campo nombre no puede estar vacío");
         echo "<script>window.alert('El campo nombre no puede estar vacío')</script>";
-        echo "<div align='center' style='color:red'>El campo nombre no puede estar vacío</div>";
+        echo "<div align='left' style='color:red'>El campo nombre no puede estar vacío</div>";
     }
     if (empty($apellidos)) {
         array_push($errors, "El campo apellidos no puede estar vacío");
         echo "<script>window.alert('El campo apellidos no puede estar vacío')</script>";
-        echo "<div align='center' style='color:red'>El campo apellidos no puede estar vacío</div>";
+        echo "<div align='left' style='color:red'>El campo apellidos no puede estar vacío</div>";
     }
     if (empty($telefono)) {
         array_push($errors, "El campo telefono no puede estar vacío");
         echo "<script>window.alert('El campo telefono no puede estar vacío')</script>";
-        echo "<div align='center' style='color:red'>El campo telefono no puede estar vacío</div>";
+        echo "<div align='left' style='color:red'>El campo telefono no puede estar vacío</div>";
     }
     if (empty($email)) {
         array_push($errors, "El campo email no puede estar vacío");
         echo "<script>window.alert('El campo email no puede estar vacío')</script>";
-        echo "<div align='center' style='color:red'>El campo email no puede estar vacío</div>";
+        echo "<div align='left' style='color:red'>El campo email no puede estar vacío</div>";
     }
     if (empty($password1) || empty($password2)) {
         array_push($errors, "El campo password no puede estar vacío");
-        echo "<script>window.alert('El campo password no puede estar vacío')</script>";
-        echo "<div align='center' style='color:red'>El campo password no puede estar vacío</div>";
+        echo "<script>window.alert('Los campos password no pueden estar vacíos')</script>";
+        echo "<div align='left' style='color:red'>Los campos password no pueden estar vacíos</div>";
     }
     if ($password1 != $password2) { /* Comprobamos que las contraseñas coinciden */
         array_push($errors, "Las contraseñas no coinciden");
         echo "<script>window.alert('Las contraseñas no coinciden')</script>";
-        echo "<div align='center' style='color:red'>Las contraseñas no coinciden</div>";
+        echo "<div align='left' style='color:red'>Las contraseñas no coinciden</div>";
     }
 
     // first check the database to make sure 
@@ -126,8 +123,9 @@ if (isset($_POST['registrarse'])) {
     if ($user) { // if user exists
         if ($user['email'] === $email) {
             array_push($errors, "El email ya está en el sistema.");
-            echo "<script>window.alert('El email ya está registrado en el sistema')</script>";
-            echo "<div align='center' style='color:red'>El email ya está en el sistema</div>";
+            echo "<script>window.alert('El email ya está registrado en el sistema.')</script>";
+            echo "<div align='left' style='color:red'>El email ya está registrado en el sistema. Por favor, inicie sesión</div>";
+            echo "<div align='left'><a href='entrar.php'>Iniciar sesión</a></div>";
         }
     }
 
@@ -155,7 +153,6 @@ if (isset($_POST['registrarse'])) {
         $stmtPDO = $conexionPDO->prepare($sql);
         $stmtPDO->execute(array($id_cliente_creado, $nombre, $apellidos, $telefono, $email, $password));
         
-
        echo "<script language='javascript'> registrarse(); </script>";
     }
     
@@ -163,3 +160,7 @@ if (isset($_POST['registrarse'])) {
 
 
 ?>
+
+
+    <br><br><br><br><br><br><br><br><br>
+    <?php require 'estaticos/footer.php'; ?>

@@ -157,7 +157,7 @@ require 'conexionPDO.php';
                     <option value="estado">Estado</option>
                 </select>
 
-                <br><br><br>
+                <br>
             </form>
 
             <!--<form action="perfil.php" method="post">
@@ -239,15 +239,15 @@ require 'conexionPDO.php';
                                     $stmt = $conexionPDO->prepare($sql2[$i])->execute([$nuevoestado[$i], $ids[$i]]);
                                     $sql == NULL;
                                 } //for UPDATE
-                            } else
-                                echo "no ha cogido la sentencia";
+                            } 
+
                             //<?php
                             //||isset($_POST['cambiarestadofinal'])
                             if (!isset($_POST['cambiarestado'])) {
                                 ?>
                     <form method="POST" action="perfil.php">
-                        <button id="cambiarestado" style="float: right; width:200px;" class="btn btn-info" name="cambiarestado" type="submit">Cambiar estado</button>
-                    </form>
+                        <button id="cambiarestado" style="float: left; width:200px;" class="btn btn-info" name="cambiarestado" type="submit">Cambiar estado</button>
+                    </form><br><br><br><br><br>
                     <?php
                                 $sql == NULL;
                                 if (isset($_POST['filtro']) || $sql == NULL) {
@@ -270,7 +270,7 @@ require 'conexionPDO.php';
 
                                 } //if FILTROS
 
-                                echo $sql;
+                                // echo $sql;
                                 $resultado = $conexionPDO->query($sql);
 
                                 //cargamos tabla

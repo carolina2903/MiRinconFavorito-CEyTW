@@ -45,9 +45,6 @@
             </form>
         </div> <br><br><br><br><br><br><br>
 
-
-
-
     </body>
 
     </html>
@@ -69,14 +66,16 @@
             $iguales = password_verify($_POST['password'], $usuario_select['passwd']);
             if ($iguales) {
                 $_SESSION['email'] = $_POST["email"]; /* Guardamos la sesion del usuario */
-                echo 'dentro del if';
+            
                 /* Para establecer las cookies si se ha señalado checkbox recordar */
                 // if (isset($_POST['recordar']) && $_POST['recordar'] == '1') {
                 //     setcookie('usuariocookie', $_POST["usuario"], time() + (60 * 60 * 24 * 365));
                 //     setcookie('passwordcookie', $_POST["password"], time() + (60 * 60 * 24 * 365));
                 //     echo '<div class="alert alert-success">Cookie creada.</div>';
                 // }
+                
                 echo "<script language='javascript'> entrar(); </script>";
+                
             } else {
                 echo "<div align='center' style='color:red'>Contraseña incorrecta. <br>Por favor, vuelva a intentarlo.</div>";
                 echo '<br><br><br>';
@@ -84,4 +83,7 @@
         }
     }
     ?>
-            <?php require 'estaticos/footer.php'; ?>
+
+<br><br><br><br><br><br>
+    <?php require 'estaticos/footer.php'; ?>
+    
