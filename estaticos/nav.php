@@ -58,8 +58,8 @@
         function cerrar_sesion() {
             /* AQUI HAY QUE BORRAR SESIONES, COOKIES Y TODO TODITO TODO */
            
-            document.getElementById("botoncerrar").href = "index_.php";
-            window.location.assign("index_.php");
+            document.getElementById("botoncerrar").href = "cerrarsesion.php";
+            window.location.assign("cerrarsesion.php");
         }
     </script>
 
@@ -112,7 +112,7 @@
                         <a class="dropdown-item" id="botonregistrarse" href="registrarse.php" onClick="registrarse()">Registrarse</a>
                         <a class="dropdown-item" id="botonentrar" href="entrar.php" onClick="iniciar_sesion()">Iniciar sesión</a>
                         <a class="dropdown-item" id="botonperfil" href="perfil.php" onClick="mi_perfil()">Mi perfil</a>
-                        <a class="dropdown-item" id="botoncerrar" href="index_.php" onClick="cerrar_sesion()">Cerrar sesión</a>
+                        <a class="dropdown-item" id="botoncerrar" href="cerrarsesion.php" onClick="cerrar_sesion()">Cerrar sesión</a>
                     </div>
                 </li>
             </ul>
