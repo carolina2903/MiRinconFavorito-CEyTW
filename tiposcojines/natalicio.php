@@ -214,5 +214,5 @@ if (isset($_POST['nombrebebe']) && (isset($_POST['fechanacimiento'])) && (isset(
     echo "<br><br><br><br><br><br>";
 }
 
-require '../estaticos/footer.php';
+require '../estaticos/footertipocojines.php';
 ?>

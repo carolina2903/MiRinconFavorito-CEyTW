@@ -207,5 +207,5 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
 }
 
 
-require '../estaticos/footer.php';
+require '../estaticos/footertipocojines.php';
 ?>
