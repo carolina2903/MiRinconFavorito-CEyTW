@@ -90,7 +90,7 @@ require 'conexionPDO.php';
     <table class="table table-hover table-responsive">
         <thead class="thead-light">
             <tr class="text-center">
-                <th style="width: 200px;" scope="col">PRECIO UNIDAD</th>
+                <th style="width: 150px;" scope="col">PRECIO UNIDAD</th>
                 <th style="width: 200px;" scope="col">TAMAÑO</th>
                 <th style="width: 300px;" scope="col" class="text-left">NOMBRE</th>
                 <th style="width: 200px;" scope="col"></th>  

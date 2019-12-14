@@ -45,10 +45,6 @@
             </form>
         </div> <br><br>
 
-
-        <?php require 'estaticos/footer.php'; ?>
-
-
     </body>
 
     </html>
@@ -85,3 +81,7 @@
         }
     }
     ?>
+
+<br><br><br><br><br><br>
+    <?php require 'estaticos/footer.php'; ?>
+    
