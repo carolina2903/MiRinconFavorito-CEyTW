@@ -175,5 +175,5 @@ if (isset($_POST['nombre_apellido']) && isset($_POST['profesion'])) {
     echo "<br><br><br><br><br><br>";
 }
 
-require '../estaticos/footer.php';
+require '../estaticos/footertipocojines.php';
 ?>

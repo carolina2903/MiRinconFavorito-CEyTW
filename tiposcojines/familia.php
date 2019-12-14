@@ -242,5 +242,5 @@ if (isset($_POST['nombrefamiliar_1'])) {
     echo "<br><br><br><br><br><br>";
 }
 
-require '../estaticos/footer.php';
+require '../estaticos/footertipocojines.php';
 ?>

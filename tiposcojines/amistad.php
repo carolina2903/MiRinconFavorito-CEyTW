@@ -1,7 +1,5 @@
 <?php
 session_start();
-echo "<br><br>";
-
 ?>
 
 <!DOCTYPE html>
@@ -23,74 +21,75 @@ echo "<br><br>";
 
 
 <body>
+    
+        <?php require '../estaticos/navtiposcojines.php'; ?>
 
-    <?php require '../estaticos/navtiposcojines.php'; ?>
-
-
-
-    <!--script-->
-
-    <script>
-        function anadir_carro() {
-            //window.location.assign("cojin_amistad.php");
-            window.onAlert("¡Se ha añadido al carrito");
-        }
-    </script>
-
+        
 
     <!--script-->
-    <script>
-        function anadir_carro() {
+
+        <script>
+            function anadir_carro() {
+                    //window.location.assign("cojin_amistad.php");
+                    window.onAlert("¡Se ha añadido al carrito");
+                }
+        </script>
+
+
+<!--script-->
+<script>
+function anadir_carro() {
 
             window.location.assign("cojin_amistad.php");
             window.onAlert("¡Se ha añadido al carrito");
         }
-    </script>
+</script>
 
     <div class="container">
         <br><br>
 
         <div class="row">
 
-            <div class="col-sm-4">
-                <div class="card-price" font-size="1">
-                    <img class="card-img-top" src="../imagenes/cojinamistad2.JPG" alt="Imagen cojínes de corazón sr/sra.">
-                    <div class="card-body">
-                    </div>
+        <div class="col-sm-4">
+            <div class="card-price" font-size="1">   
+            <img class="card-img-top" src="../imagenes/cojinamistad2.JPG" alt="Imagen cojínes de corazón sr/sra.">
+                <div class="card-body">
                 </div>
             </div>
+        </div>
 
-            <div class="col-sm-8">
+    <div class="col-sm-8">
 
-                <div class="mb-3">
-                    <h3 class="card-title"><b>Cojín Amistad</b></h3>
-                    <h5>14,00€</h5>
-                    <h6>Cojín personalizado para ese amigo o amiga que tanto se lo merece.</h6>
-                    <h7>Selecciona si quieres que el cojín diga “amigas” o “amigos”: </h7>
-                </div>
+        <div class="mb-3">
+            <h3 class="card-title">Cojín Amistad</h3>
+            <h5>13€</h5>
+            <h6>Cojín personalizado para ese amigo o amiga que tanto se lo merece.</h6>
+            <h7>Selecciona si quieres que el cojín diga “amigas” o “amigos”: </h7>
+        </div>
 
-                <form action="amistad.php" method="post">
-                    <h6><b>Género:</b></h6>
+        <form action="amistad.php" method="post">
 
-                    <p>Mujer (amigas) / Hombre (amigos)</p>
-
-
-                    <select class="btn bg-white dropdown-toggle" name="genero_seleccionado" required="required" value="" style="border:1px solid #7d7d7d;">
-                        <option value="mujer">Mujer</option>
-                        <option value="hombre">Hombre</option>
-                    </select>
-
-                    <br><br>
-
-                    <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
-
-                    <br><br><br><br><br>
-
-                </form>
+            <p>Mujer (amigas) / Hombre (amigos)</p>
 
 
+            <select class="btn bg-white dropdown-toggle" name="genero_seleccionado" required="required" value="" style="border:1px solid #7d7d7d;">
+                <option value="mujer">Mujer</option>
+                <option value="hombre">Hombre</option>
+            </select>
 
+            <br><br>
 
+            <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+
+            <br><br>
+
+            </form>
+
+        </div></div> 
+
+  
+
+    <?php require '../estaticos/footertipocojines.php' ;?>
 
 </body>
 
@@ -109,7 +108,7 @@ echo "<br><br>";
 require '../conexionPDO.php';
 
 //si se ha seleccionado la opcion genero
-if (isset($_POST['genero_seleccionado'])) {
+if (isset($_POST['genero_seleccionado'])){
 
     //vemos cuantos productos de este tipo hay para crear el id
     $sql = "SELECT count(*) FROM producto";
@@ -131,14 +130,14 @@ if (isset($_POST['genero_seleccionado'])) {
                 $numeroproductos++;
             }
         }
-        /* No rows matched -- do something else */
+        /* No rows matched -- do something else */ 
     }
 
 
 
     //creamos el id_producto
-    $numero_id = (string) ($numeroproductos + 1);
-    $id_producto_creado = "pr" . $numero_id;
+    $numero_id=(string)($numeroproductos+1);
+    $id_producto_creado = "pr".$numero_id;
 
     //recogemos la opcion seleccionada
     $genero = $_POST['genero_seleccionado'];
@@ -165,17 +164,19 @@ if (isset($_POST['genero_seleccionado'])) {
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero, 'precio_unidad' => 14.00, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
-    } else {
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero,  'precio_unidad' => 14.00, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
+        $_SESSION["carrito"][0]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero, 'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Amistad", 'cantidad'=>1);
+    }else {
+        $_SESSION["carrito"][]=array('id_producto'=>$id_producto_creado, 'id_tipo_producto'=>2, 'genero'=>$genero,  'precio_unidad'=>13, 'tamaño'=>"40x40", 'nombre'=>"Cojín Amistad", 'cantidad'=>1);
+
     }
 
 
     //print_r ($_SESSION["carrito"]);
 
-    echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
+    echo "¡Su producto se ha añadido al carrito!";
     echo "<br><br><br><br><br><br>";
+
 }
-require '../estaticos/footer.php';
+
 
 ?>
