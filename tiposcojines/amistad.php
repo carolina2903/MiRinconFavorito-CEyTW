@@ -110,7 +110,6 @@ require '../conexionPDO.php';
 
 //si se ha seleccionado la opcion genero
 if (isset($_POST['genero_seleccionado'])) {
-
     //vemos cuantos productos de este tipo hay para crear el id
     $sql = "SELECT count(*) FROM producto";
 

@@ -4,7 +4,8 @@ session_start();
 require 'conexionPDO.php';
 require 'ClaseCarrito.php';
 
-
+$carrito = new carrito();
+$carrito->__construct();
 
 ?>
 <!DOCTYPE html>
@@ -14,6 +15,8 @@ require 'ClaseCarrito.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mi Rincón Favorito</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!--CSS BOOTSTRAP-->
     <link rel="styleheet" href="css/bootstrap.css">
     <link href='css/bootstrap.min.css' rel='stylesheet'>
@@ -32,7 +35,6 @@ require 'ClaseCarrito.php';
     <?php require 'estaticos/jumbotron.php'; ?>
 
 
-
     <script>
         var f = new Date();
         document.getElementById('fechacompra') = Date.now();
@@ -40,21 +42,133 @@ require 'ClaseCarrito.php';
     </script>
 
 
+    <script>
+        function validaForm() {
+            // Campos de texto
+            if ($("#nombre").val() == "") {
+                return false;
+            } else if ($("#apellidos").val() == "") {
+                return false;
+            } else if ($("#calleynumero").val() == "") {
+                return false;
+            } else if ($("#email").val() == "") {
+                return false;
+            } else if ($("#telefono").val() == "") {
+                return false;
+            } else if ($("#cp").val() == "") {
+                return false;
+            } else if ($("#localidad").val() == "") {
+                return false;
+            } else {
+                /* $nombre = $("#nombre").val();
+                $apellidos = $("#apellidos").val();
+                $calleynumero = $("#calleynumero").val();
+                $telefono = $("#telefono").val();
+                $cp = $("#cp").val();
+                $localidad = $("#localidad").val();
+ */
+                return true;
+            }
 
+        }
+    </script>
+    <script>
+        var nombre = $('#nombre').val();
+        var apellidos = $('#apellidos').val();
+        var calleynumero = $('#calleynumero').val();
+        var telefono = $('#telefono').val();
+        var cp = $('#cp').val();
+        var localidad = $('#localidad').val();
+
+        function realizarproceso(){
+        $.ajax({
+
+            data: {
+                "nombre": nombre,
+                "apellidos": apellidos,
+                "calleynumero": calleynumero,
+                "telefono": telefono,
+                "cp": cp,
+                "localidad": localidad
+
+            },
+            url: "comprar.php",
+            type: "post",
+            beforeSend: function(){
+                $('#resultado').html("Procesando, espere....")
+            },
+            success: function(response) {
+                $('#resultado').html("Finnnn")
+            }
+        });}
+    </script>
+
+
+    <!-- <script>
+        jQuery(document).ready(function() {
+            jQuery('#conditions').change(function() {
+                if ($(this).prop('checked')) {
+                    if ($("#nombre").val().length > 0 && $("#email").val().length > 0 && $("#apellidos").val().length > 0 && $("#telefono").val().length > 0 && $("#calleynumero").val().length > 0 && $("#cp").val().length > 0 && $("#localidad").val().length > 0) {
+                        $("#submitpaypal").show("slow");
+                        //$carrito->imprime_carrito(0.21, $precio_carrito);
+
+                    } else {
+                        alert("¡Rellena todos los campos!");
+
+                        $("#submitpaypal").hide("slow");
+                        $('#conditions').prop('checked', false);
+
+                    }
+
+
+
+                } else {
+                    $("#submitpaypal").hide("slow");
+                }
+            });
+        });
+    </script> -->
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('#conditions').change(function() {
+                if ($(this).prop('checked')) {
+                    if (validaForm()) { // Primero validará el formulario.
+                        realizarproceso();
+                        //$carrito->comprar($_POST['nombre'], $_POST['apellidos'], $_POST['calleynumero'], $_POST['localidad'], $_POST['cp']);
+                        $("#submitpaypal").show("slow");
+
+                    }
+                    //$("#submitpaypal").show("slow");
+                    else {
+                        alert("¡Rellena todos los campos!");
+
+                        $("#submitpaypal").hide("slow");
+                        $('#conditions').prop('checked', false);
+
+                    }
+
+
+
+                } else {
+                    $("#submitpaypal").hide("slow");
+                }
+            });
+        });
+    </script>
     <script>
         function validar() {
             window.location.assign("perfil.php");
         }
     </script>
-
+    Resultado: <span id="resultado">0</span>
 
     <div class="container">
         <h3 class="text-left"><b>Datos de compra</b></h3>
         <hr>
         <br>
         <h4 id="demo2"></h4>
-        <form>
-            <h6 class="text-left"><b>Día de compra</b></h6>
+        <form action="comprar.php" method="post" name="formulario" id="formulario">
+            <h6 class="text-left"><b>Fecha de compra</b></h6>
 
             <div class="form-group">
                 <input type="date" class="form-control" id="fechacompra" aria-describedby="dateHelp" readonly value="<?php echo date("Y-m-d"); ?>">
@@ -63,7 +177,7 @@ require 'ClaseCarrito.php';
 
             <br>
             <?php
-            $sql = "SELECT * FROM cliente WHERE email='" . $_SESSION["email"] . "'";
+            $sql = "SELECT * FROM cliente WHERE email='" . $_SESSION['email'] . "'";
             $resultado = $conexionPDO->query($sql);
             $usuario = $resultado->fetch(PDO::FETCH_ASSOC);
             ?>
@@ -100,7 +214,7 @@ require 'ClaseCarrito.php';
                 <input type="text" class="form-control" name="calleynumero" id="calleynumero" maxlength="50">
             </div>
 
-            <h6 class="text-left"><b>Piso, escalera, portal, letra:</b></h6>
+            <h6 class="text-left"><b>Piso, escalera, portal, letra (opcional):</b></h6>
 
             <div class="form-group">
                 <input type="text" class="form-control" name="piso" id="piso" placeholder="Piso/Escalera..." maxlength="50">
@@ -118,7 +232,7 @@ require 'ClaseCarrito.php';
                 <div class="col-sm-6">
                     <h6 class="text-left"><b>Localidad:</b></h6>
 
-                    <input type="text" class="form-control" name="localidad" id="localidad" required="required" placeholder="Nombre...">
+                    <input type="text" class="form-control" name="localidad" id="localidad" required="required">
                 </div>
 
                 <div class="col-sm-2">
@@ -206,10 +320,6 @@ require 'ClaseCarrito.php';
 <?php
 //session_start();
 
-if(isset($_POST['terminosycondiciones'])){
-    $carrito = new carrito();
-    $carrito->__construct();
-}
 echo "<hr>";
 
 echo "<div class='container'>";
@@ -352,16 +462,21 @@ if ($_SESSION["carrito"] != NULL) {
                                                 break;
 
 
-                                                //FALTA POR HACEEEEER
                                             case 7:
                                                 echo "<th>";
                                                 ?>
                                         <div class='dropdown'>
                                             <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
                                             <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
-                                                <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["nombre_izquierda"]; ?></a>
-                                                <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["nombre_derecha"]; ?></a>
-                                                <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fechacojin"]; ?></a>
+                                                <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["srsraizquierda"];
+                                                                                                                echo "&nbsp";
+                                                                                                                echo $_SESSION["carrito"][$i]["nombre_izquierda"];
+                                                                                                                echo " - " . $_SESSION["carrito"][$i]["profesionizquierda"]; ?></a>
+                                                <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["srsraderecha"];
+                                                                                                            echo "&nbsp";
+                                                                                                            echo $_SESSION["carrito"][$i]["nombre_derecha"];
+                                                                                                            echo " - " . $_SESSION["carrito"][$i]["profesionderecha"]; ?></a>
+                                                <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fecha"]; ?></a>
                                                 <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $_SESSION["carrito"][$i]["tipo_letra"]; ?></a>
 
                                             </div>
@@ -402,86 +517,65 @@ if ($_SESSION["carrito"] != NULL) {
 
                                                     </div>
 
-                                                <?php
-                                                            echo "</th>";
-                                                            break;
-
-
-                                                        case 10:
-                                                            echo "<th>";
-                                                            ?>
-                                                    <div class='dropdown'>
-                                                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
-                                                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
-                                                            <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["srsraizquierda"];
-                                                                                                                            echo "&nbsp";
-                                                                                                                            echo $_SESSION["carrito"][$i]["nombre_izquierda"];
-                                                                                                                            echo " - " . $_SESSION["carrito"][$i]["profesionizquierda"]; ?></a>
-                                                            <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["srsraderecha"];
-                                                                                                                        echo "&nbsp";
-                                                                                                                        echo $_SESSION["carrito"][$i]["nombre_derecha"];
-                                                                                                                        echo " - " . $_SESSION["carrito"][$i]["profesionderecha"]; ?></a>
-                                                            <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fecha"]; ?></a>
-                                                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $_SESSION["carrito"][$i]["tipo_letra"]; ?></a>
-
-                                                        </div>
-
-                                            <?php
-                                                        echo "</th>";
-                                                        break;
-                                                }
-
-                                                echo "</tr>";
-
-                                                $precio_carrito += $precio;
+                                        <?php
+                                                    echo "</th>";
+                                                    break;
                                             }
+
+                                            echo "</tr>";
+
+                                            $precio_carrito += $precio;
                                         }
-                                        $subtotal = $precio_carrito * 0.79;
-                                        $impuestos = $precio_carrito * 0.21;
+                                    }
+                                    $subtotal = $precio_carrito * 0.79;
+                                    $impuestos = $precio_carrito * 0.21;
 
 
-                                        echo "</thead>";
-                                        echo "<tbody>";
+                                    echo "</thead>";
+                                    echo "<tbody>";
 
-                                        echo "</tbody>";
-                                        echo "</table>";
-                                        echo "<hr>";
-                                        echo "<div class='row justify-content-start'>";
-                                        echo "<b>Subtotal:</b>&nbsp;" . $subtotal . " €";
-                                        echo "</div>";
-                                        echo "<div class='row justify-content-start'>";
-                                        echo "<b>Impuestos: </b>&nbsp;" . $impuestos . " €";
-                                        echo "</div>";
-                                        echo "<div class='row justify-content-start'>";
-                                        echo "<b>Total: </b>&nbsp;" . $precio_carrito . " €";
-                                        echo "</div>";
-                                        echo "</div>";
-                                        echo "<hr>";
-                                        echo "<form method='post'>";
-
-                                        echo "<div class='form-check'>";
-                                        echo "<input class='form-check-input' type='checkbox' value='' name='terminosycondiciones' id='terminosycondiciones'>";
-                                        echo "<label class='form-check-label' for='defaultCheck1'>He leído y acepto los <a href='estaticos/terminos-y-condiciones.php'>Términos y Condiciones</a>";
-
-                                        echo "</label>";
-                                        echo "</div>";
-                                        echo "</form>";
-                                        echo "<br><br><br>";
+                                    echo "</tbody>";
+                                    echo "</table>";
+                                    echo "<hr>";
+                                    echo "<div class='row justify-content-start'>";
+                                    echo "<b>Subtotal:</b>&nbsp;" . $subtotal . " €";
+                                    echo "</div>";
+                                    echo "<div class='row justify-content-start'>";
+                                    echo "<b>Impuestos: </b>&nbsp;" . $impuestos . " €";
+                                    echo "</div>";
+                                    echo "<div class='row justify-content-start'>";
+                                    echo "<b>Total: </b>&nbsp;" . $precio_carrito . " €";
+                                    echo "</div>";
+                                    echo "</div>";
+                                    echo "<hr>";
+                                    echo "<form action='comprar.php' method='post'>";
+                                    echo "<div class='form-group form-check'>";
+                                    echo "<input type='checkbox' class='form-check-input' id='conditions' name='conditions' value='1'>";
+                                    echo "<label class='form-check-label' for='conditions'>He leído y acepto los <a href='estaticos/terminos-y-condiciones.php'>Términos y Condiciones</a></label>";
+                                    echo "</div>";
+                                    echo "</form>";
 
 
+                                    echo "<br><br><br>";
 
-                                        for ($i = 0; $i < count($_SESSION["carrito"]); ++$i) {
-                                            $precio = $_SESSION["carrito"][$i]["precio_unidad"] * 0.79;
-                                            $carrito->introduce_producto($_SESSION["carrito"][$i]["nombre"], $precio, 1);
-                                        }
 
-                                        $carrito->imprime_carrito(0.21, $precio_carrito);
-                                        $carrito->comprar();
-                                        echo "<br><br><br><br><br><br>";
 
-                                        //}
-                                        //else{
-                                        //    echo "El carrito está vacío.";
-                                        //}
-                                        ?>
-                                            <?php require 'estaticos/footer.php'; ?>
+                                    for ($i = 0; $i < count($_SESSION["carrito"]); ++$i) {
+                                        $precio = $_SESSION["carrito"][$i]["precio_unidad"] * 0.79;
+                                        $carrito->introduce_producto($_SESSION["carrito"][$i]["nombre"], $precio, 1);
+                                    }
+
+                                    echo "<form name=\"formTPV\" method=\"post\" action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\">
+                                        <input type=\"image\" src=\"imagenes/buy-logo-large-es.png\" style='float: right; display:none' id=\"submitpaypal\" name=\"submitpaypal\" alt=\"Pagos con PayPal: Rápido, gratis y seguro\">
+                                        </form>";
+
+                                    //$carrito->comprar($_POST['nombre'], $apellidos, $direccion, $localidad, $cp);
+
+                                    echo "<br><br><br><br><br><br>";
+
+                                    //}
+                                    //else{
+                                    //    echo "El carrito está vacío.";
+                                    //}
+                                    ?>
+                                        <?php require 'estaticos/footer.php'; ?>

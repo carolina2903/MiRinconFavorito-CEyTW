@@ -1,4 +1,4 @@
-<?php require 'conexionPDO.php'; ?>
+<?php session_start();  require 'conexionPDO.php'; ?>
 
     <!DOCTYPE html>
     <html lang="es">
@@ -45,7 +45,6 @@
         </div> <br><br>
 
 
-        <?php require 'estaticos/footer.php'; ?>
 
 
     </body>
@@ -84,3 +83,4 @@
         }
     }
     ?>
+            <?php require 'estaticos/footer.php'; ?>
