@@ -205,15 +205,17 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha'])) && (i
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 10, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Profesión Dobles Sr Sra", 'cantidad' => 1, 'fecha' => $fecha, 'srsraizquierda' => $srsraizquierda, 'profesionizquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'profesionderecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'tipo_letra'=>$tipo_letra);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 7, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Profesión Dobles Sr Sra", 'cantidad' => 1, 'fecha' => $fecha, 'srsraizquierda' => $srsraizquierda, 'profesionizquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'profesionderecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'tipo_letra'=>$tipo_letra);
     } else
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 10, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Profesión Dobles Sr Sra", 'cantidad' => 1, 'fecha' => $fecha, 'srsraizquierda' => $srsraizquierda, 'profesionizquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'profesionderecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'tipo_letra'=>$tipo_letra);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 7, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Profesión Dobles Sr Sra", 'cantidad' => 1, 'fecha' => $fecha, 'srsraizquierda' => $srsraizquierda, 'profesionizquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'profesionderecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'tipo_letra'=>$tipo_letra);
 
 
 
     echo "<div class='alert alert-info' style='width:38%;'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
 }
+echo "</div></div></div>";
+
 
 require '../estaticos/footertipocojines.php';
 ?>

@@ -8,8 +8,6 @@ var $precio_total;
 var $array_nombre_prod;
 var $array_precio_prod;
 var $array_cant_prod;
-var $preciototal;
-var $tax;
 
 // constructor
 function __construct( )
@@ -26,15 +24,15 @@ function introduce_producto($nombre_prod,$precio_prod,$cantidad_prod) {
 	$this->array_nombre_prod[$this->num_productos]=$nombre_prod;
 	$this->array_precio_prod[$this->num_productos]=$precio_prod;
 	$this->array_cant_prod[$this->num_productos]=$cantidad_prod;
-	
 	$this->num_productos++;	
+	
 	//return $nombre_prod;
 	//return $cantidad_prod;
 }
 
 //Muestra el contenido del carrito
-function imprime_carrito($tax,$preciototal){
-	$this->tax=$tax;
+function imprime_carrito($preciototal){
+	$this->tax=0.21;
 	$this->preciototal=$preciototal;
  	$suma=0;
 	echo "<table border='1' cellpading='3'>";
@@ -47,7 +45,6 @@ function imprime_carrito($tax,$preciototal){
 			echo "<td>".$this->array_cant_prod[$i]."</td>";
 			$suma+=$this->array_precio_prod[$i]*$this->array_cant_prod[$i];			
 	} 
-
 	//$this->precio_total=$suma;
 	echo "<tr><tr><tr></tr></tr></tr>";
 	echo "<tr><td>TOTAL</td><td><div id='total'>".$this->preciototal*$this->tax."  €  "."</div></td><td></td></tr>";
@@ -57,46 +54,50 @@ function imprime_carrito($tax,$preciototal){
 
 
 //rellenar el formulario de paypal sandbox y enviarlo para pagar
-function comprar(){
+function comprar($nombre,$apellidos,$preciototal){
 	
 	echo "<form name=\"formTPV\" method=\"post\" action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\">
 		
 		<input type=\"hidden\" name=\"cmd\" value=\"_cart\">
 		<input type=\"hidden\" name=\"upload\" value=\"1\">
 		<input type=\"hidden\" name=\"business\" value=\"vendedor1@business.example.com\">";
-	
-		for ($i=0;$i<$this->num_productos;$i++){	
+		$suma=0;	
+		$this->preciototal=$preciototal;
+
+		for ($i=0;$i<$this->num_productos;$i++){
 			$b=$i+1;
 			$tax=$this->array_precio_prod[$i]*0.21;
+
 			echo "<input type=\"hidden\" name=\"item_name_".$b."\" value=".$this->array_nombre_prod[$i].">";
 			echo "<input type=\"hidden\" name=\"quantity_".$b."\" value=".$this->array_cant_prod[$i].">";
 			echo "<input type=\"hidden\" name=\"amount_".$b."\" value=".$this->array_precio_prod[$i].">";
-			echo "<input type=\"hidden\" name=\"tax_".$b."\" value=".$tax.">";
+			$suma+=$this->array_precio_prod[$i]*$this->array_cant_prod[$i];			
+
 		} 
-		
+		echo "<input type=\"hidden\" name=\"tax_".$b."\" value=".($preciototal*21/100).">";
+
 		echo "
 					
-		<input type=\"hidden\" name=\"return\" value=\"http://localhost:8080/Examen%202/exito.php\">
-		<input type=\"hidden\" name=\"cancel_return\" value=\"http://localhost:8080/Examen%202/cancelacion.php\">
+		<input type=\"hidden\" name=\"return\" value=\"http://localhost:8080/MiRinconFavorito-CEyTW/exito.php\">
+		<input type=\"hidden\" name=\"cancel_return\" value=\"http://localhost:8080/MiRinconFavorito-CEyTW/cancelacion.php\">
 		<input type=\"hidden\" name=\"no_note\" value=\"1\">
 		<input type=\"hidden\" name=\"currency_code\" value=\"EUR\">
-		<input type=\"hidden\" name=\"first_name\" value=\"Carmen María\">
-		<input type=\"hidden\" name=\"last_name\" value=\"Moreno\">
-		<input type=\"hidden\" name=\"address1\" value=\"avda. Espa\">
-		<input type=\"hidden\" name=\"city\" value=\"albacete\">
-		<input type=\"hidden\" name=\"zip\" value=\"02004\">
+		<input type=\"hidden\" name=\"first_name\" value=".$nombre.">
+		<input type=\"hidden\" name=\"last_name\" value=".$apellidos.">
+		<input type=\"hidden\" name=\"address1\" value=\"Direccion\">
+		<input type=\"hidden\" name=\"city\" value=\"Ciudad\">
+		<input type=\"hidden\" name=\"zip\" value=\"codigopostal\">
 		<input type=\"hidden\" name=\"lc\" value=\"es\">
 		
 		<input type=\"hidden\" name=\"country\" value=\"ES\">
-		<input type=\"image\" src=\"imagenes/buy-logo-large-es.png\" style='float: right;' name=\"submit\" alt=\"Pagos con PayPal: Rápido, gratis y seguro\">
+		<input type=\"image\" src=\"imagenes/buy-logo-large-es.png\" style='float: right; display:none' id=\"submitpaypal\" name=\"submitpaypal\" alt=\"Pagos con PayPal: Rápido, gratis y seguro\">
 
-
-		
 	</form>";
   
 
 }
-//__construct();
 
 }
-//__construct();
+
+
+?>

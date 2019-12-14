@@ -241,6 +241,7 @@ if (isset($_POST['nombrefamiliar_1'])) {
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
 }
+echo "</div></div></div>";
 
 require '../estaticos/footertipocojines.php';
 ?>

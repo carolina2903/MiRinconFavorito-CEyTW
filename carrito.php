@@ -31,7 +31,7 @@ session_start();
     <script>
         function comprar() {
             window.location.assign("comprar.php");
-            
+
         }
     </script>
 
@@ -56,16 +56,12 @@ if (isset($_POST['vaciarcarritobutton'])) {
 
 
 if (isset($_POST['comprarbutton'])) {
-    
-    if(count($_SESSION["carrito"])>0){
+
+    if (count($_SESSION["carrito"]) > 0) {
         echo "<script>window.location.assign('comprar.php');</script>";
-
-    }
-    else{
+    } else {
         echo "<div class='alert alert-info' style='width:15%;'>El carrito está vacío</div>";
-
     }
-
 }
 //if(isset($_SESSION["carrito"])){ 
 echo "<h3 class='text-left'><b>Carrito de la compra</b> </h3>";
@@ -81,6 +77,7 @@ echo "<tr>";
 echo "<th scope='col'>Nombre de producto</th>";
 echo "<th scope='col'>Precio</th>";
 echo "<th scope='col'>Total</th>";
+
 echo "<th scope='col'></th>";
 
 echo "</tr>";
@@ -104,11 +101,11 @@ if ($_SESSION["carrito"] != NULL) {
                     <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["srsraizquierda"];
-                                                                                echo "&nbsp";
-                                                                                echo $_SESSION["carrito"][$i]["nombre_izquierda"]; ?></a>
+                                                                                        echo "&nbsp";
+                                                                                        echo $_SESSION["carrito"][$i]["nombre_izquierda"]; ?></a>
                         <a class="dropdown-item"><b>Cojín derecha:</b> <?php echo $_SESSION["carrito"][$i]["srsraderecha"];
-                                                                            echo "&nbsp";
-                                                                            echo $_SESSION["carrito"][$i]["nombre_derecha"]; ?></a>
+                                                                                    echo "&nbsp";
+                                                                                    echo $_SESSION["carrito"][$i]["nombre_derecha"]; ?></a>
                         <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fechacojin"]; ?></a>
                         <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $_SESSION["carrito"][$i]["tipo_letra"]; ?></a>
 
@@ -215,16 +212,21 @@ if ($_SESSION["carrito"] != NULL) {
                                                 break;
 
 
-                                                //FALTA POR HACEEEEER
                                             case 7:
                                                 echo "<th>";
                                                 ?>
                                         <div class='dropdown'>
                                             <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
                                             <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
-                                                <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["nombre_izquierda"]; ?></a>
-                                                <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["nombre_derecha"]; ?></a>
-                                                <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fechacojin"]; ?></a>
+                                                <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["srsraizquierda"];
+                                                                                                                echo "&nbsp";
+                                                                                                                echo $_SESSION["carrito"][$i]["nombre_izquierda"];
+                                                                                                                echo " - " . $_SESSION["carrito"][$i]["profesionizquierda"]; ?></a>
+                                                <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["srsraderecha"];
+                                                                                                            echo "&nbsp";
+                                                                                                            echo $_SESSION["carrito"][$i]["nombre_derecha"];
+                                                                                                            echo " - " . $_SESSION["carrito"][$i]["profesionderecha"]; ?></a>
+                                                <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fecha"]; ?></a>
                                                 <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $_SESSION["carrito"][$i]["tipo_letra"]; ?></a>
 
                                             </div>
@@ -233,7 +235,6 @@ if ($_SESSION["carrito"] != NULL) {
                                                     echo "</th>";
                                                     break;
 
-
                                                 case 8:
                                                     echo "<th>";
                                                     ?>
@@ -241,9 +242,9 @@ if ($_SESSION["carrito"] != NULL) {
                                                 <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
                                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
                                                     <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["nombre_izquierda"];
-                                                                                                            echo " - " . $_SESSION["carrito"][$i]["profesion_izquierda"]; ?></a>
+                                                                                                                    echo " - " . $_SESSION["carrito"][$i]["profesion_izquierda"]; ?></a>
                                                     <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["nombre_derecha"];
-                                                                                                        echo " - " . $_SESSION["carrito"][$i]["profesion_derecha"];  ?></a>
+                                                                                                                echo " - " . $_SESSION["carrito"][$i]["profesion_derecha"];  ?></a>
                                                     <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fechacojin"]; ?></a>
                                                     <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $_SESSION["carrito"][$i]["tipo_letra"]; ?></a>
 
@@ -265,84 +266,58 @@ if ($_SESSION["carrito"] != NULL) {
 
                                                     </div>
 
-                                                <?php
-                                                            echo "</th>";
-                                                            break;
-
-
-                                                        case 10:
-                                                            echo "<th>";
-                                                            ?>
-                                                    <div class='dropdown'>
-                                                        <a class="dropdown-toggle d-flex align-items-center" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Detalles&nbsp;</a>
-                                                        <div class="dropdown-menu dropdown-menu" aria-labelledby="dropdown01">
-                                                            <a class="dropdown-item"><b>Cojín izquierda: </b><?php echo $_SESSION["carrito"][$i]["srsraizquierda"];
-                                                                                                                    echo "&nbsp";
-                                                                                                                    echo $_SESSION["carrito"][$i]["nombre_izquierda"];
-                                                                                                                    echo " - " . $_SESSION["carrito"][$i]["profesionizquierda"]; ?></a>
-                                                            <a class="dropdown-item"><b>Cojín derecha: </b><?php echo $_SESSION["carrito"][$i]["srsraderecha"];
-                                                                                                                echo "&nbsp";
-                                                                                                                echo $_SESSION["carrito"][$i]["nombre_derecha"];
-                                                                                                                echo " - " . $_SESSION["carrito"][$i]["profesionderecha"]; ?></a>
-                                                            <a class="dropdown-item"><b>Fecha: </b><?php echo $_SESSION["carrito"][$i]["fecha"]; ?></a>
-                                                            <a class="dropdown-item"><b>Tipo de letra: </b><?php echo $_SESSION["carrito"][$i]["tipo_letra"]; ?></a>
-
-                                                        </div>
-
-                                            <?php
-                                                        echo "</th>";
-                                                        break;
-                                                }
-
-
-
-
-                                                echo "</tr>";
-                                                $precio_carrito += $precio;
+                                        <?php
+                                                    echo "</th>";
+                                                    break;
                                             }
+
+
+
+
+                                            echo "</tr>";
+                                            $precio_carrito += $precio;
                                         }
-                                        $subtotal = $precio_carrito * 0.79;
-                                        $impuestos = $precio_carrito * 0.21;
+                                    }
+                                    $subtotal = $precio_carrito * 0.79;
+                                    $impuestos = $precio_carrito * 0.21;
 
 
-                                        echo "</thead>";
-                                        echo "<tbody>";
+                                    echo "</thead>";
+                                    echo "<tbody>";
 
-                                        echo "</tbody>";
-                                        echo "</table>";
-                                        echo "<hr>";
-                                        echo "<div class='row justify-content-start'>";
-                                        echo "<b>Subtotal:</b>&nbsp;" . $subtotal;
-                                        echo "</div>";
-                                        echo "<div class='row justify-content-start'>";
-                                        echo "<b>Impuestos: </b>&nbsp;" . $impuestos;
-                                        echo "</div>";
-                                        echo "<div class='row justify-content-start'>";
-                                        echo "<b>Total: </b>&nbsp;" . $precio_carrito;
-                                        echo "</div>";
-                                        echo "</div>";
-                                        echo "<hr>";
-                                        echo "<form method='post'>";
+                                    echo "</tbody>";
+                                    echo "</table>";
+                                    echo "<hr>";
+                                    echo "<div class='row justify-content-start'>";
+                                    echo "<b>Subtotal:</b>&nbsp;" . $subtotal;
+                                    echo "</div>";
+                                    echo "<div class='row justify-content-start'>";
+                                    echo "<b>Impuestos: </b>&nbsp;" . $impuestos;
+                                    echo "</div>";
+                                    echo "<div class='row justify-content-start'>";
+                                    echo "<b>Total: </b>&nbsp;" . $precio_carrito;
+                                    echo "</div>";
+                                    echo "</div>";
+                                    echo "<hr>";
+                                    echo "<form method='post'>";
 
-                                        echo "<button type='submit' class='btn btn-danger' style='float: right; text:center;'  name='vaciarcarritobutton' value='Vaciar carrito' /> Vaciar carrito</button>";
-                                        echo "<button type='submit' class='btn btn-info' style='float: right; text:center;'  name='comprarbutton' value='Comprar' />Comprar</button>";
+                                    echo "<button type='submit' class='btn btn-danger' style='float: right; text:center;'  name='vaciarcarritobutton' value='Vaciar carrito' /> Vaciar carrito</button>";
+                                    echo "<button type='submit' class='btn btn-info' style='float: right; text:center;'  name='comprarbutton' value='Comprar' />Comprar</button>";
 
-                                        echo "</form>";
+                                    echo "</form>";
 
-                                        echo "&nbsp;";
-/*                                         echo "<button id='cart-purchase' class='btn btn-info' role='button' onClick='comprar()' style='float: right;'>Comprar</button>";
- */                                        
-                                        
-                                        echo "<br><br><br><br>";
+                                    echo "&nbsp;";
+
+                                    echo "<br><br><br><br>";
 
 
-                                        echo "<br><br><br>";
-
-                                  
+                                    echo "<br><br><br>";
 
 
 
 
-                                        ?>
 
-<?php require 'estaticos/footer.php'; ?>
+
+                                    ?>
+
+                                        <?php require 'estaticos/footer.php'; ?>
