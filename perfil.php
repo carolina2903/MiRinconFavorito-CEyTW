@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'conexionPDO.php';
 ?>
 
@@ -51,13 +52,11 @@ require 'conexionPDO.php';
                 // seleccionada
                 $(this).parents("tr").find(".id").each(function() {
                     idpedido = $(this).html();
-
                 });
                 console.log(idpedido);
-
+                
                 /* Lo metemos en el enlace */
                 document.getElementById("botondetalles").href = "pedido.php?idpedido=" + idpedido;
-                // window.sessionStorage.setItem("idpedido", idpedido);
                 window.location.assign("pedido.php?idpedido=" + idpedido);
             })
         });
@@ -136,6 +135,12 @@ require 'conexionPDO.php';
             echo  "</table>";
 
         }//if CLIENTE !ADMIN
+
+
+        //////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+
 
         else {
             /* MODO ADMINISTRADOR */
