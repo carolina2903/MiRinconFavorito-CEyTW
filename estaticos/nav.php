@@ -57,6 +57,7 @@
 
         function cerrar_sesion() {
             /* AQUI HAY QUE BORRAR SESIONES, COOKIES Y TODO TODITO TODO */
+           
             document.getElementById("botoncerrar").href = "index_.php";
             window.location.assign("index_.php");
         }
