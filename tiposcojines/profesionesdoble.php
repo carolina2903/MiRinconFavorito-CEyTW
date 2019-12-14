@@ -213,6 +213,9 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha'])) && (i
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
 }
-require '../estaticos/footer.php';
+
+echo "</div></div></div>";
+
+require '../estaticos/footertipocojines.php';
 
 ?>

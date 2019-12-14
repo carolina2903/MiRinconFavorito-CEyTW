@@ -51,6 +51,6 @@ También puedes contactar con nosotros rellenando el siguiente formulario.</p>
 </body>
 <br><br><br><br><br>
 
-<?php require 'footer.php';?>
+<?php require 'footerestaticos.php';?>
 
 </html>

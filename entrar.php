@@ -1,4 +1,5 @@
-<?php session_start();  require 'conexionPDO.php'; ?>
+<?php session_start()?>
+<?php require 'conexionPDO.php'; ?>
 
     <!DOCTYPE html>
     <html lang="es">
@@ -37,12 +38,12 @@
                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
                 <br>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
-
+            
                 <input type="submit" class="btn btn-info" style="float: right; width:200px;" name="enviar" value="Entrar" />
 
                 
             </form>
-        </div> <br><br>
+        </div> <br><br><br><br><br><br><br>
 
 
 

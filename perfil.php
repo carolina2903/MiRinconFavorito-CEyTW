@@ -52,13 +52,11 @@ require 'conexionPDO.php';
                 // seleccionada
                 $(this).parents("tr").find(".id").each(function() {
                     idpedido = $(this).html();
-
                 });
                 console.log(idpedido);
-
+                
                 /* Lo metemos en el enlace */
                 document.getElementById("botondetalles").href = "pedido.php?idpedido=" + idpedido;
-                // window.sessionStorage.setItem("idpedido", idpedido);
                 window.location.assign("pedido.php?idpedido=" + idpedido);
             })
         });
@@ -113,7 +111,7 @@ require 'conexionPDO.php';
             ?>
 
             <?php
-            echo '<table class="table">
+            echo '<table class="table table-hover text-center" style="width=50%">
                 <thead>
                     <tr>
                         <th scope="col">ID PEDIDO</th>
@@ -137,6 +135,12 @@ require 'conexionPDO.php';
             echo  "</table>";
 
         }//if CLIENTE !ADMIN
+
+
+        //////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+
 
         else {
             /* MODO ADMINISTRADOR */
@@ -169,7 +173,7 @@ require 'conexionPDO.php';
                         $resultado = $conexionPDO->query($sql4);
                         ?>
 
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">ID PEDIDO</th>

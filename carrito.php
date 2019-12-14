@@ -73,6 +73,7 @@ echo "<tr>";
 echo "<th scope='col'>Nombre de producto</th>";
 echo "<th scope='col'>Precio</th>";
 echo "<th scope='col'>Total</th>";
+
 echo "<th scope='col'></th>";
 
 echo "</tr>";
@@ -302,8 +303,6 @@ if ($_SESSION["carrito"] != NULL) {
                                     echo "</form>";
 
                                     echo "&nbsp;";
-                                    /*                                         echo "<button id='cart-purchase' class='btn btn-info' role='button' onClick='comprar()' style='float: right;'>Comprar</button>";
- */
 
                                     echo "<br><br><br><br>";
 

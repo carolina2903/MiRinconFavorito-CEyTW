@@ -44,6 +44,6 @@ Gracias por hacer este sueño posible.
 </body>
 <br><br><br><br><br>
 
-<?php require 'footer.php';?>
+<?php require 'footerestaticos.php';?>
 
 </html>

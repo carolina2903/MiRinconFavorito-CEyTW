@@ -55,6 +55,6 @@ Agradecemos tu comprensión ante este tema.
 </body>
 <br><br><br><br><br>
 
-<?php require 'footer.php';?>
+<?php require 'footerestaticos.php';?>
 
 </html>

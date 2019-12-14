@@ -14,44 +14,44 @@
 
 <body>
 
-    <footer class="bg-light border-0" style="left:0px;bottom:0px;">
+    <footer class="bg-light border-0">
         <div class="container-fluid">
             <div class="row">
             <table>
                 <tr>
                     <td  style="width: 33%;">
-                    <img width="5%" heigth="5%" src="imagenes/facebook-logo.png"/><a href="http://facebook.com/MiRinconFavoritoTienda">facebook.com/MiRinconFavoritoTienda</a> 
+                    <img width="5%" heigth="5%" src="../imagenes/facebook-logo.png"/><a href="http://facebook.com/MiRinconFavoritoTienda">facebook.com/MiRinconFavoritoTienda</a> 
                     </td>
                     <td  style="width: 33%;">
-                    <a href="estaticos/quienes-somos.php">Quienes somos</a>
+                    <a href="../estaticos/quienes-somos.php">Quienes somos</a>
                     </td>
                 </tr>
                 <tr>
                     <td  style="width: 33%;">
-                    <img width="5%" heigth="5%" src="imagenes/correo-logo.png"/>mirinconfavoritotienda@gmail.com 
+                    <img width="5%" heigth="5%" src="../imagenes/correo-logo.png"/>mirinconfavoritotienda@gmail.com 
                     </td>
                     <td  style="width: 33%;">
-                    <a href="estaticos/terminos-y-condiciones.php">Términos y condiciones</a>
+                    <a href="../estaticos/terminos-y-condiciones.php">Términos y condiciones</a>
                     </td>
                 </tr>
                 <tr> 
                     <td  style="width: 33%;">
-                    <img width="5%" heigth="5%" src="imagenes/telefono-logo.png"/>(+34) 693 60 64 38 
+                    <img width="5%" heigth="5%" src="../imagenes/telefono-logo.png"/>(+34) 693 60 64 38 
                     </td>
                     <td  style="width: 33%;">
-                    <a href="estaticos/politica-cambios-y-devoluciones.php">Política de cambios y deoluciones</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 33%;"></td>
-                    <td  style="width: 33%;">
-                    <a href="estaticos/politica-privacidad.php">Política de privacidad<br></a>
+                    <a href="politica-cambios-y-devoluciones.php">Política de cambios y deoluciones</a>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 33%;"></td>
                     <td  style="width: 33%;">
-                    <a href="estaticos/contacta-con-nosotros.php">Contacta con nosotros<br></a>
+                    <a href="../estaticos/politica-privacidad.php">Política de privacidad<br></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33%;"></td>
+                    <td  style="width: 33%;">
+                    <a href="../estaticos/contacta-con-nosotros.php">Contacta con nosotros<br></a>
                     </td>
                 </tr>
             </table>

@@ -44,6 +44,7 @@ $carrito->__construct();
 
     <script>
         function validaForm() {
+
             // Campos de texto
             if ($("#nombre").val() == "") {
                 return false;
@@ -60,13 +61,7 @@ $carrito->__construct();
             } else if ($("#localidad").val() == "") {
                 return false;
             } else {
-                /* $nombre = $("#nombre").val();
-                $apellidos = $("#apellidos").val();
-                $calleynumero = $("#calleynumero").val();
-                $telefono = $("#telefono").val();
-                $cp = $("#cp").val();
-                $localidad = $("#localidad").val();
- */
+                
                 return true;
             }
 
@@ -104,30 +99,7 @@ $carrito->__construct();
     </script>
 
 
-    <!-- <script>
-        jQuery(document).ready(function() {
-            jQuery('#conditions').change(function() {
-                if ($(this).prop('checked')) {
-                    if ($("#nombre").val().length > 0 && $("#email").val().length > 0 && $("#apellidos").val().length > 0 && $("#telefono").val().length > 0 && $("#calleynumero").val().length > 0 && $("#cp").val().length > 0 && $("#localidad").val().length > 0) {
-                        $("#submitpaypal").show("slow");
-                        //$carrito->imprime_carrito(0.21, $precio_carrito);
-
-                    } else {
-                        alert("¡Rellena todos los campos!");
-
-                        $("#submitpaypal").hide("slow");
-                        $('#conditions').prop('checked', false);
-
-                    }
-
-
-
-                } else {
-                    $("#submitpaypal").hide("slow");
-                }
-            });
-        });
-    </script> -->
+    
     <script>
         jQuery(document).ready(function() {
             jQuery('#conditions').change(function() {
@@ -160,7 +132,7 @@ $carrito->__construct();
             window.location.assign("perfil.php");
         }
     </script>
-    Resultado: <span id="resultado">0</span>
+    
 
     <div class="container">
         <h3 class="text-left"><b>Datos de compra</b></h3>
@@ -565,12 +537,10 @@ if ($_SESSION["carrito"] != NULL) {
                                         $carrito->introduce_producto($_SESSION["carrito"][$i]["nombre"], $precio, 1);
                                     }
 
-                                    echo "<form name=\"formTPV\" method=\"post\" action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\">
-                                        <input type=\"image\" src=\"imagenes/buy-logo-large-es.png\" style='float: right; display:none' id=\"submitpaypal\" name=\"submitpaypal\" alt=\"Pagos con PayPal: Rápido, gratis y seguro\">
-                                        </form>";
+                                    
 
-                                    //$carrito->comprar($_POST['nombre'], $apellidos, $direccion, $localidad, $cp);
-
+                                    $carrito->comprar($usuario['nombre'],$usuario['apellidos'],$precio_carrito);
+                                    //$carrito->imprime_carrito($precio_carrito);
                                     echo "<br><br><br><br><br><br>";
 
                                     //}

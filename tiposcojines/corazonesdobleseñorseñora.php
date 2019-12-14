@@ -54,94 +54,70 @@ echo "<br><br>";
 
             <div class="col-sm-8">
                 <div class="mb-3">
-                    <h3 class="card-title"><b>Cojines corazón Sr y Sra</b></h3>
+                    <h3 class="card-title"><b>Cojines profesión Sr Sra</b></h3>
                     <h5>24,00€</h5>
-                    <h6>Pareja de cojines personalizados formada por dos cojines individuales unidos por un corazón rojo, cada uno de ellos con uno de los nombres o apellidos de cada integrante de la pareja.
-
+                    <h6>Pareja de cojines personalizados formada por dos cojines individuales. Cada uno de ellos con medio corazón, Sr. o Sra. y el nombre de cada uno de la pareja. Además, de manera opcional, una fecha.
+                        
                     </h6>
-                    <h7>Rellena los datos necesarios para la creación del cojín: </h7>
+                    <h7>Rellena los datos necesarios para la creación de los cojines: </h7>
                 </div>
                 <form action="corazonesdobleseñorseñora.php" method="post">
 
 
 
-                    <td>
-
-
-                        <div class="form-group">
-
-                            <table>
-                                <h6><b>Cojín izquierda:</b></h6>
-                                <div class="row">
-
-                                    <div class="col-sm-2">
-
-                                        <select class="btn bg-white dropdown-toggle" name="srsraizquierda" required="required" value="" style="border:1px solid #ced4da">
-
-                                            <option value="Sr">Sr</option>
-                                            <option value="Sra">Sra</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-10">
-
-                                        <input type="text" class="form-control" name="nombre_izquierda" required="required" placeholder="Nombre...">
-                                    </div>
-                                </div>
-
-                        </div>
-                        <br>
-                        <h6><b>Cojín derecha:</b></h6>
+                    <div class="form-group">
+                        <h6><b>Cojín izquierda:</b></h6>
+                        
                         <div class="row">
 
                             <div class="col-sm-2">
 
-                                <select class="btn bg-white dropdown-toggle" name="srsraderecha" required="required" value="" style="border:1px solid #ced4da">
+                                <select class="btn bg-white dropdown-toggle" name="srsraizquierda" required="required" value="" style="border:1px solid #ced4da">
 
-                                    <option value="Sra">Sra</option>
                                     <option value="Sr">Sr</option>
+                                    <option value="Sra">Sra</option>
                                 </select>
                             </div>
                             <div class="col-sm-10">
 
-                                <input type="text" class="form-control" name="nombre_derecha" required="required" placeholder="Nombre...">
+                                <input type="text" class="form-control" name="nombre_izquierda" required="required" placeholder="Nombre...">
                             </div>
                         </div>
+                    </div>
+                    <h6><b>Cojín derecha:</b></h6>
+                    
+                    <div class="row">
 
-                        <div class="form-group">
-                            <br>
-                            <h6><b>Fecha (opcional):</b></h6>
-                            <input type="date" id="fecha" class="form-control " name="fecha" value="12/12/1998" />
+                        <div class="col-sm-2">
+
+                            <select class="btn bg-white dropdown-toggle" name="srsraderecha" required="required" value="" style="border:1px solid #ced4da">
+
+                                <option value="Sra">Sra</option>
+                                <option value="Sr">Sr</option>
+                            </select>
                         </div>
+                        <div class="col-sm-10">
 
-                        <h6><b>Tipo de letra:</b></h6>
-                        <div class="row">
-
-                            <div class="col-sm-2">
-
-                                <select class="btn bg-white dropdown-toggle" name="tipo_letra" required="required" value="" style="border:1px solid #ced4da">
-
-                                    <option value="Minúscula">Minúscula</option>
-                                    <option value="Mayúscula">Mayúscula</option>
-                                </select>
-                            </div>
+                            <input type="text" class="form-control" name="nombre_derecha" required="required" placeholder="Nombre...">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <br>
+                        <h6><b>Fecha (opcional):</b></h6>
+                        <input type="date" id="fecha" class="form-control " name="fecha" value="12/12/1998" />
+                    </div>
+                    <h6><b>Tipo de letra</b></h6>
 
-                        <div class="form-check">
+                    <select class="btn bg-white dropdown-toggle" name="tipo_letra" required="required" value="" style="border:1px solid #7d7d7d;">
+                        <option value="Minúscula">Minúscula</option>
+                        <option value="Mayúscula">Mayúscula</option>
+                    </select>
+                    <div class="form-check">
 
-
-                            <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
-
-                        </div><br><br><br>
+                        <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+                    <br><br><br><br><br><br><br>
+                </form>
             </div>
-        </div>
-    </div>
-
-
-    </form>
-
-
-
-    <br><br><br>
 
 </body>
 
@@ -204,8 +180,9 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
 
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";
     echo "<br><br><br><br><br><br>";
+    echo "</div></div></div>";
 }
+echo "</div></div></div>";
 
-
-require '../estaticos/footer.php';
+require '../estaticos/footertipocojines.php';
 ?>
