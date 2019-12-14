@@ -51,7 +51,7 @@ function anadir_carro() {
         <div class="row">
 
         <div class="col-sm-4">
-            <div class="card-price" font-size="1">   
+            <div class="card-price" font-size="1">   <br><br><br>
             <img class="card-img-top" src="../imagenes/cojinamistad2.JPG" alt="Imagen cojínes de corazón sr/sra.">
                 <div class="card-body">
                 </div>
@@ -61,6 +61,7 @@ function anadir_carro() {
     <div class="col-sm-8">
 
         <div class="mb-3">
+            <br><br><br>
             <h3 class="card-title">Cojín Amistad</h3>
             <h5>13€</h5>
             <h6>Cojín personalizado para ese amigo o amiga que tanto se lo merece.</h6>

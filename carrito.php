@@ -46,8 +46,11 @@ session_start();
 //session_start();
 require 'conexionPDO.php';
 if (isset($_POST['vaciarcarritobutton'])) {
+    // unset($_SESSION["carrito"]);
+    // unset($_SESSION["familiares"]);
     $_SESSION["carrito"] = array();
     $_SESSION["familiares"] = array();
+    // echo "<script> window.location.assign('index_.php') </script>";
 
 }
 

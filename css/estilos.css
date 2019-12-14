@@ -28,6 +28,27 @@ button {
     margin-right: 2%;
 }
 
+button.navb {
+    height: 34px;
+    margin-top: 5px;
+    /* width: 50px; */
+    /* background-color: magenta; */
+    color: black;
+    font-size: medium;
+}
+
+button.navhb{
+  height: 34px;
+    margin-top: 5px;
+    /* width: 50px; */
+    background-color: transparent;
+    outline: none;
+    color: black;
+    font-size: medium;
+    border: transparent;
+}
+
+
 /* .details-button {
     height: 10px;
     width: 10px;
