@@ -38,6 +38,6 @@ Gracias por confiar en Mi Rincón Favorito.
 
 <br><br><br><br><br>
 
-<?php require 'footer.php';?>
+<?php require 'footerestaticos.php';?>
 
 </html>
