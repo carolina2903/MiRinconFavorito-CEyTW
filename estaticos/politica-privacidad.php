@@ -91,6 +91,6 @@ Cualquier duda acerca de nuestra política de privacidad, puedes contactar con n
 </body>
 <br><br><br><br><br>
 
-<?php require 'footer.php';?>
+<?php require 'footerestaticos.php';?>
 
 </html>
