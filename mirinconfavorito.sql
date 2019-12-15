@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2019 a las 12:34:30
+-- Tiempo de generación: 15-12-2019 a las 02:57:35
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -60,7 +60,7 @@ CREATE TABLE `cojines_corazon_dobles_senor_senora` (
   `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojines Corazón Doble Señor/Señora',
   `nombre_senor` varchar(20) NOT NULL,
   `nombre_senora` varchar(20) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` date DEFAULT NULL,
   `tipo_letra` enum('Mayúsculas','Minúsculas') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -69,7 +69,8 @@ CREATE TABLE `cojines_corazon_dobles_senor_senora` (
 --
 
 INSERT INTO `cojines_corazon_dobles_senor_senora` (`idinterno`, `id_tipo_producto`, `id_producto`, `nombre_tipo`, `nombre_senor`, `nombre_senora`, `fecha`, `tipo_letra`) VALUES
-(1, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'Carlos', 'Cristina', '2019-12-19', 'Mayúsculas');
+(1, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'Carlos', 'Cristina', '2019-12-19', 'Mayúsculas'),
+(324, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'rgvf', 'vrg', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ CREATE TABLE `cojin_corazones_dobles` (
   `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojines Corazón Doble',
   `nombre_izquierda` varchar(20) NOT NULL,
   `nombre_derecha` varchar(20) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` date DEFAULT NULL,
   `tipo_letra` enum('Mayúsculas','Minúsculas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -129,7 +130,7 @@ CREATE TABLE `cojin_dibujo_individual` (
   `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojín Dibujo Individual',
   `nombre` varchar(20) NOT NULL,
   `dibujo` varchar(20) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` date DEFAULT NULL,
   `tipo_letra` enum('Mayúsculas','Minúsculas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -196,14 +197,14 @@ INSERT INTO `cojin_natalicio` (`idinterno`, `id_tipo_producto`, `id_producto`, `
 
 CREATE TABLE `cojin_profesion_doble` (
   `idinterno` int(11) NOT NULL,
-  `id_tipo_producto` varchar(8) NOT NULL DEFAULT '8',
+  `id_tipo_producto` varchar(8) NOT NULL DEFAULT '7',
   `id_producto` varchar(8) NOT NULL,
   `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojines Profesión Dobles',
   `profesion_izquierda` varchar(20) NOT NULL,
   `profesion_derecha` varchar(20) NOT NULL,
   `nombre_izquierda` varchar(20) NOT NULL,
   `nombre_derecha` varchar(20) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` date DEFAULT NULL,
   `tipo_letra` enum('Mayúsculas','Minúsculas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -222,7 +223,7 @@ INSERT INTO `cojin_profesion_doble` (`idinterno`, `id_tipo_producto`, `id_produc
 
 CREATE TABLE `cojin_profesion_doble_sr_sra` (
   `idinterno` int(11) NOT NULL,
-  `id_tipo_producto` varchar(8) NOT NULL DEFAULT '7',
+  `id_tipo_producto` varchar(8) NOT NULL DEFAULT '8',
   `id_producto` varchar(8) DEFAULT NULL,
   `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojines Profesión Dobles Sr Sra',
   `srsraizquierda` enum('Sr','Sra') NOT NULL,
@@ -255,7 +256,7 @@ CREATE TABLE `cojin_profesion_individual` (
   `nombre_tipo` varchar(40) NOT NULL DEFAULT 'Cojín Profesión Individual',
   `nombre` varchar(20) NOT NULL,
   `profesion` varchar(20) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` date DEFAULT NULL,
   `tipo_letra` enum('Mayúsculas','Minúsculas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -570,7 +571,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `cojines_corazon_dobles_senor_senora`
 --
 ALTER TABLE `cojines_corazon_dobles_senor_senora`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_amistad`

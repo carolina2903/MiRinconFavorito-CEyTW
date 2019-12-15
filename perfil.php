@@ -99,7 +99,7 @@ require 'conexionPDO.php';
 
     <?php
     if (isset($_SESSION['email'])) {
-        if ($_SESSION['email'] != "mirinconfavoritotienda@gmail.com") {
+        if ($_SESSION['email'] != "carmen98mi@gmail.com") {
             ?>
             <!-- PARA LOS PEDIDOS DEL CLIENTE LOGGEADO - !ADMIN-->
 
@@ -249,7 +249,7 @@ require 'conexionPDO.php';
                         <button id="cambiarestado" style="float: left; width:200px;" class="btn btn-info" name="cambiarestado" type="submit">Cambiar estado</button>
                     </form><br><br><br><br><br>
                     <?php
-                                $sql == NULL;
+                                //$sql == NULL;
                                 if (isset($_POST['filtro']) || $sql == NULL) {
                                     if ($_POST['filtro'] == "fecha") {
                                         //echo "filtrando por fecha...";
