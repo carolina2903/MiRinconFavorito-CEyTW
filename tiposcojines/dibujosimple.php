@@ -165,7 +165,10 @@ if (isset($_POST['nombre_apellido']) && isset($_POST['dibujo'])) {
         }
         /* No rows matched -- do something else */
     }
-
+  //vemos cuantos productos de este tipo hay en el carrito para crear el id
+  if (isset($_SESSION['carrito'])){
+    $numeroproductos+=count($_SESSION['carrito']);           
+}//if set carrito
 
 
     //creamos el id_producto
