@@ -59,10 +59,10 @@ require 'conexionPDO.php';
             <b>Fecha compra:</b>&nbsp;
             <?php echo $pedido['fecha_compra']; ?>
         </div><br>
-        <div class="row">
+        <!-- <div class="row">
             <b>Anotaciones:</b>&nbsp;
-            <?php echo $pedido['anotaciones']; ?>
-        </div><br>
+            <?php /* echo $pedido['anotaciones']; */ ?>
+        </div><br> -->
         <div class="row">
             <b>Estado:</b>&nbsp;
             <?php echo $pedido['estado']; ?>

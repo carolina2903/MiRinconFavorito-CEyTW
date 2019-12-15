@@ -265,16 +265,16 @@ $carrito->__construct();
             </div>
             <br>
 
-            <h6 class="text-left"><b>Notas del pedido (opcional):</b></h6>
+            <!-- <h6 class="text-left"><b>Notas del pedido (opcional):</b></h6>
 
             <div class="form-group">
                 <input type="text" class="form-control" name="notas" id="notas" aria-describedby="addressHelp">
-            </div>
+            </div> -->
 
 
             <br>
 
-            <div class="col-sm-2">
+            <!-- <div class="col-sm-2">
                     <h6 class="text"><b>Tipo de envío:</b></h6>
                     <select class="btn bg-white dropdown-toggle" name="tipo_envio" id="tipo_envio" required="required" value="" style="border:1px solid #ced4da">
                         <option value="estandar">Estándar</option>
@@ -283,7 +283,7 @@ $carrito->__construct();
                         <option value="internacional">Internacional</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
             <br>
 
             
