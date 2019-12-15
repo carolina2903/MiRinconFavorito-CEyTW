@@ -306,37 +306,42 @@ for ($i = 0; $i < count($_SESSION["carrito"]); ++$i) {
             
 
             /* PARA LOS MIEMBROS DE LA FAMILIA */
-            for($k=0;$k<$_SESSION["carrito"][$i]["numerodefamiliares"];$k++){
 
-                /* PARA CREAR ID MIEMBRO */
-                $miembrocont=0;
-                $sql = "SELECT count(*) FROM miembro";
-                if ($res = $conexionPDO->query($sql)) {
-                    if ($res->fetchColumn() > 0) {
-                        $sql = "SELECT * FROM miembro";
-                        foreach ($conexionPDO->query($sql) as $row) {
-                            $miembrocont++;
+                for($k=0;$k<$_SESSION['carrito'][$i]['numerodefamiliares'];$k++){
+
+                    /* PARA CREAR ID MIEMBRO */
+                    $miembrocont=0; 
+                    $miembrossesion=0;
+                    $sql = "SELECT count(*) FROM miembro";
+                    if ($res = $conexionPDO->query($sql)) {
+                        if ($res->fetchColumn() > 0) {
+                            $sql = "SELECT * FROM miembro";
+                            foreach ($conexionPDO->query($sql) as $row) {
+                                $miembrocont++;
+                            }
                         }
                     }
+
+                    while ($_SESSION['carrito'][$i]['numerodefamiliares']>$miembrossesion)
+                        $miembrossesion++;          
+                    
+                    $numero_id = (string) ($miembrocont+$miembrossesion + 1);
+                    $idmiembro_creado = $numero_id;
+
+                    /* Para insertar los miembros */
+                    $producto_temporal = "INSERT INTO miembro (id_miembro, nombre, tipo_familiar) 
+                                        VALUES (:id_miembro, :nombre, :tipo_familiar)";
+                    $sentencia2 = $conexionPDO->prepare($producto_temporal);
+                    $sentencia2->execute(array(':id_miembro'=>$idmiembro_creado, ':nombre'=>$_SESSION["familiares"][$k]['nombrefamiliar'], ':tipo_familiar'=>$_SESSION["familiares"][$k]['tipofamiliar'] )); 
+
+                    /* Para insertar la linea-miembro */
+                    $linea_miembro_temporal = "INSERT INTO linea_miembro (idinterno_cojin, id_miembro)
+                                                VALUES (:idinterno_cojin, :id_miembro)";
+                    $sentencia5 = $conexionPDO->prepare($linea_miembro_temporal);
+                    $sentencia5->execute(array(':idinterno_cojin'=>$numero_id, ':id_miembro'=>$idmiembro_creado));
                 }
-                $numero_id = (string) ($miembrocont + 1);
-                $idmiembro_creado = $numero_id;
-
-                /* Para insertar los miembros */
-                $producto_temporal = "INSERT INTO miembro (id_miembro, nombre, tipo_familiar) 
-                                    VALUES (:id_miembro, :nombre, :tipo_familiar)";
-                $sentencia2 = $conexionPDO->prepare($producto_temporal);
-                $sentencia2->execute(array(':id_miembro'=>$idmiembro_creado, ':nombre'=>$_SESSION["familiares"][$k]['nombrefamiliar'], ':tipo_familiar'=>$_SESSION["familiares"][$k]['tipofamiliar'] )); 
-
-                /* Para insertar la linea-miembro */
-                $linea_miembro_temporal = "INSERT INTO linea_miembro (idinterno_cojin, id_miembro)
-                                            VALUES (:idinterno_cojin, :id_miembro)";
-                $sentencia5 = $conexionPDO->prepare($linea_miembro_temporal);
-                $sentencia5->execute(array(':idinterno_cojin'=>$numero_id, ':id_miembro'=>$idmiembro_creado));
-            }
 
 
-            
 
         break;
         
