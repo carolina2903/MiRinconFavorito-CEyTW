@@ -181,9 +181,9 @@ if (isset($_POST['nombre_apellido']) && isset($_POST['profesion'])) {
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 9, 'nombrecojin' => $nombre_apellido, 'profesion' => $profesion, 'fechacojin' => $fecha, 'precio_unidad' => 14, 'tamaño' => "30x50", 'nombre' => "Cojín Profesión Individual", 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 9, 'nombrecojin' => $nombre_apellido, 'profesion' => $profesion, 'fechacojin' => $fecha, 'precio_unidad' => 14, 'tamano' => "30x50", 'nombre' => "Cojín Profesión Individual", 'tipo_letra' => $tipo_letra);
     } else
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 9, 'nombrecojin' => $nombre_apellido, 'profesion' => $profesion, 'fechacojin' => $fecha, 'precio_unidad' => 14, 'tamaño' => "30x50", 'nombre' => "Cojín Profesión Individual", 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 9, 'nombrecojin' => $nombre_apellido, 'profesion' => $profesion, 'fechacojin' => $fecha, 'precio_unidad' => 14, 'tamano' => "30x50", 'nombre' => "Cojín Profesión Individual", 'tipo_letra' => $tipo_letra);
 
 
 

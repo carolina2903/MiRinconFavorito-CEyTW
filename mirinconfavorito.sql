@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-12-2019 a las 02:57:35
+-- Tiempo de generación: 15-12-2019 a las 18:52:27
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -45,7 +45,8 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellidos`, `telefono`, `email`, `passwd`, `id_direccion`) VALUES
 ('cl1', '', '', '646362558', 'mirinconfavoritotienda@gmail.com', '$2y$10$dtRsfJ4f3FAc14GDiXBRuOQQ5cc5qOInXsE2jJS/JGBJ308myHUG.', ''),
 ('cl2', 'Cliente', 'Comercio Electrónico y Tecnologías Web', '666012345', 'cliente@email.com', '$2y$10$Jo.zeeP7RqSS00/lEl2LFO0P9g69wcqEu0OBpNbqe2mNwF/7f5uYe', ''),
-('cl3', 'Carolina', 'Ordoño López', '123123123', 'carolina@email.com', '$2y$10$N15uFwR8tBgerlRj/JV8uO89Z4ywomZOjMywnbrTlFTnnw0VimTV.', '');
+('cl3', 'Carolina', 'Ordoño López', '123123123', 'carolina@email.com', '$2y$10$N15uFwR8tBgerlRj/JV8uO89Z4ywomZOjMywnbrTlFTnnw0VimTV.', ''),
+('cl4', 'Pruebas', 'Pruebas', '666012345', 'pruebas@email.com', '$2y$10$GtC45BplObx/Jt/MhIBvpeenrnoLuhUMUr0iVn71uvHDnSL2Spe2S', '');
 
 -- --------------------------------------------------------
 
@@ -69,8 +70,7 @@ CREATE TABLE `cojines_corazon_dobles_senor_senora` (
 --
 
 INSERT INTO `cojines_corazon_dobles_senor_senora` (`idinterno`, `id_tipo_producto`, `id_producto`, `nombre_tipo`, `nombre_senor`, `nombre_senora`, `fecha`, `tipo_letra`) VALUES
-(1, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'Carlos', 'Cristina', '2019-12-19', 'Mayúsculas'),
-(324, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'rgvf', 'vrg', '0000-00-00', '');
+(1, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'Carlos', 'Cristina', '2019-12-19', 'Mayúsculas');
 
 -- --------------------------------------------------------
 
@@ -270,19 +270,6 @@ INSERT INTO `cojin_profesion_individual` (`idinterno`, `id_tipo_producto`, `id_p
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cupones`
---
-
-CREATE TABLE `cupones` (
-  `id_cupon` varchar(20) NOT NULL,
-  `descripcion` varchar(20) NOT NULL,
-  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
-  `fecha_fin` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `direccion_postal`
 --
 
@@ -406,10 +393,9 @@ INSERT INTO `miembro` (`id_miembro`, `nombre`, `raza`, `tipo_familiar`) VALUES
 CREATE TABLE `pedido` (
   `id_pedido` int(8) NOT NULL,
   `id_cliente` varchar(10) NOT NULL,
-  `tipo_envio` varchar(20) NOT NULL,
-  `cupon` varchar(20) DEFAULT NULL,
   `precio_total` int(11) NOT NULL,
   `fecha_compra` date NOT NULL DEFAULT current_timestamp(),
+  `tipo_envio` enum('Estándar','Urgente','Contra reembolso','Internacional') NOT NULL,
   `anotaciones` text NOT NULL,
   `estado` enum('Tramitado','Enviado','Recibido','Cancelado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -418,10 +404,8 @@ CREATE TABLE `pedido` (
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`id_pedido`, `id_cliente`, `tipo_envio`, `cupon`, `precio_total`, `fecha_compra`, `anotaciones`, `estado`) VALUES
-(1, 'cl2', '1', NULL, 22, '2019-11-14', '', 'Tramitado'),
-(2, 'cl2', '1', NULL, 23, '2019-12-18', 'Ninguna', 'Enviado'),
-(3, 'cl2', 'Urgente', NULL, 11, '2019-12-11', '', 'Recibido');
+INSERT INTO `pedido` (`id_pedido`, `id_cliente`, `precio_total`, `fecha_compra`, `tipo_envio`, `anotaciones`, `estado`) VALUES
+(1, 'cl2', 22, '2019-11-14', 'Estándar', '', 'Tramitado');
 
 -- --------------------------------------------------------
 
@@ -433,14 +417,14 @@ CREATE TABLE `producto` (
   `id_producto` varchar(8) NOT NULL,
   `id_tipo_producto` varchar(8) NOT NULL,
   `precio_unidad` int(11) NOT NULL,
-  `tamaño` enum('30x50','40x40') NOT NULL
+  `tamano` enum('30x50','40x40') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `id_tipo_producto`, `precio_unidad`, `tamaño`) VALUES
+INSERT INTO `producto` (`id_producto`, `id_tipo_producto`, `precio_unidad`, `tamano`) VALUES
 ('pr1', '1', 12, '30x50'),
 ('pr2', '2', 22, '30x50'),
 ('pr3', '3', 33, '40x40'),
@@ -516,12 +500,6 @@ ALTER TABLE `cojin_profesion_individual`
   ADD PRIMARY KEY (`idinterno`);
 
 --
--- Indices de la tabla `cupones`
---
-ALTER TABLE `cupones`
-  ADD PRIMARY KEY (`id_cupon`);
-
---
 -- Indices de la tabla `direccion_postal`
 --
 ALTER TABLE `direccion_postal`
@@ -577,55 +555,55 @@ ALTER TABLE `cojines_corazon_dobles_senor_senora`
 -- AUTO_INCREMENT de la tabla `cojin_amistad`
 --
 ALTER TABLE `cojin_amistad`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3325;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_corazones_dobles`
 --
 ALTER TABLE `cojin_corazones_dobles`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_dibujo_individual`
 --
 ALTER TABLE `cojin_dibujo_individual`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_natalicio`
 --
 ALTER TABLE `cojin_natalicio`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_profesion_doble`
 --
 ALTER TABLE `cojin_profesion_doble`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_profesion_doble_sr_sra`
 --
 ALTER TABLE `cojin_profesion_doble_sr_sra`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cojin_profesion_individual`
 --
 ALTER TABLE `cojin_profesion_individual`
-  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `linea_producto`
 --
 ALTER TABLE `linea_producto`
-  MODIFY `num_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `num_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pedido` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

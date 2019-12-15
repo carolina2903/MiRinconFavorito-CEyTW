@@ -189,9 +189,9 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 1, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Corazón Dobles Sr Sra", 'cantidad' => 1, 'srsraizquierda' => $srsraizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 1, 'precio_unidad' => 24, 'tamano' => "30x50", 'nombre' => "Cojines Corazón Dobles Sr Sra", 'cantidad' => 1, 'srsraizquierda' => $srsraizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
     } else
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 1, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Corazón Dobles Sr Sra", 'cantidad' => 1, 'srsraizquierda' => $srsraizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 1, 'precio_unidad' => 24, 'tamano' => "30x50", 'nombre' => "Cojines Corazón Dobles Sr Sra", 'cantidad' => 1, 'srsraizquierda' => $srsraizquierda, 'nombre_izquierda' => $nombreizqdo, 'srsraderecha' => $srsraderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
 
 
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";

@@ -148,14 +148,14 @@ if (isset($_POST['genero_seleccionado'])) {
     $cojin_temporal = "INSERT INTO cojin_amistad (id_tipo_producto, id_producto, nombre_tipo, genero) VALUES ('2', :id_producto_creado, 'Cojín Amistad', :genero)";
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
-    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
+    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamano) VALUES (:id_producto_creado,'2','13','40x40')";
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero, 'precio_unidad' => 14.00, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero, 'precio_unidad' => 14.00, 'tamano' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
     } else {
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero,  'precio_unidad' => 14.00, 'tamaño' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 2, 'genero' => $genero,  'precio_unidad' => 14.00, 'tamano' => "40x40", 'nombre' => "Cojín Amistad", 'cantidad' => 1);
     }
     //print_r ($_SESSION["carrito"]);
     echo "<div class='alert alert-info' style='width:38%'>El producto se ha añadido al carrito</div>";

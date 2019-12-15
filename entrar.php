@@ -38,7 +38,13 @@
                 <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
                 <br>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
-            
+                <br><br>
+
+                <div class="form-group form-check">
+        			<input type="checkbox" class="form-check-input" id="recordar" name="recordar" value="1">
+        			<label class="form-check-label" for="recordar">Recordarme</label>
+    			</div>
+
                 <input type="submit" class="btn btn-info" style="float: right; width:200px;" name="enviar" value="Entrar" />
 
                 
@@ -68,11 +74,10 @@
                 $_SESSION['email'] = $_POST["email"]; /* Guardamos la sesion del usuario */
             
                 /* Para establecer las cookies si se ha señalado checkbox recordar */
-                // if (isset($_POST['recordar']) && $_POST['recordar'] == '1') {
-                //     setcookie('usuariocookie', $_POST["usuario"], time() + (60 * 60 * 24 * 365));
-                //     setcookie('passwordcookie', $_POST["password"], time() + (60 * 60 * 24 * 365));
-                //     echo '<div class="alert alert-success">Cookie creada.</div>';
-                // }
+                if (isset($_POST['recordar']) && $_POST['recordar'] == '1') {
+                    setcookie('emailcookie', $_POST["email"], time() + (60 * 60 * 24 * 365));
+                    echo '<div class="alert alert-success">Cookie creada.</div>';
+                }
                 
                 echo "<script language='javascript'> entrar(); </script>";
                 

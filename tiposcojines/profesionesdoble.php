@@ -212,7 +212,7 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha'])) && (i
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
 
-    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
+    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamano) VALUES (:id_producto_creado,'2','13','40x40')";
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
@@ -220,9 +220,9 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha'])) && (i
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 8, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Profesión Dobles", 'cantidad' => 1, 'profesion_izquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'profesion_derecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 8, 'precio_unidad' => 24, 'tamano' => "30x50", 'nombre' => "Cojines Profesión Dobles", 'cantidad' => 1, 'profesion_izquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'profesion_derecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
     } else
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 8, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Profesión Dobles", 'cantidad' => 1, 'profesion_izquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'profesion_derecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 8, 'precio_unidad' => 24, 'tamano' => "30x50", 'nombre' => "Cojines Profesión Dobles", 'cantidad' => 1, 'profesion_izquierda' => $profesionizquierda, 'nombre_izquierda' => $nombreizqdo, 'profesion_derecha' => $profesionderecha, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
 
 
 

@@ -58,6 +58,7 @@ if (isset($_POST['vaciarcarritobutton'])) {
 if (isset($_POST['comprarbutton'])) {
 
     if (count($_SESSION["carrito"]) > 0) {
+        $_SESSION['precio_carrito'] = $precio_carrito; /* Nos quedamos con el precio carrito */
         echo "<script>window.location.assign('comprar.php');</script>";
     } else {
         echo "<div class='alert alert-info' style='width:15%;'>El carrito está vacío</div>";
@@ -280,7 +281,7 @@ if ($_SESSION["carrito"] != NULL) {
                                     }
                                     $subtotal = $precio_carrito * 0.79;
                                     $impuestos = $precio_carrito * 0.21;
-
+                                    $_SESSION['precio_carrito'] = $precio_carrito; /* Nos quedamos con el precio carrito */
 
                                     echo "</thead>";
                                     echo "<tbody>";

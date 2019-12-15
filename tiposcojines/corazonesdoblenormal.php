@@ -154,6 +154,11 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
     }
 
 
+      //vemos cuantos productos de este tipo hay en el carrito para crear el id
+  if (isset($_SESSION['carrito'])){
+    $numeroproductos+=count($_SESSION['carrito']);           
+}//if set carrit
+
     //creamos el id_producto
     $numero_id = (string) ($numeroproductos + 1);
     $id_producto_creado = "pr" . $numero_id;
@@ -175,7 +180,7 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
 
-    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
+    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamano) VALUES (:id_producto_creado,'2','13','40x40')";
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
@@ -183,9 +188,9 @@ if (isset($_POST['nombre_izquierda']) && (isset($_POST['nombre_derecha']))) {
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 3, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Corazón Doble", 'cantidad' => 1, 'nombre_izquierda' => $nombreizqdo, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 3, 'precio_unidad' => 24, 'tamano' => "30x50", 'nombre' => "Cojines Corazón Doble", 'cantidad' => 1, 'nombre_izquierda' => $nombreizqdo, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
     } else
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 3, 'precio_unidad' => 24, 'tamaño' => "30x50", 'nombre' => "Cojines Corazón Doble", 'cantidad' => 1, 'nombre_izquierda' => $nombreizqdo, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 3, 'precio_unidad' => 24, 'tamano' => "30x50", 'nombre' => "Cojines Corazón Doble", 'cantidad' => 1, 'nombre_izquierda' => $nombreizqdo, 'nombre_derecha' => $nombredrcho, 'fechacojin' => $fecha, 'tipo_letra' => $tipo_letra);
 
 
 

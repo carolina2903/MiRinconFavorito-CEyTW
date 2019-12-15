@@ -216,7 +216,7 @@ if (isset($_POST['nombrefamiliar_1'])) {
     $a = 1;
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 5, 'precio_unidad' => 14, 'tamaño' => "30x50", 'nombre' => "Cojín Familia", 'numerodefamiliares' => $numerodefamiliares, 'informacionadicional' => $informacionadicional);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 5, 'precio_unidad' => 14, 'tamano' => "30x50", 'nombre' => "Cojín Familia", 'numerodefamiliares' => $numerodefamiliares, 'informacionadicional' => $informacionadicional);
         while ($a <= $numerodefamiliares) {
             $nombrefamiliar = "nombrefamiliar_";
             $nombrefinal = $nombrefamiliar . $a;
@@ -232,7 +232,7 @@ if (isset($_POST['nombrefamiliar_1'])) {
             $a++;
         }
     } else {
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 5, 'precio_unidad' => 14, 'tamaño' => "30x50", 'nombre' => "Cojín Familia", 'numerodefamiliares' => $numerodefamiliares, 'informacionadicional' => $informacionadicional);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 5, 'precio_unidad' => 14, 'tamano' => "30x50", 'nombre' => "Cojín Familia", 'numerodefamiliares' => $numerodefamiliares, 'informacionadicional' => $informacionadicional);
         while ($a <= $numerodefamiliares) {
             $nombrefamiliar = "nombrefamiliar_";
             $nombrefinal = $nombrefamiliar . $a;

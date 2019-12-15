@@ -212,7 +212,7 @@ if (isset($_POST['nombrebebe']) && (isset($_POST['fechanacimiento'])) && (isset(
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado, ':genero'=>$genero));
 
-    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamaño) VALUES (:id_producto_creado,'2','13','40x40')";
+    $cojin_temporal= "INSERT INTO producto(id_producto, id_tipo_producto, precio_unidad, tamano) VALUES (:id_producto_creado,'2','13','40x40')";
     $sentencia = $conexionPDO->prepare($cojin_temporal);
     $sentencia->execute(array(':id_producto_creado'=>$id_producto_creado));
     */
@@ -220,9 +220,9 @@ if (isset($_POST['nombrebebe']) && (isset($_POST['fechanacimiento'])) && (isset(
 
 
     if (!isset($_SESSION["carrito"])) {
-        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 6, 'precio_unidad' => 14, 'tamaño' => "40x40", 'nombre' => "Cojín Nacimiento Bebé", 'cantidad' => 1, 'nombrebebe' => $nombrebebe, 'fechanacimiento' => $fechanacimiento, 'horanacimiento' => $horanacimiento, 'peso' => $peso, 'altura' => $altura, 'colorprimario' => $colorprimario, 'colorsecundario' => $colorsecundario);
+        $_SESSION["carrito"][0] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 6, 'precio_unidad' => 14, 'tamano' => "40x40", 'nombre' => "Cojín Nacimiento Bebé", 'cantidad' => 1, 'nombrebebe' => $nombrebebe, 'fechanacimiento' => $fechanacimiento, 'horanacimiento' => $horanacimiento, 'peso' => $peso, 'altura' => $altura, 'colorprimario' => $colorprimario, 'colorsecundario' => $colorsecundario);
     } else
-        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 6, 'precio_unidad' => 14, 'tamaño' => "40x40", 'nombre' => "Cojín Nacimiento Bebé", 'cantidad' => 1, 'nombrebebe' => $nombrebebe, 'fechanacimiento' => $fechanacimiento, 'horanacimiento' => $horanacimiento, 'peso' => $peso, 'altura' => $altura, 'colorprimario' => $colorprimario, 'colorsecundario' => $colorsecundario);
+        $_SESSION["carrito"][] = array('id_producto' => $id_producto_creado, 'id_tipo_producto' => 6, 'precio_unidad' => 14, 'tamano' => "40x40", 'nombre' => "Cojín Nacimiento Bebé", 'cantidad' => 1, 'nombrebebe' => $nombrebebe, 'fechanacimiento' => $fechanacimiento, 'horanacimiento' => $horanacimiento, 'peso' => $peso, 'altura' => $altura, 'colorprimario' => $colorprimario, 'colorsecundario' => $colorsecundario);
 
 
 

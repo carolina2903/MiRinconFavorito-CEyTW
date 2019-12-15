@@ -6,7 +6,9 @@
     session_destroy();
 
     unset($_SESSION["email"]);
-    // unset ($_COOKIE ["usuariocookie"]); /* Si quisieramos qeu se borrasen las cookies al logout */
+    unset ($_COOKIE ["PHPSESSID"]);
+
+    // unset ($_COOKIE ["emailcookie"]); /* Si quisieramos qeu se borrasen las cookies al logout */
 
     // echo "<br><br><p align='center'>Su sesión ha sido cerrada con éxito.</p>";
     echo "<script>window.alert('Sesión cerrada con éxito')</script>";

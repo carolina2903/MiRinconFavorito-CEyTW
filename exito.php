@@ -55,132 +55,403 @@
 //en cada caso se hace un insert en la linea pedido
 //al final del for se crea el pedido y la dirección si no existe
 
+    /* OBTENER ID CLIENTE */
+    $sqluser = "SELECT * FROM cliente WHERE email='" . $_SESSION["email"] . "'";
+    $resultadouser = $conexionPDO->query($sqluser);
+    $usuario = $resultadouser->fetch(PDO::FETCH_ASSOC);
+    $id_cliente = $usuario['id_cliente'];
+
+    /* OBTENER EL PRECIO TOTAL DEL PEDIDO */
+$precio_total = $_SESSION['precio_carrito'];
+
+/* OBTENER EL TIPO ENVIO */
+/* $tipo_envio = $_SESSION['tipo_envio'];
+echo '<br>tipo envio: '.$tipo_envio; */
+
+
+
+/* OBTENER LAS NOTAS DEL PEDIDO */
+/* $notas = $_SESSION['notas'];
+echo '<br>notas: '.$notas; */
+
+
+/* Para crear el id del pedido */
+$pedcont=0;
+$sql = "SELECT count(*) FROM pedido";
+if ($res = $conexionPDO->query($sql)) {
+    if ($res->fetchColumn() > 0) {
+        $sql = "SELECT * FROM pedido";
+        foreach ($conexionPDO->query($sql) as $row) {
+            $pedcont++;
+        }
+    }
+}
+$numero_id = (string) ($pedcont + 1);
+$idpedido_creado = $numero_id;
+
+
+/* Para insertar el pedido */
+$pedido_temporal = "INSERT INTO pedido (id_pedido, id_cliente, precio_total, fecha_compra, tipo_envio, anotaciones, estado) 
+VALUES (:id_pedido, :id_cliente, :precio_total, :fecha_compra, 'Estándar', '', 'Tramitado')";
+$sentencia3 = $conexionPDO->prepare($pedido_temporal);
+$sentencia3->execute(array(':id_pedido'=>$idpedido_creado, ':id_cliente'=>$id_cliente, ':precio_total'=>$precio_total, ':fecha_compra'=>date("Y-m-d") ));          
+
+
+
+
+
+
+
+
+
+
 
 for ($i = 0; $i < count($_SESSION["carrito"]); ++$i) {
+
+    /* PARA CREAR ID PRODUCTO */
+    $prodcont=0;
+    // for($contados=0; $contados<count($_SESSION['carrito']); $contados++){ 
+        $sql = "SELECT count(*) FROM producto";
+        if ($res = $conexionPDO->query($sql)) {
+            if ($res->fetchColumn() > 0) {
+                $sql = "SELECT * FROM producto";
+                foreach ($conexionPDO->query($sql) as $row) {
+                    $prodcont++;
+                }
+            }
+        }
+        $numero_id = (string) ($prodcont + 1);
+        $idproducto_creado = "pr" . $numero_id;
+    // }
+
+
+
+
     switch ($_SESSION["carrito"][$i]["id_tipo_producto"]) {
 
         //corazon señor señora 
         case 1:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojines_corazon_dobles_senor_senora";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojines_corazon_dobles_senor_senora";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
           
+            /* Para insertar el tipo de cojin */
             $cojin_temporal = "INSERT INTO cojines_corazon_dobles_senor_senora (idinterno, id_tipo_producto, id_producto, nombre_tipo, nombre_senor, nombre_senora, fecha, tipo_letra) 
-                                VALUES ('324', '1', :id_producto, 'Cojines Corazón Doble Señor/Señora', :nombre_senor, :nombre_senora, :fecha, :tipo_letra)";
+                                VALUES (:idinterno, '1', :id_producto, 'Cojines Corazón Doble Señor/Señora', :nombre_senor, :nombre_senora, :fecha, :tipo_letra)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':nombre_senor'=>$_SESSION["carrito"][$i]['nombre_derecha'],':nombre_senora'=>$_SESSION["carrito"][$i]['nombre_izquierda'], ':fecha'=>$_SESSION["carrito"][$i]['fechacojin'],':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra'] ));
+            $sentencia->execute(array(':idinterno'=>$numero_id, ':id_producto'=>$idproducto_creado, ':nombre_senor'=>$_SESSION["carrito"][$i]['nombre_derecha'], ':nombre_senora'=>$_SESSION["carrito"][$i]['nombre_izquierda'], ':fecha'=>$_SESSION["carrito"][$i]['fechacojin'],':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra'] ));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '1', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '1', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+                      
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
+        
         break;
+
 
         //cojin amistad
         case 2:
 
-            $cojin_temporal = "INSERT INTO cojin_amistad (idinterno, id_tipo_producto, id_producto, nombre_tipo, nombre, fecha) 
-                                VALUES ('3324', '2', :id_producto, 'Cojín Amistad', :nombre, :fecha)";
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_amistad";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_amistad";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
+            $cojin_temporal = "INSERT INTO cojin_amistad (idinterno, id_tipo_producto, id_producto, nombre_tipo, genero) 
+                                VALUES (:idinterno, '2', :id_producto, 'Cojín Amistad', :genero)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':fecha'=>$_SESSION["carrito"][$i]['fecha']));
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':genero'=>$_SESSION["carrito"][$i]['genero']));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '2', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '2', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
+
         break;
+
 
         //cojin_corazones_dobles
         case 3:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_corazones_dobles";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_corazones_dobles";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
             $cojin_temporal = "INSERT INTO cojin_corazones_dobles (idinterno, id_tipo_producto, id_producto, nombre_tipo, nombre_izquierda, nombre_derecha, fecha, tipo_letra) 
-                                VALUES ('324', '3', :id_producto, 'Cojines Corazón Doble', :nombre_iquierda, :nombre_derecha, :fecha, :tipo_letra)";
+                                VALUES (:idinterno, '3', :id_producto, 'Cojines Corazón Doble', :nombre_izquierda, :nombre_derecha, :fecha, :tipo_letra)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':nombre_izquierda'=>$_SESSION["carrito"][$i]['nombre_izquierda'],':nombre_derecha'=>$_SESSION["carrito"][$i]['nombre_derecha'], ':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':nombre_izquierda'=>$_SESSION["carrito"][$i]['nombre_izquierda'],':nombre_derecha'=>$_SESSION["carrito"][$i]['nombre_derecha'], ':fecha'=>$_SESSION["carrito"][$i]['fechacojin'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '3', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '3', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
         break;
+
 
          //cojin_dibujo_individual
          case 4:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_dibujo_individual";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_dibujo_individual";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
             $cojin_temporal = "INSERT INTO cojin_dibujo_individual (idinterno, id_tipo_producto, id_producto, nombre_tipo, nombre, dibujo, fecha, tipo_letra) 
-                                VALUES ('324', '4', :id_producto, 'Cojines Corazón Doble', :nombre, :dibujo, :fecha, :tipo_letra)";
+                                VALUES (:idinterno, '4', :id_producto, 'Cojines Corazón Doble', :nombre, :dibujo, :fecha, :tipo_letra)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':dibujo'=>$_SESSION["carrito"][$i]['dibujo'], ':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':dibujo'=>$_SESSION["carrito"][$i]['dibujo'], ':fecha'=>$_SESSION["carrito"][$i]['fechacojin'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '4', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '4', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
         break;
+
 
          //cojin_familia
          case 5:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_familia";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_familia";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
             $cojin_temporal = "INSERT INTO cojin_familia (idinterno, id_tipo_producto, id_producto, nombre_tipo, informacion_adicional) 
-                                VALUES ('324', '5', :id_producto, 'Cojines Corazón Doble', :informacion_adicional)";
+                                VALUES (:idinterno, '5', :id_producto, 'Cojín Familia', :informacion_adicional)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':informacion_adicional'=>$_SESSION["carrito"][$i]['informacion_adicional']));
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':informacion_adicional'=>$_SESSION["carrito"][$i]['informacionadicional']));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '5', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '5', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
-        
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
+            
+            ////////////////////////
             //añadir linea-miembro
             //añadir miembro
-        
-        
+            ///////////////////////
+
         break;
+        
 
          //cojin_natalicio
          case 6:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_natalicio";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_natalicio";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
             $cojin_temporal = "INSERT INTO cojin_natalicio (idinterno, id_tipo_producto, id_producto, nombre_tipo, nombre, fecha, hora, peso, medida, color_primario, color_secundario) 
-                                VALUES ('324', '6', :id_producto, 'Cojín Natalicio', :nombre, :fecha, :hora, :peso, :medida, :color_primario, :color_secundario)";
+                                VALUES (:idinterno, '6', :id_producto, 'Cojín Natalicio', :nombre, :fecha, :hora, :peso, :medida, :color_primario, :color_secundario)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':hora'=>$_SESSION["carrito"][$i]['hora'], ':peso'=>$_SESSION["carrito"][$i]['peso'], ':medida'=>$_SESSION["carrito"][$i]['medida'], ':color_primario'=>$_SESSION["carrito"][$i]['color_primario'], ':color_secundario'=>$_SESSION["carrito"][$i]['color_secundario']));
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':fecha'=>$_SESSION["carrito"][$i]['fechanacimiento'], ':hora'=>$_SESSION["carrito"][$i]['horanacimiento'], ':peso'=>$_SESSION["carrito"][$i]['peso'], ':medida'=>$_SESSION["carrito"][$i]['altura'], ':color_primario'=>$_SESSION["carrito"][$i]['colorprimario'], ':color_secundario'=>$_SESSION["carrito"][$i]['colorsecundario']));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '6', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '6', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
         break;
+        
+
+         //cojin_profesion_doble_sr_sr
+         case 7:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_profesion_doble_sr_sra";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_profesion_doble_sr_sra";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
+            $cojin_temporal = "INSERT INTO cojin_profesion_doble_sr_sra (idinterno, id_tipo_producto, id_producto, nombre_tipo, srsraizquierda, profesionizquierda, nombreizquierda, srsraderecha, profesionderecha, nombrederecha, fecha, tipo_letra) 
+                                VALUES (:idinterno, '7', :id_producto, 'Cojines Profesión Dobles Sr Sra', :srsraizquierda, :profesionizquierda, :nombreizquierda, :srsraderecha, :profesionderecha, :nombrederecha, :fecha, :tipo_letra)";
+
+            $sentencia = $conexionPDO->prepare($cojin_temporal);
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':srsraizquierda'=>$_SESSION["carrito"][$i]['srsraizquierda'],':profesionizquierda'=>$_SESSION["carrito"][$i]['profesionizquierda'], ':nombreizquierda'=>$_SESSION["carrito"][$i]['nombre_izquierda'], ':srsraderecha'=>$_SESSION["carrito"][$i]['srsraderecha'], ':profesionderecha'=>$_SESSION["carrito"][$i]['profesionderecha'], ':nombrederecha'=>$_SESSION["carrito"][$i]['nombre_derecha'], ':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
+            
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '7', :precio_unidad, :tamano)";
+            $sentencia2 = $conexionPDO->prepare($producto_temporal);
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
+        break;
+
 
          //cojin_profesion_doble
-         case 7:
-            $cojin_temporal = "INSERT INTO cojin_profesion_doble (idinterno, id_tipo_producto, id_producto, nombre_tipo, profesion_izquierda, profesion_derecha, nombre_izquierdo, nombre_derecha, fecha, tipo_letra) 
-                                VALUES ('324', '7', :id_producto, 'Cojines Profesión Dobles', :profesion_izquierda, :profesion_derecha, :nombre_iquierda, :nombre_derecha, :fecha, :tipo_letra)";
+         case 8:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_profesion_doble";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_profesion_doble";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
+
+            $cojin_temporal = "INSERT INTO cojin_profesion_doble (idinterno, id_tipo_producto, id_producto, nombre_tipo, profesion_izquierda, profesion_derecha, nombre_izquierda, nombre_derecha, fecha, tipo_letra) 
+                                VALUES (:idinterno, '8', :id_producto, 'Cojines Profesión Dobles', :profesion_izquierda, :profesion_derecha, :nombre_izquierda, :nombre_derecha, :fecha, :tipo_letra)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':profesion_izquierda'=>$_SESSION["carrito"][$i]['profesion_izquierda'], ':profesion_derecha'=>$_SESSION["carrito"][$i]['profesion_derecha'],':nombre_izquierda'=>$_SESSION["carrito"][$i]['nombre_izquierda'],':nombre_derecha'=>$_SESSION["carrito"][$i]['nombre_derecha'], ':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
-            
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '7', :precio_unidad, :tamaño)";
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':profesion_izquierda'=>$_SESSION["carrito"][$i]['profesion_izquierda'], ':profesion_derecha'=>$_SESSION["carrito"][$i]['profesion_derecha'],':nombre_izquierda'=>$_SESSION["carrito"][$i]['nombre_izquierda'],':nombre_derecha'=>$_SESSION["carrito"][$i]['nombre_derecha'], ':fecha'=>$_SESSION["carrito"][$i]['fechacojin'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
+
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '8', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
         break;
 
-         //cojin_profesion_doble_sr_sra
-         case 8:
-            $cojin_temporal = "INSERT INTO cojin_profesion_doble_sr_sra (idinterno, id_tipo_producto, id_producto, nombre_tipo, srsraizquierda, profesionizquierda, nombreizquierda, srsraderecha, profesionderecha, nombrederecha, fecha, tipo_letra) 
-                                VALUES ('324', '8', :id_producto, 'Cojines Profesión Dobles Sr Sra', :srsraizquierda, :profesionizquierda, :nombreizquierda, :srsraderecha, :profesionderecha, :nombrederecha, :fecha, :tipo_letra)";
-            $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':srsraizquierda'=>$_SESSION["carrito"][$i]['srsraizquierda'],':profesionizquierda'=>$_SESSION["carrito"][$i]['profesionizquierda'], ':nombreizquierda'=>$_SESSION["carrito"][$i]['nombreizquierda'], ':srsraderecha'=>$_SESSION["carrito"][$i]['srsraderecha'], ':profesionderecha'=>$_SESSION["carrito"][$i]['profesionderecha'], ':nombrederecha'=>$_SESSION["carrito"][$i]['nombrederecha'], ':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
-            
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '8', :precio_unidad, :tamaño)";
-            $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
-        break;
 
          //cojin_corazones_dobles
          case 9:
+
+            /* CREAMOS ID INTERNO */
+            $sql = "SELECT count(*) FROM cojin_corazones_dobles";
+            $contados = 0;
+            if ($res = $conexionPDO->query($sql)) {
+                if ($res->fetchColumn() > 0) {
+                    $sql = "SELECT * FROM cojin_corazones_dobles";
+                    foreach ($conexionPDO->query($sql) as $row) {
+                        $contados++;
+                    }
+                }
+            }
+            $numero_id = (string) ($contados + 1);
+
             $cojin_temporal = "INSERT INTO cojin_profesion_individual (idinterno, id_tipo_producto, id_producto, nombre_tipo, nombre, profesion, fecha, tipo_letra) 
-                                VALUES ('324', '9', :id_producto, 'Cojines Corazón Doble', :nombre, :profesion, :fecha, :tipo_letra)";
+                                VALUES (:idinterno, '9', :id_producto, 'Cojines Corazón Doble', :nombre, :profesion, :fecha, :tipo_letra)";
             $sentencia = $conexionPDO->prepare($cojin_temporal);
-            $sentencia->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':profesion'=>$_SESSION["carrito"][$i]['profesion'], ':fecha'=>$_SESSION["carrito"][$i]['fecha'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
+            $sentencia->execute(array(':idinterno'=>$numero_id,':id_producto'=>$idproducto_creado, ':nombre'=>$_SESSION["carrito"][$i]['nombre'],':profesion'=>$_SESSION["carrito"][$i]['profesion'], ':fecha'=>$_SESSION["carrito"][$i]['fechacojin'], ':tipo_letra'=>$_SESSION["carrito"][$i]['tipo_letra']));
             
-            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamaño) 
-                                VALUES (:id_producto, '9', :precio_unidad, :tamaño)";
+            /* Para insertar el producto */
+            $producto_temporal = "INSERT INTO producto (id_producto, id_tipo_producto, precio_unidad, tamano) 
+                                VALUES (:id_producto, '9', :precio_unidad, :tamano)";
             $sentencia2 = $conexionPDO->prepare($producto_temporal);
-            $sentencia2->execute(array(':id_producto'=>$_SESSION["carrito"][$i]['id_producto'], ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamaño'=>$_SESSION["carrito"][$i]['tamaño'] ));
+            $sentencia2->execute(array(':id_producto'=>$idproducto_creado, ':precio_unidad'=>$_SESSION["carrito"][$i]['precio_unidad'],':tamano'=>$_SESSION["carrito"][$i]['tamano'] ));
+            
+            /* Para insertar la linea producto */
+            $linea_producto_temporal = "INSERT INTO linea_producto (id_producto, id_pedido)
+                                        VALUES (:id_producto, :id_pedido)";
+            $sentencia4 = $conexionPDO->prepare($linea_producto_temporal);
+            $sentencia4->execute(array(':id_producto'=>$idproducto_creado, ':id_pedido'=>$idpedido_creado));
         break;
 
     }//swicth

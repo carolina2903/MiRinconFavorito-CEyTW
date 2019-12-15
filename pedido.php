@@ -52,10 +52,6 @@ require 'conexionPDO.php';
             <?php echo $pedido['tipo_envio']; ?>
         </div><br>
         <div class="row">
-            <b>Cupón:</b>&nbsp;
-            <?php echo $pedido['cupon']; ?>
-        </div><br>
-        <div class="row">
             <b>Precio total:</b>&nbsp;
             <?php echo $pedido['precio_total']; ?>
         </div><br>
@@ -92,6 +88,7 @@ require 'conexionPDO.php';
             <tr class="text-center">
                 <th style="width: 150px;" scope="col">PRECIO UNIDAD</th>
                 <th style="width: 200px;" scope="col">TAMAÑO</th>
+                <th style="width: 200px;" scope="col">TIPO PRODUCTO ID</th>
                 <th style="width: 300px;" scope="col" class="text-left">NOMBRE</th>
                 <th style="width: 200px;" scope="col"></th>  
             </tr>
@@ -105,8 +102,9 @@ require 'conexionPDO.php';
 
         echo '<tr>';
         echo '<td class="text-center">' . $productospedido['precio_unidad'] . '</td>';
-        echo '<td class="text-center">' . $productospedido['tamaño'] . '</td>';
-        
+        echo '<td class="text-center">' . $productospedido['tamano'] . '</td>';
+        echo '<td class="text-center">' . $productospedido['id_tipo_producto'] . '</td>';
+
         switch ($productospedido['id_tipo_producto']) {
 
             /* CORAZON DOBLE SR/SRA */

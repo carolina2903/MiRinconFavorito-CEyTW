@@ -50,16 +50,16 @@ $carrito->__construct();
                 return false;
             } else if ($("#apellidos").val() == "") {
                 return false;
-            } else if ($("#calleynumero").val() == "") {
-                return false;
+            /* } else if ($("#calleynumero").val() == "") {
+                return false; */
             } else if ($("#email").val() == "") {
                 return false;
             } else if ($("#telefono").val() == "") {
                 return false;
-            } else if ($("#cp").val() == "") {
+            /* } else if ($("#cp").val() == "") {
                 return false;
             } else if ($("#localidad").val() == "") {
-                return false;
+                return false; */
             } else {
                 
                 return true;
@@ -274,6 +274,20 @@ $carrito->__construct();
 
             <br>
 
+            <div class="col-sm-2">
+                    <h6 class="text"><b>Tipo de envío:</b></h6>
+                    <select class="btn bg-white dropdown-toggle" name="tipo_envio" id="tipo_envio" required="required" value="" style="border:1px solid #ced4da">
+                        <option value="estandar">Estándar</option>
+                        <option value="urgente">Urgente</option>
+                        <option value="contrareembolso">Contra reembolso</option>
+                        <option value="internacional">Internacional</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+
+            
+
 
             </table>
 
@@ -289,6 +303,10 @@ $carrito->__construct();
 </body>
 
 </html>
+
+
+
+
 <?php
 //session_start();
 
@@ -499,6 +517,8 @@ if ($_SESSION["carrito"] != NULL) {
                                             $precio_carrito += $precio;
                                         }
                                     }
+
+                                    
                                     $subtotal = $precio_carrito * 0.79;
                                     $impuestos = $precio_carrito * 0.21;
 
@@ -542,6 +562,8 @@ if ($_SESSION["carrito"] != NULL) {
                                     $carrito->comprar($usuario['nombre'],$usuario['apellidos'],$precio_carrito);
                                     //$carrito->imprime_carrito($precio_carrito);
                                     echo "<br><br><br><br><br><br>";
+
+                                    
 
                                     //}
                                     //else{
