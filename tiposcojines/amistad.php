@@ -120,10 +120,8 @@ echo "<br><br>";
 require '../conexionPDO.php';
 //si se ha seleccionado la opcion genero
 if (isset($_POST['genero_seleccionado'])) {
-    //vemos cuantos productos de este tipo hay para crear el id
+
     $sql = "SELECT count(*) FROM producto";
-    //$numeroproductos = $conexionPDO->query($sql);
-    //$numeroproductos=$numeroproducto->fetchColumn();
     $numeroproductos = 0;
     if ($res = $conexionPDO->query($sql)) {
         /* Check the number of rows that match the SELECT statement */
@@ -134,8 +132,14 @@ if (isset($_POST['genero_seleccionado'])) {
                 $numeroproductos++;
             }
         }
-        /* No rows matched -- do something else */
-    }
+        /* Ya tenemos el numero de prouctos */
+}      
+    //vemos cuantos productos de este tipo hay en el carrito para crear el id
+    if (isset($_SESSION['carrito'])){
+        $numeroproductos+=count($_SESSION['carrito']);           
+    }//if set carrito
+    
+    
     //creamos el id_producto
     $numero_id = (string) ($numeroproductos + 1);
     $id_producto_creado = "pr" . $numero_id;
