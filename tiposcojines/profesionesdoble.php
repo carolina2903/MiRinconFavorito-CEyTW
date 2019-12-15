@@ -17,6 +17,22 @@ session_start();
 
 <body>
 
+<!-- JAVASCRIPT JQUERY--> <!-- PARA ACTIVAR O DESACTIVAR COMPRAR -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        <?php if(isset($_SESSION['email'])) { ?>
+            $(document).ready(function() {
+                document.getElementById('comprarbutton').disabled=false;
+            });
+        <?php } else { ?>
+            $(document).ready(function() {
+                document.getElementById('comprarbutton').disabled=true;
+            });
+        <?php } ?>
+    </script>
+
+
+
     <?php require '../estaticos/navtiposcojines.php'; ?>
 
     <br><br><br>
@@ -124,7 +140,7 @@ session_start();
 
         <div class="form-check">
 
-            <button type="submit" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
+            <button type="submit" id="comprarbutton" class="btn btn-info" style="float: right; width:200px;" value="anadir" onclick="anadir_carro()">Añadir al carrito</button>
 
 
         </div><br><br><br><br>

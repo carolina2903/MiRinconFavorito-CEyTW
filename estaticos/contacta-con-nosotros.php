@@ -24,8 +24,7 @@
     <li>Facebook: contacta con nosotros a través de nuestra página de facebook Mi Rincón Favorito</li>
 </ol>
 
-<p style="font-family:courier;" style="font-size:300%;">
-También puedes contactar con nosotros rellenando el siguiente formulario.</p>
+<p style="font-family:courier;" style="font-size:300%;">También puedes contactar con nosotros rellenando el siguiente formulario.</p>
 
 <div id="after_submit"></div>
 <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
