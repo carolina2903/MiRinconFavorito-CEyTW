@@ -122,7 +122,7 @@
                 
             <button class="navhb navb" id="carritobutton">
                 <li class="nav-item dropdown">
-                    <a class="nav-link d-flex align-items-center" id="botoncarrito" href="carrito.php" onClick="carrito()">Carrito&nbsp;
+                    <a class="nav-link d-flex align-items-center" id="botoncarrito" href="../carrito.php" onClick="carrito()">Carrito&nbsp;
                         <div id="cantidadcarrito"></div>
                         <span id="cantidadcarritospan" class="badge badge-light">0</span>
                     </a> 
@@ -136,19 +136,19 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                         
                         <button class="navb dropdown-item" id="registrarsebutton">
-                            <a class="dropdown-item" id="botonregistrarse" href="registrarse.php" onClick="registrarse()">Registrarse</a>
+                            <a class="dropdown-item" id="botonregistrarse" href="../registrarse.php" onClick="registrarse()">Registrarse</a>
                         </button>
                         
                         <button class="navb dropdown-item" id="entrarbutton">
-                            <a class="dropdown-item" id="botonentrar" href="entrar.php" onClick="iniciar_sesion()">Iniciar sesión</a>      
+                            <a class="dropdown-item" id="botonentrar" href="../entrar.php" onClick="iniciar_sesion()">Iniciar sesión</a>      
                         </button>
                         
                         <button class="navb dropdown-item" id="perfilbutton">
-                            <a class="dropdown-item" id="botonperfil" href="perfil.php" onClick="mi_perfil()">Mi perfil</a>
+                            <a class="dropdown-item" id="botonperfil" href="../perfil.php" onClick="mi_perfil()">Mi perfil</a>
                         </button>
                         
                         <button class="navb dropdown-item" id="cerrarbutton">
-                            <a class="dropdown-item" id="botoncerrar" href="cerrarsesion.php" onClick="cerrar_sesion()">Cerrar sesión</a>
+                            <a class="dropdown-item" id="botoncerrar" href="../cerrarsesion.php" onClick="cerrar_sesion()">Cerrar sesión</a>
                         </button>
                     
                     </div>

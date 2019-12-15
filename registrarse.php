@@ -40,7 +40,7 @@ require 'conexionPDO.php';
             <br>
             <input type="text" name="apellidos" class="form-control" id="surname" aria-describedby="surnameHelp" placeholder="Apellidos">
             <br>
-            <input type="text" name="telefono" class="form-control" id="telefono" placeholder="Teléfono">
+            <input type="tel" name="telefono" class="form-control" id="telefono" placeholder="Teléfono">
             <br>
             <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
             <br>
@@ -98,6 +98,11 @@ if (isset($_POST['registrarse'])) {
         array_push($errors, "El campo telefono no puede estar vacío");
         echo "<script>window.alert('El campo telefono no puede estar vacío')</script>";
         echo "<div align='left' style='color:red'>El campo telefono no puede estar vacío</div>";
+    }
+    if(strlen($telefono) < 9) {
+        array_push($errors, "El campo telefono tiene que tener 9 dígitos");
+        echo "<script>window.alert('El campo telefono tiene que tener 9 dígitos')</script>";
+        echo "<div align='left' style='color:red'>El campo telefono tiene que tener 9 dígitos</div>";
     }
     if (empty($email)) {
         array_push($errors, "El campo email no puede estar vacío");

@@ -339,6 +339,7 @@ require 'conexionPDO.php';
 
     <!-- PRECIOS -->
     <?php
+        $precio_total=0;
         $precio_total = $pedido['precio_total'];
         $subtotal = $precio_total * 0.79;
         $impuestos = $precio_total * 0.21;
