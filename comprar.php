@@ -50,16 +50,16 @@ $carrito->__construct();
                 return false;
             } else if ($("#apellidos").val() == "") {
                 return false;
-            /* } else if ($("#calleynumero").val() == "") {
-                return false; */
+             } else if ($("#calleynumero").val() == "") {
+                return false; 
             } else if ($("#email").val() == "") {
                 return false;
             } else if ($("#telefono").val() == "") {
                 return false;
-            /* } else if ($("#cp").val() == "") {
+             } else if ($("#cp").val() == "") {
                 return false;
             } else if ($("#localidad").val() == "") {
-                return false; */
+                return false; 
             } else {
                 
                 return true;
