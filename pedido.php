@@ -109,9 +109,10 @@ require 'conexionPDO.php';
 
             /* CORAZON DOBLE SR/SRA */
             case 1:    
-                $sql1 = "SELECT * FROM cojines_corazon_dobles_senor_senora WHERE id_producto='" . $productospedido['id_producto'] . "'";
+                $sql1 = "SELECT * FROM cojines_corazon_dobles_senor_senora WHERE id_tipo_producto='1' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado1 = $conexionPDO->query($sql1);
                 $cojintipo1 = $resultado1->fetch(PDO::FETCH_ASSOC);
+
                 echo "<td>".$cojintipo1['nombre_tipo']."</td>";
                 echo "<td class='text-center'>";
                 ?>
@@ -129,9 +130,10 @@ require 'conexionPDO.php';
 
             /* AMISTAD */
             case 2:
-                $sql2 = "SELECT * FROM cojin_amistad WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql2 = "SELECT * FROM cojin_amistad WHERE id_tipo_producto='2' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado2 = $conexionPDO->query($sql2);
                 $cojintipo2 = $resultado2->fetch(PDO::FETCH_ASSOC);
+                
                 echo "<td>".$cojintipo2['nombre_tipo']."</td>";
                 echo "<td>";
                 ?>
@@ -148,9 +150,10 @@ require 'conexionPDO.php';
 
             /* CORAZONES DOBLE NORMAL */
             case 3:
-                $sql3 = "SELECT * FROM cojin_corazones_dobles WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql3 = "SELECT * FROM cojin_corazones_dobles WHERE id_tipo_producto='3' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado3 = $conexionPDO->query($sql3);
                 $cojintipo3 = $resultado3->fetch(PDO::FETCH_ASSOC);
+
                 echo "<td>".$cojintipo3['nombre_tipo']."</td>";
                 echo "<td>";
                 ?>
@@ -170,9 +173,10 @@ require 'conexionPDO.php';
 
             /* DIBUJO INDIVIDUAL */
             case 4:
-                $sql4 = "SELECT * FROM cojin_dibujo_individual WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql4 = "SELECT * FROM cojin_dibujo_individual WHERE id_tipo_producto='4' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado4 = $conexionPDO->query($sql4);
                 $cojintipo4 = $resultado4->fetch(PDO::FETCH_ASSOC);
+
                 echo "<td>".$cojintipo4['nombre_tipo']."</td>";
                 echo "<td>";
                 ?>
@@ -191,7 +195,7 @@ require 'conexionPDO.php';
 
             /* FAMILIAR */
             case 5:
-                $sql5 = "SELECT * FROM cojin_familia WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql5 = "SELECT * FROM cojin_familia WHERE id_tipo_producto='5' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado5 = $conexionPDO->query($sql5);
                 $cojintipo5 = $resultado5->fetch(PDO::FETCH_ASSOC);
 
@@ -229,7 +233,7 @@ require 'conexionPDO.php';
 
             /* NATALICIO */
             case 6:
-                $sql6 = "SELECT * FROM cojin_natalicio WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql6 = "SELECT * FROM cojin_natalicio WHERE id_tipo_producto='6' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado6 = $conexionPDO->query($sql6);
                 $cojintipo6 = $resultado6->fetch(PDO::FETCH_ASSOC);
                 echo "<td>".$cojintipo6['nombre_tipo']."</td>";
@@ -254,7 +258,7 @@ require 'conexionPDO.php';
 
             /* PROFESION DOBLE sr/sra */
             case 7:
-                $sql7 = "SELECT * FROM cojin_profesion_doble_sr_sra WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql7 = "SELECT * FROM cojin_profesion_doble_sr_sra WHERE id_tipo_producto='7' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado7 = $conexionPDO->query($sql7);
                 $cojintipo7 = $resultado7->fetch(PDO::FETCH_ASSOC);
                 echo "<td>".$cojintipo7['nombre_tipo']."</td>";
@@ -282,7 +286,7 @@ require 'conexionPDO.php';
 
             /* PROFESIONES DOBLE */
             case 8:
-                $sql8 = "SELECT * FROM cojin_profesion_doble WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql8 = "SELECT * FROM cojin_profesion_doble WHERE id_tipo_producto='8' AND  id_producto='" . $productospedido['id_producto'] . "'";
                 $resultado8 = $conexionPDO->query($sql8);
                 $cojintipo8 = $resultado8->fetch(PDO::FETCH_ASSOC);
                 echo "<td>".$cojintipo8['nombre_tipo']."</td>";
@@ -306,7 +310,7 @@ require 'conexionPDO.php';
 
             /* PROFESION INDIVIDUAL */
             case 9:
-                $sql9 = "SELECT * FROM cojin_profesion_individual WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql9 = "SELECT * FROM cojin_profesion_individual  WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
                 $resultado9 = $conexionPDO->query($sql9);
                 $cojintipo9 = $resultado9->fetch(PDO::FETCH_ASSOC);
                 echo "<td>".$cojintipo9['nombre_tipo']."</td>";
