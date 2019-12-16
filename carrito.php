@@ -179,8 +179,8 @@ if ($_SESSION["carrito"] != NULL) {
                                         <?php
 
 
-                                                    for ($k = 0; $k <  $_SESSION["carrito"][$i]["numerodefamiliares"]; ++$k) {       ?>
-                                            <a class="dropdown-item"><b>Tipo familiar: </b><?php echo $_SESSION["familiares"][$k]["tipofamiliar"]; ?></a>
+                                        for ($k = 0; $k <  $_SESSION["carrito"][$i]["numerodefamiliares"]; $k++) {       ?>
+                                            <a class="dropdown-item"><b>Tipo familiar: </b><?php echo  $_SESSION["familiares"][$k]["tipofamiliar"]; ?></a>
                                             <a class="dropdown-item"><b>Nombre familiar: </b><?php echo $_SESSION["familiares"][$k]["nombrefamiliar"]; ?></a>
                                         <?php } ?>
                                         <a class="dropdown-item"><b>Información adicional: </b><?php echo $_SESSION["carrito"][$i]["informacionadicional"]; ?></a>

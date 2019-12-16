@@ -228,9 +228,9 @@ if (isset($_POST['nombrefamiliar_1'])) {
             $nombrefamiliar = $_POST[$nombrefinal];
             $tipofamiliar = $_POST[$tipofinal];
             //echo "estoy en 0";
-            $_SESSION["familiares"][0] = array('nombrefamiliar' => $nombrefinal, 'tipofamiliar' => $tipofamiliar);
-
-            //$_SESSION["carrito"][0]["familiares"][$a-1] = array('nombrefamiliar' => $nombrefamiliar, 'tipofamiliar' => $tipofamiliar);
+            // $_SESSION["familiares"][0] = array('nombrefamiliar' => $nombrefinal, 'tipofamiliar' => $tipofamiliar);
+            $_SESSION["familiares"][$a - 1] = array('nombrefamiliar' => $nombrefamiliar, 'tipofamiliar' => $tipofamiliar);
+            // $_SESSION["carrito"][0]["familiares"][$a-1] = array('nombrefamiliar' => $nombrefamiliar, 'tipofamiliar' => $tipofamiliar);
             //echo $_SESSION["carrito"][0]["familiares"][$a-1];
             $a++;
         }
@@ -244,9 +244,9 @@ if (isset($_POST['nombrefamiliar_1'])) {
             $nombrefamiliar = $_POST[$nombrefinal];
             $tipofamiliar = $_POST[$tipofinal];
             //echo "estoy en vacio";
-            $_SESSION["familiares"][$a - 1] = array('nombrefamiliar' => $nombrefinal, 'tipofamiliar' => $tipofamiliar);
-
-            //$_SESSION["carrito"][0]["familiares"][$a-1] = array('nombrefamiliar' => $nombrefamiliar, 'tipofamiliar' => $tipofamiliar);
+            // $_SESSION["familiares"][$a - 1] = array('nombrefamiliar' => $nombrefinal, 'tipofamiliar' => $tipofamiliar);
+            $_SESSION["familiares"][$a - 1] = array('nombrefamiliar' => $nombrefamiliar, 'tipofamiliar' => $tipofamiliar);
+            // $_SESSION["carrito"][0]["familiares"][$a-1] = array('nombrefamiliar' => $nombrefamiliar, 'tipofamiliar' => $tipofamiliar);
             //echo $_SESSION["carrito"][0]["familiares"][$a-1];
 
             $a++;

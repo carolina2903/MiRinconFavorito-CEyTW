@@ -310,10 +310,10 @@ require 'conexionPDO.php';
 
             /* PROFESION INDIVIDUAL */
             case 9:
-                $sql9 = "SELECT * FROM cojin_profesion_individual  WHERE id_tipo_producto='" . $productospedido['id_tipo_producto'] . "'";
+                $sql9 = "SELECT * FROM cojin_profesion_individual  WHERE id_tipo_producto='9' AND id_producto='" . $productospedido['id_producto'] . "' ";
                 $resultado9 = $conexionPDO->query($sql9);
                 $cojintipo9 = $resultado9->fetch(PDO::FETCH_ASSOC);
-                echo "<td>".$cojintipo9['nombre_tipo']."</td>";
+                echo "<td>".$cojintipo9['nombre']."</td>";
                 echo "<td>";
                 ?>
                     <div class='dropdown'>
@@ -331,12 +331,14 @@ require 'conexionPDO.php';
         } /* fin switch */
        
     } /* fin while */
+    echo '<tr><td></td><td></td><td></td><td></td><td></td></tr><td></td><td></td><td></td><td></td><td></td><tr><td><td></td><td></td><td></td><td></td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>';
     echo '</tbody>';
     echo '</table>';
+    echo '<br><br><br>';
     echo '</div>';
     ?>
 
-    <br><br><br>
+    <br><br>
 
 
     <!-- PRECIOS -->
