@@ -92,7 +92,7 @@ $idpedido_creado = $numero_id;
 
 /* Para insertar el pedido */
 $pedido_temporal = "INSERT INTO pedido (id_pedido, id_cliente, precio_total, fecha_compra, tipo_envio, anotaciones, estado) 
-VALUES (:id_pedido, :id_cliente, :precio_total, :fecha_compra, 'Estándar', '', 'Tramitado')";
+VALUES (:id_pedido, :id_cliente, :precio_total, :fecha_compra, '1', '', 'Tramitado')";
 $sentencia3 = $conexionPDO->prepare($pedido_temporal);
 $sentencia3->execute(array(':id_pedido'=>$idpedido_creado, ':id_cliente'=>$id_cliente, ':precio_total'=>$precio_total, ':fecha_compra'=>date("Y-m-d") ));          
 

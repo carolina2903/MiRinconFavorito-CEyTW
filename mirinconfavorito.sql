@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-12-2019 a las 18:52:27
+-- Tiempo de generación: 16-12-2019 a las 09:23:10
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -70,7 +70,9 @@ CREATE TABLE `cojines_corazon_dobles_senor_senora` (
 --
 
 INSERT INTO `cojines_corazon_dobles_senor_senora` (`idinterno`, `id_tipo_producto`, `id_producto`, `nombre_tipo`, `nombre_senor`, `nombre_senora`, `fecha`, `tipo_letra`) VALUES
-(1, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'Carlos', 'Cristina', '2019-12-19', 'Mayúsculas');
+(1, '1', 'pr1', 'Cojines Corazón Doble Señor/Señora', 'Carlos', 'Cristina', '2019-12-19', 'Mayúsculas'),
+(2, '1', 'pr333', 'Cojines Corazón Doble Señor/Señora', 'Juan', 'maria', NULL, NULL),
+(3, '1', 'pr11', 'Cojines Corazón Doble Señor/Señora', 'sdsad', 'asdsd', '2019-12-21', '');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,9 @@ CREATE TABLE `cojin_amistad` (
 --
 
 INSERT INTO `cojin_amistad` (`idinterno`, `id_tipo_producto`, `id_producto`, `nombre_tipo`, `genero`) VALUES
-(1, '2', 'pr2', 'Cojín Amistad', 'mujer');
+(1, '2', 'pr2', 'Cojín Amistad', 'mujer'),
+(2, '2', 'pr10', 'Cojín Amistad', 'mujer'),
+(3, '2', 'pr14', 'Cojín Amistad', 'mujer');
 
 -- --------------------------------------------------------
 
@@ -213,7 +217,8 @@ CREATE TABLE `cojin_profesion_doble` (
 --
 
 INSERT INTO `cojin_profesion_doble` (`idinterno`, `id_tipo_producto`, `id_producto`, `nombre_tipo`, `profesion_izquierda`, `profesion_derecha`, `nombre_izquierda`, `nombre_derecha`, `fecha`, `tipo_letra`) VALUES
-(1, '8', 'pr8', 'Cojines Profesión Dobles', 'Enfermera', 'Ingeniero', 'Cristina', 'Carlos', '2019-12-05', 'Mayúsculas');
+(1, '8', 'pr8', 'Cojines Profesión Dobles', 'Enfermera', 'Ingeniero', 'Cristina', 'Carlos', '2019-12-05', 'Mayúsculas'),
+(2, '8', 'pr11', 'Cojines Profesión Dobles', 'Profesion2izda', 'Profesion2dcha', 'Nombre2izda', 'Nombre2dcha', '2019-12-19', '');
 
 -- --------------------------------------------------------
 
@@ -265,7 +270,8 @@ CREATE TABLE `cojin_profesion_individual` (
 --
 
 INSERT INTO `cojin_profesion_individual` (`idinterno`, `id_tipo_producto`, `id_producto`, `nombre_tipo`, `nombre`, `profesion`, `fecha`, `tipo_letra`) VALUES
-(1, '9', 'pr1', 'Cojín Profesión Individual', 'Laura', 'Médica', '0000-00-00', 'Mayúsculas');
+(1, '9', 'pr1', 'Cojín Profesión Individual', 'Laura', 'Médica', '0000-00-00', 'Mayúsculas'),
+(2, '9', 'pr10', 'Cojines Corazón Doble', 'aaaaaa', 'aasssssss', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -360,7 +366,8 @@ INSERT INTO `linea_producto` (`num_linea`, `id_producto`, `id_pedido`) VALUES
 (6, 'pr6', 1),
 (7, 'pr7', 1),
 (8, 'pr8', 1),
-(9, 'pr9', 1);
+(9, 'pr9', 1),
+(55, 'pr10', 2);
 
 -- --------------------------------------------------------
 
@@ -395,7 +402,7 @@ CREATE TABLE `pedido` (
   `id_cliente` varchar(10) NOT NULL,
   `precio_total` int(11) NOT NULL,
   `fecha_compra` date NOT NULL DEFAULT current_timestamp(),
-  `tipo_envio` enum('Estándar','Urgente','Contra reembolso','Internacional') NOT NULL,
+  `tipo_envio` varchar(1) NOT NULL,
   `anotaciones` text NOT NULL,
   `estado` enum('Tramitado','Enviado','Recibido','Cancelado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -405,7 +412,8 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id_pedido`, `id_cliente`, `precio_total`, `fecha_compra`, `tipo_envio`, `anotaciones`, `estado`) VALUES
-(1, 'cl2', 22, '2019-11-14', 'Estándar', '', 'Tramitado');
+(1, 'cl2', 22, '2019-11-14', '1', '', 'Tramitado'),
+(2, 'cl4', 14, '2019-12-16', '1', '', 'Tramitado');
 
 -- --------------------------------------------------------
 
@@ -426,6 +434,7 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id_producto`, `id_tipo_producto`, `precio_unidad`, `tamano`) VALUES
 ('pr1', '1', 12, '30x50'),
+('pr10', '9', 14, '30x50'),
 ('pr2', '2', 22, '30x50'),
 ('pr3', '3', 33, '40x40'),
 ('pr4', '4', 44, '30x50'),
@@ -594,10 +603,16 @@ ALTER TABLE `cojin_profesion_individual`
   MODIFY `idinterno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `linea_miembro`
+--
+ALTER TABLE `linea_miembro`
+  MODIFY `numero_linea_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `linea_producto`
 --
 ALTER TABLE `linea_producto`
-  MODIFY `num_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `num_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
